@@ -29,29 +29,30 @@ import java.util.Objects;
 }*/
 public class Utilisateur {
     private int idU;
-    private String nomU,prenomU,emailU,mdpU;
+    private String nomU,prenomU,emailU,mdpU,roleU;
 
-    public Utilisateur(int idU, String nomU, String prenomU, String emailU,String mdpU) {
+    public Utilisateur(int idU, String nomU, String prenomU, String emailU,String mdpU,String roleU) {
         this.idU = idU;
         this.nomU = nomU;
         this.prenomU = prenomU;
         this.emailU = emailU;
         this.mdpU = mdpU;
-        
+        this.roleU =roleU;
     }
 
-    public Utilisateur(String nomU, String prenomU,String emailU,String mdpU) {
+    public Utilisateur(String nomU, String prenomU,String emailU,String mdpU,String roleU) {
         this.nomU = nomU;
         this.prenomU = prenomU;
         this.emailU = emailU;
         this.mdpU = mdpU;
+          this.roleU = roleU;
     }
     public Utilisateur() {
     }
 
     @Override
     public String toString() {
-        return "Utilisateur{" + "idU=" + idU + ", nomU=" + nomU + ", prenomU=" + prenomU + ", emailU=" + emailU +", mdpU=" + mdpU +'}';
+        return "Utilisateur{" + "idU=" + idU + ", nomU=" + nomU + ", prenomU=" + prenomU + ", emailU=" + emailU +", mdpU=" + mdpU + ", roleU=" + roleU + '}';
     }
 
     public int getidU() {
@@ -71,6 +72,9 @@ public class Utilisateur {
       public String getmdpU() {
         return mdpU;
     }
+        public String getroleU() {
+        return roleU;
+    }
 
     public void setidU(int idU) {
         this.idU = idU;
@@ -88,6 +92,9 @@ public class Utilisateur {
     }
         public void setmdpU(String mdpU) {
         this.mdpU = mdpU;
+    }
+ public void setroleU(String roleU) {
+        this.roleU =roleU;
     }
 
 

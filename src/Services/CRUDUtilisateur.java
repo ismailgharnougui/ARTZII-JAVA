@@ -26,7 +26,7 @@ Connection conn = MyConnection.getInstance().getConnection();
     public void ajouterUtilisateur(Utilisateur U) {
     try {
         ste = conn.createStatement();
-        String req = "Insert into utilisateur values(0,'"+U.getnomU()+"','"+U.getprenomU()+"','"+U.getemailU()+"','"+U.getmdpU()+"')";
+        String req = "Insert into utilisateur values(0,'"+U.getnomU()+"','"+U.getprenomU()+"','"+U.getemailU()+"','"+U.getmdpU()+"','"+U.getroleU()+"')";
         ste.executeUpdate(req);
         System.out.println("utilisateur ajouté");
     } catch (SQLException ex) {
@@ -36,7 +36,7 @@ Connection conn = MyConnection.getInstance().getConnection();
      
     public void modifierUtilisateur(Utilisateur U) {
         try {
-            String req = "UPDATE `utilisateur` SET `nomU` = '" + U.getnomU() + "', `emailU` = '" + U.getemailU() + "', `mdpU` = '" + U.getmdpU() + "', `prenomU` = '" + U.getprenomU() + "' WHERE `utilisateur`.`idU` = " + U.getidU();
+            String req = "UPDATE `utilisateur` SET `nomU` = '" + U.getnomU() + "', `emailU` = '" + U.getemailU() + "', `mdpU` = '" + U.getmdpU() + "', `prenomU` = '" + U.getprenomU() +"', `roleU` = '" + U.getroleU() + "' WHERE `utilisateur`.`idU` = " + U.getidU();
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("utilisateur updated !");
@@ -70,6 +70,7 @@ Connection conn = MyConnection.getInstance().getConnection();
              U.setprenomU(RS.getString(3));
              U.setemailU(RS.getString(4));
              U.setmdpU(RS.getString(5));
+             U.setroleU(RS.getString(6));
              list.add(U);
             }
         } catch (SQLException ex) {
@@ -87,6 +88,7 @@ Connection conn = MyConnection.getInstance().getConnection();
             ps.setString(2, U.getprenomU());
             ps.setString(3, U.getemailU());
             ps.setString(4, U.getmdpU());
+            ps.setString(5, U.getroleU());
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

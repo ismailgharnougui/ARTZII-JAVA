@@ -5,6 +5,7 @@
  */
 package test;
 
+import Entites.Role;
 import utils.MyConnection;
 import Entites.Utilisateur;
 import Services.CRUDUtilisateur;
@@ -19,14 +20,17 @@ public class main {
     public static void main(String[] args) {
         
         MyConnection connexion = MyConnection.getInstance();
-        Utilisateur U = new Utilisateur("ma","ft","ma@email.com","99");
+        Utilisateur U = new Utilisateur("ma","ft","ma@email.com","99","admin");
             
         CRUDUtilisateur crud = new CRUDUtilisateur();
        //crud.ajouterUtilisateur(U);
         System.out.println(crud.afficherUtilisateur());
         //Utilisateur U = new Utilisateur(15,"ma","ft","ma@email.com","99");
-        //crud.modifierUtilisateur(U);
-        crud.supprimerUtilisateur(18);
+       // crud.modifierUtilisateur(U);
+        crud.supprimerUtilisateur(23);
+      // Role R = new Role("artist");
+     
+        
     }
     
 }
