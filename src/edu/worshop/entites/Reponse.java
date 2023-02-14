@@ -19,11 +19,19 @@ public class Reponse {
     }
     
 
+    public Reponse(int idRep,  String contenuRep) {
+        this.idRep = idRep;
+       
+        this.contenuRep = contenuRep;
+    }
+
     public Reponse(int idRep, String dateRep, String contenuRep) {
         this.idRep = idRep;
         this.dateRep = dateRep;
         this.contenuRep = contenuRep;
     }
+
+  
 
     public int getIdRep() {
         return idRep;

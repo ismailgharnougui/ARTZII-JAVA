@@ -19,14 +19,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public abstract class CRUDReponse implements InterfaceServices{
+public class CRUDReponse implements RepInterface{
 Statement ste=null;
 Connection conn = MyConnection.getInstance().getConnection();
 
     public void ajouterReponse(Reponse r) {
     try {
         ste = conn.createStatement();
-        String req = "Insert into Reponse() values('"+r.getContenuRep()+"')";
+        String req = "Insert into Reponse(contenuRep) values('"+r.getContenuRep()+"')";
         ste.executeUpdate(req);
         System.out.println("Reponse ajouté");
     } catch (SQLException ex) {
@@ -35,9 +35,9 @@ Connection conn = MyConnection.getInstance().getConnection();
 
   
 
-    public void modifierRponse(Reponse r) {
+    public void modifierReponse(Reponse r) {
       try {
-            String req = "UPDATE `Reponse` SET `ContenuRep` = '" + r.getContenuRep()  +  "' WHERE `Reclamation`.`idRep` = " + r.getIdRep();
+            String req = "UPDATE `Reponse` SET `ContenuRep` = '" + r.getContenuRep()  +  "' WHERE `idRep` = " + r.getIdRep();
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Reponse updated !");
@@ -49,7 +49,7 @@ Connection conn = MyConnection.getInstance().getConnection();
     }
 
     @Override
-    public void supprimerReclamation(int idRep) {
+    public void supprimerReponse(int idRep) {
       try {
             String req = "DELETE FROM `Reponse` WHERE idRep = " + idRep;
             Statement st = conn.createStatement();
@@ -77,7 +77,7 @@ Connection conn = MyConnection.getInstance().getConnection();
         ResultSet result = ste.executeQuery(req);
         
         while (result.next()) {
-            Reponse resultReponse = new Reponse(result.getInt(1),result.getString(2), result.getString(4));
+            Reponse resultReponse = new Reponse(result.getInt(1), result.getString(2), result.getString(3));
             rec.add(resultReponse);
         }
         System.out.println(rec);

@@ -7,10 +7,7 @@ package edu.worshop.entites;
 
 import java.util.Objects;
 
-/**
- *
- * @author belkn
- */
+
 public class Reclamation {
     private int id;
     private String TypeR;
@@ -33,6 +30,15 @@ public class Reclamation {
         this.TypeR = TypeR;
         this.Description = Description;
         this.Objet = Objet;
+        this.etat = etat;
+    }
+
+    public Reclamation(int id, String TypeR, String Description, String Objet, String DateR, String etat) {
+        this.id = id;
+        this.TypeR = TypeR;
+        this.Description = Description;
+        this.Objet = Objet;
+        this.DateR = DateR;
         this.etat = etat;
     }
    

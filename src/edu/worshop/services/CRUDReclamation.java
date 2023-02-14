@@ -72,7 +72,7 @@ Connection conn = MyConnection.getInstance().getConnection();
         ResultSet result = ste.executeQuery(req);
         
         while (result.next()) {
-            Reclamation resultReclamation = new Reclamation(result.getInt(1),result.getString(2), result.getString(4), result.getString(5), result.getString(6));
+            Reclamation resultReclamation = new Reclamation(result.getInt(1),result.getString(2),result.getString(3), result.getString(4), result.getString(5), result.getString(6));
             rec.add(resultReclamation);
         }
         System.out.println(rec);
