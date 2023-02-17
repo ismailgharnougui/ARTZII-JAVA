@@ -43,6 +43,7 @@ public class GestionPanier {
         
         ServiceCommand sc = new ServiceCommand();
         
+        
            
         //sc.ajouter(command);
         //sc.supprimer(3);
