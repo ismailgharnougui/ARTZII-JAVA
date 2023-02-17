@@ -33,7 +33,7 @@ Connection conn = MyConnection.getInstance().getConnection();
         
         ResultSet result = pste.executeQuery();
        result.next();
-           Client resultClient = new Client(result.getInt(1), result.getString(2), result.getString(3), result.getString(3));
+           Client resultClient = new Client(result.getInt(1), result.getString(2), result.getString(3), result.getString(4));
         return resultClient;
       
     } catch (SQLException ex) {

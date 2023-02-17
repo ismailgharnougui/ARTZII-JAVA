@@ -27,7 +27,7 @@ public class GestionPanier {
         // TODO code application logic here
         
         ServiceArticle sa = new ServiceArticle();
-        //sa.ajouterArticle(new Article("84x32",45));
+        //sa.ajouterArticle(new Article("50*50",50));
         //sa.afficherArticles();
         //sa.supprimerArticle(1);
         //System.out.println( sa.get(4));
@@ -36,25 +36,15 @@ public class GestionPanier {
         //System.out.println(scl.get(1));
         
         ServiceBasket sb = new ServiceBasket();
-        //sb.ajouter(1, 1);
-        //sb.vider(2);
+        //sb.ajouter(1, 5);
+        //sb.vider(1);
         //sb.supprimerArticle(4);
-        //System.out.println(sb.get(2));
+        System.out.println(sb.get(3).getArticles());
         
         ServiceCommand sc = new ServiceCommand();
         
-        
-        Client cl = new Client(2,"ramzi", "mohsen", "123 Main St");
-        ArrayList<Article> articles = new ArrayList<Article>();
-        articles.add(new Article(2,"15*51", (float) 15.99));
-        articles.add(new Article(3,"51*48", (float) 29.99));
-        articles.add(new Article(4,"7*65", (float) 5.99));
-        String comDate = "2023-02-14";
-        double totalCost = 51.97;
-        String payMethod = "Credit Card";
-        Command command = new Command(cl, articles, comDate, totalCost, payMethod);
            
-        sc.ajouter(command);
+        //sc.ajouter(command);
         //sc.supprimer(3);
         //System.out.println(sc.recupererCommClient(2));       
         
@@ -62,3 +52,35 @@ public class GestionPanier {
     }
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        /*Client cl = new Client(2,"ramzi", "mohsen", "123 Main St");
+        ArrayList<Article> articles = new ArrayList<Article>();
+        articles.add(new Article(2,"15*51", (float) 15.99));
+        articles.add(new Article(3,"51*48", (float) 29.99));
+        articles.add(new Article(4,"7*65", (float) 5.99));
+        String comDate = "2023-02-14";
+        double totalCost = 51.97;
+        String payMethod = "Credit Card";
+        Command command = new Command(cl, articles, comDate, totalCost, payMethod);*/

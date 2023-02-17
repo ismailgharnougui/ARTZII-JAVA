@@ -20,7 +20,7 @@ import java.util.List;
 
 
 public class ServiceBasket implements InterfaceServiceBasket{
-Statement ste;
+Statement ste=null;
 Connection conn = MyConnection.getInstance().getConnection();
 
 

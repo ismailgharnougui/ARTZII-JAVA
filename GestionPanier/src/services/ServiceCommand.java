@@ -30,7 +30,7 @@ public class ServiceCommand implements InterfaceServiceCommand{
 
     @Override
     public void ajouter(Command c) {
-         try {
+       try {
             String req = "INSERT INTO `commands` (`id_client`, `id_article`) VALUES (?,?)";
             PreparedStatement ps = conn.prepareStatement(req);
             
@@ -43,6 +43,7 @@ public class ServiceCommand implements InterfaceServiceCommand{
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+        
     }
 
     @Override
