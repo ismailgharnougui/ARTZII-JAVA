@@ -15,7 +15,7 @@ import models.Basket;
  */
 public interface InterfaceServiceBasket {
     public void ajouter(int idClient, int idArticle);
-    public void supprimerArticle(int idArticle);
+    public void supprimerArticle(int idClient, int idArticle);
     public void vider(int idClient);
     public Basket get(int idClient);
 }

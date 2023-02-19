@@ -27,22 +27,18 @@ public class GestionPanier {
         // TODO code application logic here
         
         ServiceArticle sa = new ServiceArticle();
-        //sa.ajouterArticle(new Article("50*50",50));
-        //sa.afficherArticles();
-        //sa.supprimerArticle(1);
-        //System.out.println( sa.get(4));
+        //System.out.println( sa.get(2));
         
         ServiceClient scl = new ServiceClient();
-        //System.out.println(scl.get(1));
+        //System.out.println(scl.get(4));
         
         ServiceBasket sb = new ServiceBasket();
-        //sb.ajouter(1, 5);
-        //sb.vider(1);
-        //sb.supprimerArticle(4);
-        System.out.println(sb.get(3).getArticles());
+        //sb.ajouter(2, 5);
+        //sb.vider(2);
+        //sb.supprimerArticle(4,6);
+        //System.out.println(sb.get(4).getArticles());
         
         ServiceCommand sc = new ServiceCommand();
-        
         
            
         //sc.ajouter(command);

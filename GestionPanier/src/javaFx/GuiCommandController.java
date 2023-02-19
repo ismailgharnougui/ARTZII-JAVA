@@ -7,8 +7,10 @@ package javaFx;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 
 /**
@@ -20,6 +22,12 @@ public class GuiCommandController implements Initializable {
 
     @FXML
     private TextField tf;
+    
+    @FXML
+    private RadioButton livArtziiNow;
+
+    @FXML
+    private RadioButton livDomicile;
 
     /**
      * Initializes the controller class.
@@ -28,5 +36,10 @@ public class GuiCommandController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    
+    @FXML
+    private void handleButtonAction (ActionEvent event){
+        
+    }
     
 }

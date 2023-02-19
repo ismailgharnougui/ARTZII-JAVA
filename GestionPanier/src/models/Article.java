@@ -11,20 +11,22 @@ package models;
  */
 public class Article {
     private int ref;
+    private String nom;
     private String dimension;
     private float prix;
-    String dateAjout;
 
     public Article() {
     }
     
-    public Article(String dimension, float prix) {
+    public Article(String nom, String dimension, float prix) {
+        this.nom=nom;
         this.dimension = dimension;
         this.prix = prix;
     }
     
-     public Article(int ref,String dimension, float prix) {
+     public Article(int ref,String nom,String dimension, float prix) {
          this.ref = ref;
+           this.nom=nom;
         this.dimension = dimension;
         this.prix = prix;
     }
@@ -32,6 +34,11 @@ public class Article {
     public int getRef() {
         return ref;
     }
+
+    public String getNom() {
+        return nom;
+    }
+    
 
     public String getDimension() {
         return dimension;
@@ -45,6 +52,10 @@ public class Article {
         this.ref = ref;
     }
 
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
     public void setDimension(String dimension) {
         this.dimension = dimension;
     }
@@ -53,22 +64,10 @@ public class Article {
         this.prix = prix;
     }
 
-    public String getDateAjout() {
-        return dateAjout;
-    }
-
-    public void setDateAjout(String dateAjout) {
-        this.dateAjout = dateAjout;
-    }
-    
-    
-
     @Override
     public String toString() {
-        return "article{" + "ref=" + ref + ", dimension=" + dimension + ", prix=" + prix + '}';
+        return "Article{" + "ref=" + ref + ", nom=" + nom + ", dimension=" + dimension + ", prix=" + prix + '}';
     }
-    
-    
 
     @Override
     public int hashCode() {

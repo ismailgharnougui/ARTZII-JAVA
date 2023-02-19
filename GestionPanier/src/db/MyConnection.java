@@ -8,7 +8,7 @@ package db;
 import java.sql.*;
 public class MyConnection {
   private  Connection  conn;
-   String url = "jdbc:mysql://localhost:3306/mydb";
+   String url = "jdbc:mysql://localhost:3306/artzii";
    String user = "root";
    String pwd = "1963";
    private static MyConnection instance;
@@ -19,7 +19,8 @@ public class MyConnection {
             System.out.println("Connexion etablie!!!");
         } catch (SQLException ex) {
             System.out.println("probleme de Connexion");    
-        }}
+        }
+    }
 
   public static MyConnection getInstance(){
         if (MyConnection.instance == null) {

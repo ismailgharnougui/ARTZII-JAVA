@@ -24,16 +24,14 @@ Connection conn = MyConnection.getInstance().getConnection();
 
     @Override
     public Client get(int id) {
-
-    
           try {
-        String req = "SELECT * FROM `users` WHERE id = ?";
+        String req = "SELECT * FROM `utilisateur` WHERE idU = ?";
         PreparedStatement pste=conn.prepareStatement(req);
         pste.setInt(1, id);
         
         ResultSet result = pste.executeQuery();
        result.next();
-           Client resultClient = new Client(result.getInt(1), result.getString(2), result.getString(3), result.getString(4));
+           Client resultClient = new Client(result.getInt(1), result.getString(2), result.getString(3), result.getString(7));
         return resultClient;
       
     } catch (SQLException ex) {

@@ -27,7 +27,7 @@ Connection conn = MyConnection.getInstance().getConnection();
     @Override
     public void ajouter(int idClient, int idArticle) {
          try {
-            String req = "INSERT INTO `basket` (`id_client`, `id_product`) VALUES (?,?)";
+            String req = "INSERT INTO `basket` (`id_client`, `id_article`) VALUES (?,?)";
             PreparedStatement ps = conn.prepareStatement(req);
             ps.setInt(1, idClient);
             ps.setInt(2, idArticle);
@@ -38,11 +38,12 @@ Connection conn = MyConnection.getInstance().getConnection();
     }
     
      @Override
-    public void supprimerArticle(int idArticle) {
+    public void supprimerArticle(int idClient, int idArticle) {
         try {
-            String req = "DELETE FROM `basket` WHERE id_product = ?";
+            String req = "DELETE FROM `basket` WHERE id_client = ? and id_article = ?";
             PreparedStatement st = conn.prepareStatement(req);
-            st.setInt(1, idArticle);
+            st.setInt(1, idClient);
+            st.setInt(2, idArticle);
             st.executeUpdate();
             System.out.println("Basket item deleted !");
         } catch (SQLException ex) {
@@ -56,7 +57,7 @@ Connection conn = MyConnection.getInstance().getConnection();
             String req = "DELETE FROM `basket` WHERE id_client = ?";
             PreparedStatement st = conn.prepareStatement(req);
             st.setInt(1, idClient);
-            st.executeUpdate(req);
+            st.executeUpdate();
             System.out.println("Basket Empty !");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

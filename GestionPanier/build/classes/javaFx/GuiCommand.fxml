@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
-
-
-
-
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
@@ -21,21 +17,21 @@
    <children>
       <AnchorPane layoutX="-38.0" layoutY="14.0" prefHeight="616.0" prefWidth="993.0" style="-fx-background-color: #f8f5f5; -fx-background-radius: 15;">
          <children>
-            <Pane layoutX="590.0" layoutY="-1.0" prefHeight="94.0" prefWidth="412.0" style="-fx-background-radius: 20 20 0 0;" styleClass="linear-grad" stylesheets="@./guicommand.css">
+            <Pane layoutX="590.0" layoutY="-8.0" prefHeight="101.0" prefWidth="412.0" style="-fx-background-radius: 20 20 0 0;" styleClass="linear-grad" stylesheets="@./guicommand.css">
                <children>
                   <ImageView fitHeight="76.0" fitWidth="58.0" layoutX="334.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/ic_usr.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="nomPrenom3" layoutX="92.0" layoutY="28.0" text="Mohamed Mokhtar Hadded" textFill="WHITE">
+                  <Label fx:id="nomPrenom3" layoutX="92.0" layoutY="28.0" text="Mohamed Mokhtar Hadded" textFill="#fffefe">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
                </children>
             </Pane>
-            <VBox fx:id="vbox2" layoutX="37.0" layoutY="-12.0" prefHeight="630.0" prefWidth="74.0" style="-fx-background-color: #131022; -fx-background-radius: 15 0 0 15;" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="-12.0">
+            <VBox fx:id="vbox2" layoutX="37.0" layoutY="-12.0" prefHeight="606.0" prefWidth="74.0" style="-fx-background-color: #131022; -fx-background-radius: 15 0 0 15;" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="-12.0">
               
 			<children>
                   <Pane prefHeight="111.0" prefWidth="74.0" style="-fx-background-radius: 15 0 15 15;" />
@@ -77,108 +73,240 @@
                   </Button>
                </children>
             </VBox>
-            <AnchorPane layoutX="126.0" layoutY="81.0" prefHeight="523.0" prefWidth="876.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10;" stylesheets="@./GuiPanier.css">
+            <AnchorPane layoutX="126.0" layoutY="67.0" prefHeight="520.0" prefWidth="886.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10;" stylesheets="@./GuiPanier.css">
                <children>
-                  <Label layoutX="39.0" layoutY="20.0" text="Bonjour,">
+                  <Label layoutX="34.0" layoutY="20.0" text="1. Adresse">
                      <font>
-                        <Font size="26.0" />
+                        <Font size="25.0" />
                      </font>
                   </Label>
-                  <Label fx:id="nomPrenom2" layoutX="142.0" layoutY="20.0" text="Mohamed Mokhtar Hadded" textFill="#eab95f">
+                  <Label fx:id="nomPrenom2" layoutX="34.0" layoutY="65.0" text="Mohamed Mokhtar Hadded" textFill="#eab95f">
                      <font>
-                        <Font size="26.0" />
+                        <Font name="System Bold" size="17.0" />
                      </font>
                   </Label>
-                  <Label layoutX="39.0" layoutY="66.0" text="Votre panier est le reflet de votre style!">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="39.0" layoutY="92.0" text="découvrez les nouvelles pièces d'art ajoutées par nos artistes pour compléter " textFill="#9a9292">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Label>
-                  <Pane layoutX="569.0" layoutY="46.0" prefHeight="297.0" prefWidth="270.0" style="-fx-background-radius: 20;" styleClass="linear-grad" stylesheets="@./GuiPanier.css">
-                     <children>
-                        <Button layoutX="63.0" layoutY="285.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0" styleClass="button4" stylesheets="@./GuiPanier.css" text="Commander" textFill="WHITE">
-                           <font>
-                              <Font size="15.0" />
-                           </font></Button>
-                        <Label fx:id="totalCout" layoutX="79.0" layoutY="149.0" text="135 DT" textAlignment="CENTER" textFill="WHITE">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="nomPrenom" layoutX="93.0" layoutY="218.0" text="Med Mokhtar" textAlignment="CENTER" textFill="WHITE">
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="address" layoutX="93.0" layoutY="238.0" text="Bizerte" textFill="#b5adad">
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                        </Label>
-                        <ImageView fitHeight="76.0" fitWidth="74.0" layoutX="108.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../resources/panier.png" />
-                           </image>
-                        </ImageView>
-                        <Label layoutX="51.0" layoutY="97.0" text="Coût totale" textAlignment="CENTER" textFill="WHITE">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </Pane>
-                  <Line endX="100.0" layoutX="445.0" layoutY="54.0" startX="100.0" startY="431.20001220703125" stroke="#b9b1b1" strokeDashOffset="2.0" />
-                  <Label layoutX="569.0" layoutY="377.0" text="What is wow " textFill="WHITE">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="610.0" layoutY="377.0" text="Besoins d'informations?" textFill="#eab95f">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <BorderPane layoutX="569.0" layoutY="404.0" prefHeight="66.0" prefWidth="270.0">
-                     <bottom>
-                        <Label alignment="CENTER" prefWidth="265.0" text="Notre processus de commande est simple et efficace. Vous pouvez passer votre commande en ligne via notre application sécurisé" textFill="#9a9292" wrapText="true" BorderPane.alignment="CENTER">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                        </Label>
-                     </bottom>
-                  </BorderPane>
-                  <Label layoutX="39.0" layoutY="111.0" text="votre collection!" textFill="#9a9292">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="39.0" layoutY="130.0" text="Vos achats ">
-                     <font>
-                        <Font size="26.0" />
-                     </font>
-                  </Label>
-                  <ScrollPane layoutX="8.0" layoutY="164.0" prefHeight="328.0" prefWidth="512.0" style="-fx-background-color: #ffffff;">
+                  <Line endX="100.0" endY="-36.600006103515625" layoutX="335.0" layoutY="62.0" startX="100.0" startY="424.20001220703125" stroke="#b9b1b1" strokeDashOffset="2.0" />
+                  <ScrollPane layoutX="462.0" layoutY="52.0" prefHeight="298.0" prefWidth="387.0" style="-fx-background-color: #ffffff;">
                      <content>
-                        <VBox fx:id="vbox1" prefHeight="286.0" prefWidth="490.0" />
+                        <VBox fx:id="vbox1" prefHeight="262.0" prefWidth="380.0">
+                           <children>
+                              <Pane fx:id="panePPPPP" prefHeight="78.0" prefWidth="380.0" style="-fx-background-color: ffffff; -fx-background-radius: 0;">
+                                 <children>
+                                    <Label layoutX="19.0" layoutY="-2.0" prefHeight="31.0" prefWidth="120.0" text="Article 1 de 5">
+                                       <font>
+                                          <Font name="System Bold Italic" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="64.0" layoutY="23.0" prefHeight="31.0" prefWidth="112.0" text="la vie a la mer">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="19.0" layoutY="46.0" prefHeight="31.0" prefWidth="89.0" text="Livré entre : ">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="415.0" layoutY="125.0" prefHeight="31.0" prefWidth="51.0" text="40 dt">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="114.0" layoutY="46.0" prefHeight="31.0" prefWidth="202.0" text="jeudi 23 févr. et lundi 27 févr.">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fx:id="supprimer" fitHeight="26.0" fitWidth="35.0" layoutX="431.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../resources/trash.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label layoutX="29.0" layoutY="23.0" prefHeight="31.0" prefWidth="24.0" text="1x">
+                                       <font>
+                                          <Font name="System Bold Italic" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Line endX="241.0" endY="1.3999786376953125" layoutX="139.0" layoutY="75.0" startX="-139.00001525878906" startY="1.3999786376953125" />
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="panePPPPP1" prefHeight="78.0" prefWidth="380.0" style="-fx-background-color: ffffff; -fx-background-radius: 0;">
+                                 <children>
+                                    <Label layoutX="19.0" layoutY="-2.0" prefHeight="31.0" prefWidth="120.0" text="Article 1 de 5">
+                                       <font>
+                                          <Font name="System Bold Italic" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="64.0" layoutY="23.0" prefHeight="31.0" prefWidth="112.0" text="la vie a la mer">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="19.0" layoutY="46.0" prefHeight="31.0" prefWidth="89.0" text="Livré entre : ">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="114.0" layoutY="46.0" prefHeight="31.0" prefWidth="202.0" text="jeudi 23 févr. et lundi 27 févr.">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fx:id="supprimer1" fitHeight="26.0" fitWidth="35.0" layoutX="431.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../resources/trash.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label layoutX="29.0" layoutY="23.0" prefHeight="31.0" prefWidth="24.0" text="1x">
+                                       <font>
+                                          <Font name="System Bold Italic" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Line endX="241.0" endY="1.3999786376953125" layoutX="139.0" layoutY="75.0" startX="-139.00001525878906" startY="1.3999786376953125" />
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="panePPPPP11" prefHeight="78.0" prefWidth="380.0" style="-fx-background-color: ffffff; -fx-background-radius: 0;">
+                                 <children>
+                                    <Label layoutX="19.0" layoutY="-2.0" prefHeight="31.0" prefWidth="120.0" text="Article 1 de 5">
+                                       <font>
+                                          <Font name="System Bold Italic" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="64.0" layoutY="23.0" prefHeight="31.0" prefWidth="112.0" text="la vie a la mer">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="19.0" layoutY="46.0" prefHeight="31.0" prefWidth="89.0" text="Livré entre : ">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="114.0" layoutY="46.0" prefHeight="31.0" prefWidth="202.0" text="jeudi 23 févr. et lundi 27 févr.">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fx:id="supprimer11" fitHeight="26.0" fitWidth="35.0" layoutX="431.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../resources/trash.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label layoutX="29.0" layoutY="23.0" prefHeight="31.0" prefWidth="24.0" text="1x">
+                                       <font>
+                                          <Font name="System Bold Italic" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Line endX="241.0" endY="1.3999786376953125" layoutX="139.0" layoutY="75.0" startX="-139.00001525878906" startY="1.3999786376953125" />
+                                 </children>
+                              </Pane>
+                           </children></VBox>
                      </content>
                   </ScrollPane>
+                  <Label layoutX="33.0" layoutY="132.0" text="2. Mode de livraison">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="address1" layoutX="32.0" layoutY="85.0" prefHeight="26.0" prefWidth="102.0" text="Bizerte" textFill="#b5adad">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="472.0" layoutY="14.0" text="4. Détails de livraisons">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <RadioButton fx:id="livArtziiNow" layoutX="24.0" layoutY="256.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="412.0" text="Livraison en ARTZII NOW: Frais de livraison moins">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="modeLivraison" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="livDomicile" layoutX="24.0" layoutY="188.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="466.0" selected="true" text="Livraison à domicile : recevez vos pieces préférés" toggleGroup="$modeLivraison">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </RadioButton>
+                  <Label layoutX="32.0" layoutY="340.0" text="3. Mode de paiement">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <RadioButton layoutX="27.0" layoutY="400.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="351.0" selected="true" text="Paiement CASH a la livraison">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="modePayement" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <Button layoutX="548.0" layoutY="461.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="190.0" styleClass="button4" stylesheets="@./GuiPanier.css" text="Confirmer la commande" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="56.0" layoutY="214.0" text="chez vous en toute en toute simplicité">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="56.0" layoutY="282.0" text="cher que la livraison à domicile">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="287.0" layoutY="71.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="124.0" styleClass="button4" stylesheets="@./GuiPanier.css" text="Modifier adresse" textFill="WHITE">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Button>
+                  <Line endX="456.5999755859375" endY="347.6000061035156" layoutX="359.0" layoutY="80.0" startX="113.39996337890625" startY="347.6000061035156" stroke="#b9b1b1" strokeDashOffset="2.0" />
+                  <Label layoutX="483.0" layoutY="376.0" text="Sous totale">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="483.0" layoutY="401.0" text="Montant livraison">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="483.0" layoutY="427.0" text="Totale">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="746.0" layoutY="376.0" text="145.000">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="746.0" layoutY="401.0" text="2.000">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="746.0" layoutY="427.0" text="147.000">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <RadioButton layoutX="27.0" layoutY="439.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="351.0" text="Paiement en ligne " toggleGroup="$modePayement">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </RadioButton>
                </children>
             </AnchorPane>
-            <ImageView fitHeight="86.0" fitWidth="154.0" layoutX="119.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="86.0" fitWidth="154.0" layoutX="139.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/logo.png" />
                </image>
             </ImageView>
-            <Label layoutX="260.0" layoutY="32.0" text="Panier">
-               <font>
-                  <Font size="19.0" />
-               </font>
-            </Label>
          </children>
       </AnchorPane>
    </children>
