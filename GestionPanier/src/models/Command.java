@@ -28,6 +28,15 @@ public class Command {
         this.payMethod = payMethod;
         this.livMethod = livMethod;
     }
+
+    public Command(int id, int idClient, String comDate, float totalCost, String payMethod, String livMethod) {
+        this.id = id;
+        this.idClient = idClient;
+        this.comDate = comDate;
+        this.totalCost = totalCost;
+        this.payMethod = payMethod;
+        this.livMethod = livMethod;
+    }
     
     
     

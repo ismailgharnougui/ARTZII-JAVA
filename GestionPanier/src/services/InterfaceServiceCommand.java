@@ -18,4 +18,5 @@ public interface InterfaceServiceCommand {
      //public Command recupererCommClient(int idClient);
      public void supprimer(int id);
      //public Command get(int id);
+     public List<Command> afficherCommands();
 }

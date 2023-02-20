@@ -102,5 +102,26 @@ public class ServiceCommand implements InterfaceServiceCommand{
 
 */
 
+    @Override
+    public List<Command> afficherCommands() {
+    List<Command> comds = new ArrayList<>();
+        try {
+        String req = "SELECT * FROM commands";
+        ste=conn.createStatement();
+        ResultSet result = ste.executeQuery(req);
+        
+        while (result.next()) {
+            Command resultCommand = new Command(result.getInt("id"),result.getInt("id_client"), result.getString("date_commande"), result.getFloat("cout_totale"), result.getString("mode_paiement"),result.getString("mode_livraison"));
+
+            comds.add(resultCommand);
+        }
+        System.out.println(comds);
+      
+    } catch (SQLException ex) {
+         System.out.println(ex);   
+    }
+   return comds;
+    }
+
    
 }
