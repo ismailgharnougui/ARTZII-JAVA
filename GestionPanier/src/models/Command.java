@@ -13,40 +13,30 @@ import java.util.ArrayList;
  */
 public class Command {
     private int id;
-    private Client cl;
-    private ArrayList<Article> articles;
+    private int idClient;
     private String comDate;
-    private double totalCost;
+    private float totalCost;
     private String payMethod;
+    private String livMethod;
 
     public Command() {
-        articles = new ArrayList<>();
     }
 
-    public Command(int id, Client cl, String comDate, double totalCost, String payMethod) {
-        articles = new ArrayList<>();
-        this.id = id;
-        this.cl=cl;
-        this.comDate = comDate;
+    public Command(int idClient, float totalCost, String payMethod, String livMethod) {
+        this.idClient = idClient;
         this.totalCost = totalCost;
         this.payMethod = payMethod;
+        this.livMethod = livMethod;
     }
-
-    public Command(Client cl, ArrayList<Article> articles, String comDate, double totalCost, String payMethod) {
-        this.cl=cl;
-        this.articles = articles;
-        this.comDate = comDate;
-        this.totalCost = totalCost;
-        this.payMethod = payMethod;
-    }
+    
+    
     
 
     public int getId() {
         return id;
     }
-
-    public Client getCl() {
-        return cl;
+    public int getIdClient() {
+        return idClient;
     }
 
     public String getComDate() {
@@ -61,29 +51,23 @@ public class Command {
         return payMethod;
     }
 
-    public ArrayList<Article> getArticles() {
-        return articles;
+    public String getLivMethod() {
+        return livMethod;
     }
-
-    public void setArticles(ArrayList<Article> articles) {
-        this.articles = articles;
-    }
+    
+    
 
     public void setId(int id) {
         this.id = id;
     }
-
-    public void setCl(Client cl) {
-        this.cl = cl;
+    public void setIdClient(int idClient) {
+        this.idClient = idClient;
     }
-
-    
-
     public void setComDate(String comDate) {
         this.comDate = comDate;
     }
 
-    public void setTotalCost(double totalCost) {
+    public void setTotalCost(float totalCost) {
         this.totalCost = totalCost;
     }
 
@@ -91,17 +75,17 @@ public class Command {
         this.payMethod = payMethod;
     }
 
+    public void setLivMethod(String livMethod) {
+        this.livMethod = livMethod;
+    }
+
     @Override
     public String toString() {
-        return "Command{" + "id=" + id + ", cl=" + cl + ", articles=" + articles + ", comDate=" + comDate + ", totalCost=" + totalCost + ", payMethod=" + payMethod + '}';
+        return "Command{" + "id=" + id + ", idClient=" + idClient + ", comDate=" + comDate + ", totalCost=" + totalCost + ", payMethod=" + payMethod + ", livMethod=" + livMethod + '}';
     }
+    
 
     
 
-   public void addArticle(Article article) {
-        articles.add(article);
-        totalCost += article.getPrix();
-    }
-    
     
 }

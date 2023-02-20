@@ -31,15 +31,16 @@ public class ServiceCommand implements InterfaceServiceCommand{
     @Override
     public void ajouter(Command c) {
        try {
-            String req = "INSERT INTO `commands` (`id_client`, `id_article`) VALUES (?,?)";
+            String req = "INSERT INTO `commands` (`id_client`, `mode_paiement`,`mode_livraison`, `cout_totale`) VALUES (?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(req);
             
-            for(Article a : c.getArticles()){
-            ps.setInt(1, c.getCl().getId());
-            ps.setInt(2, a.getRef());
+            ps.setInt(1, c.getIdClient());
+            ps.setString(2, c.getPayMethod());
+            ps.setString(3, c.getLivMethod());
+            ps.setDouble(4, c.getTotalCost());
          
             ps.executeUpdate();
-            }
+            
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -69,7 +70,7 @@ public class ServiceCommand implements InterfaceServiceCommand{
             System.err.println("Une erreur s'est produite lors de la suppression de la commande : " + ex.getMessage());
         }
     }
-
+/*
     @Override
     public Command recupererCommClient(int idClient) {
         
@@ -98,6 +99,8 @@ public class ServiceCommand implements InterfaceServiceCommand{
     }
         return command;
     }
+
+*/
 
    
 }

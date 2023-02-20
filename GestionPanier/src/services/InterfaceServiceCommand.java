@@ -15,7 +15,7 @@ import models.Command;
 public interface InterfaceServiceCommand {
     
      public void ajouter(Command c);
-     public Command recupererCommClient(int idClient);
+     //public Command recupererCommClient(int idClient);
      public void supprimer(int id);
      //public Command get(int id);
 }

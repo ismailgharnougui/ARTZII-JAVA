@@ -93,7 +93,7 @@ public class GuiPanierController implements Initializable {
 pane.setLayoutX(11);
 pane.setPrefHeight(154);
 pane.setPrefWidth(470);
-pane.setStyle("-fx-background-color: EBC45C; -fx-background-radius: 10;");
+pane.setStyle("-fx-background-color:EBC45C; -fx-background-radius: 10;");
 
 ImageView imageView = new ImageView();
 imageView.setFitHeight(138);
@@ -110,7 +110,7 @@ Label artworkLabel = new Label();
 artworkLabel.setLayoutX(213);
 artworkLabel.setLayoutY(38);
 artworkLabel.setPrefHeight(31);
-artworkLabel.setPrefWidth(120);
+artworkLabel.setPrefWidth(188);
 artworkLabel.setText(article.getNom());
 artworkLabel.setStyle("-fx-font-weight: bold;-fx-font-style: italic;");
 
@@ -155,8 +155,8 @@ Label prixLabel2 = new Label();
 prixLabel2.setLayoutX(415);
 prixLabel2.setLayoutY(125);
 prixLabel2.setPrefHeight(31);
-prixLabel2.setPrefWidth(51);
-prixLabel2.setText("40 dt");
+prixLabel2.setPrefWidth(100);
+prixLabel2.setText(""+article.getPrix()+" DT");
 
 prixLabel2.setStyle("-fx-font-weight: bold;");
 
@@ -189,13 +189,13 @@ supprimerImageView.setOnMouseClicked(event -> {
     if (result.get() == ButtonType.OK){
     Pane parent = (Pane) pane.getParent();
     sb.supprimerArticle(4,article.getRef());
-    
+    panier.getArticles().remove(article);
     parent.getChildren().remove(pane);
     }
+     totalCoutContent.setValue(panier.getTotalCostHT()+" DT");
 });
 
 pane.getChildren().addAll(imageView, artworkLabel, artistLabel1, artistLabel2, prixLabel1, dateLabel, prixLabel2, dateValueLabel, supprimerImageView);
-
         vbox1.getChildren().add(pane);
          }
          
@@ -234,12 +234,6 @@ pane.getChildren().addAll(imageView, artworkLabel, artistLabel1, artistLabel2, p
         }
          
     }
-    
-     @FXML
-    void supprimer(MouseEvent event){
-        System.out.println("ff");
-    }
-    
-    
+   
     
 }

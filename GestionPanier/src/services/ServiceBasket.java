@@ -84,6 +84,7 @@ Connection conn = MyConnection.getInstance().getConnection();
           bask.setRefClient(idClient);
          double totalCost = bask.getArticles().stream().mapToDouble(x->x.getPrix()).sum();
          bask.setTotalCost(totalCost);
+         //bask.setDateAjout(???);
     return bask;
     }
 

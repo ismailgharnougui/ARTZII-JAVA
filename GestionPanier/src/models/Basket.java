@@ -15,16 +15,21 @@ public class Basket {
     private int refClient;
     private ArrayList<Article> articles;
     private double totalCost;
+    private String dateAjout;
     private final double tax= 0.07;
     
+     public Basket() {
+        articles = new ArrayList<>();
+    }
     public Basket(int refClient) {
         this.refClient = refClient;
         articles = new ArrayList<>();
         totalCost = 0;
     }
 
-    public Basket() {
-        articles = new ArrayList<>();
+    public Basket(int refClient, String dateAjout) {
+        this.refClient = refClient;
+        this.dateAjout = dateAjout;
     }
     
     public void addArticle(Article article) {
@@ -42,19 +47,38 @@ public class Basket {
     }
     
     public double getTotalCostTTC() {
-        return totalCost * (1 + tax);
+        return articles.stream().mapToDouble(x->x.getPrix()).sum()* (1 + tax);
     }
     public double getTotalCostHT() {
-        return totalCost;
+        return articles.stream().mapToDouble(x->x.getPrix()).sum();
     }
    
     public int getRefClient() {
         return refClient;
     }
+
+    public double getTotalCost() {
+        return totalCost;
+    }
+
+    public String getDateAjout() {
+        return dateAjout;
+    }
+    
+    
     
     public void setRefClient(int refClient) {
         this.refClient = refClient;
     }
+
+    public void setArticles(ArrayList<Article> articles) {
+        this.articles = articles;
+    }
+
+    public void setDateAjout(String dateAjout) {
+        this.dateAjout = dateAjout;
+    }
+    
     
     public double getTax() {
         return tax;

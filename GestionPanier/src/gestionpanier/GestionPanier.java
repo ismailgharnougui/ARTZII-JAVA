@@ -26,6 +26,8 @@ public class GestionPanier {
     public static void main(String[] args) {
         // TODO code application logic here
         
+        //Command c =new Command(4, 560, "paypal","Livraison domicile");
+        
         ServiceArticle sa = new ServiceArticle();
         //System.out.println( sa.get(2));
         
@@ -39,9 +41,7 @@ public class GestionPanier {
         //System.out.println(sb.get(4).getArticles());
         
         ServiceCommand sc = new ServiceCommand();
-        
-           
-        //sc.ajouter(command);
+           // sc.ajouter(c);
         //sc.supprimer(3);
         //System.out.println(sc.recupererCommClient(2));       
         
