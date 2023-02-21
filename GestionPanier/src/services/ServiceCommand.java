@@ -53,7 +53,7 @@ public class ServiceCommand implements InterfaceServiceCommand{
         try {
 
             // Préparation de la requête de suppression
-            String sql = "DELETE FROM commands WHERE id_client = ?";
+            String sql = "DELETE FROM commands WHERE id = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, id);
 
@@ -111,7 +111,7 @@ public class ServiceCommand implements InterfaceServiceCommand{
         ResultSet result = ste.executeQuery(req);
         
         while (result.next()) {
-            Command resultCommand = new Command(result.getInt("id"),result.getInt("id_client"), result.getString("date_commande"), result.getFloat("cout_totale"), result.getString("mode_paiement"),result.getString("mode_livraison"));
+            Command resultCommand = new Command(result.getInt("id"),result.getInt("id_client"), result.getString("date_commande"), result.getFloat("cout_totale"), result.getString("mode_paiement"),result.getString("mode_livraison"),result.getString("etat_commande"));
 
             comds.add(resultCommand);
         }
@@ -121,6 +121,18 @@ public class ServiceCommand implements InterfaceServiceCommand{
          System.out.println(ex);   
     }
    return comds;
+    }
+
+    @Override
+    public void modifierCommand(Command c) {
+        try {
+            String req = "UPDATE `commands` SET `etat_commande` = '" + c.getEtatCommande()+ "' WHERE `commands`.`id` = " + c.getId();
+            Statement st = conn.createStatement();
+            st.executeUpdate(req);
+            System.out.println("Command updated !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
    

@@ -18,6 +18,7 @@ public class Command {
     private float totalCost;
     private String payMethod;
     private String livMethod;
+    private String etatCommande;
 
     public Command() {
     }
@@ -29,13 +30,19 @@ public class Command {
         this.livMethod = livMethod;
     }
 
-    public Command(int id, int idClient, String comDate, float totalCost, String payMethod, String livMethod) {
+    public Command(int id, int idClient, String comDate, float totalCost, String payMethod, String livMethod,String etatCommande ) {
         this.id = id;
         this.idClient = idClient;
         this.comDate = comDate;
         this.totalCost = totalCost;
         this.payMethod = payMethod;
         this.livMethod = livMethod;
+        this.etatCommande = etatCommande;
+    }
+
+    public Command(int id, String etatCommande) {
+        this.id = id;
+        this.etatCommande = etatCommande;
     }
     
     
@@ -63,9 +70,11 @@ public class Command {
     public String getLivMethod() {
         return livMethod;
     }
+    public String getEtatCommande() {
+        return etatCommande;
+    }
     
     
-
     public void setId(int id) {
         this.id = id;
     }
@@ -87,11 +96,16 @@ public class Command {
     public void setLivMethod(String livMethod) {
         this.livMethod = livMethod;
     }
+    public void setEtatCommande(String etatCommande) {
+        this.etatCommande = etatCommande;
+    }
 
     @Override
     public String toString() {
-        return "Command{" + "id=" + id + ", idClient=" + idClient + ", comDate=" + comDate + ", totalCost=" + totalCost + ", payMethod=" + payMethod + ", livMethod=" + livMethod + '}';
+        return "Command{" + "id=" + id + ", idClient=" + idClient + ", comDate=" + comDate + ", totalCost=" + totalCost + ", payMethod=" + payMethod + ", livMethod=" + livMethod + ", etatCommande=" + etatCommande + '}';
     }
+
+    
     
 
     

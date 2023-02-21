@@ -19,4 +19,5 @@ public interface InterfaceServiceCommand {
      public void supprimer(int id);
      //public Command get(int id);
      public List<Command> afficherCommands();
+     public void modifierCommand(Command c);
 }
