@@ -28,8 +28,8 @@ public class firstwindow extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-        typeUser="user";
-       // typeUser="admin";
+       // typeUser="user";
+        typeUser="admin";
         try {
          if(typeUser.compareTo("user")==0){
            Parent root = FXMLLoader.load(getClass().getResource("Reclamation.fxml"));

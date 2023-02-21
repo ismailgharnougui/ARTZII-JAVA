@@ -58,7 +58,7 @@ public class ReclamationController implements Initializable {
     @FXML
     private Button btnmodifier;
     private String actionForm="ajouter";
-    private int idUser=2;
+    private int idUser=1;
     @FXML
     private Label reponsevalue;
     @FXML

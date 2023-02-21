@@ -20,7 +20,7 @@
             <TableColumn fx:id="Objet" prefWidth="75.0" text="Objet" />
          </columns>
       </TableView>
-      <Button fx:id="btnsupprimer" disable="true" layoutX="395.0" layoutY="310.0" mnemonicParsing="false" onAction="#supprimerReclamation" prefHeight="26.0" prefWidth="166.0" text="Supprimer" />
+      <Button fx:id="btnsupprimerReclamation" disable="true" layoutX="395.0" layoutY="310.0" mnemonicParsing="false" onAction="#supprimerReclamation" prefHeight="26.0" prefWidth="166.0" text="Supprimer" />
       <Button fx:id="btnRepondre" disable="true" layoutX="570.0" layoutY="310.0" mnemonicParsing="false" onAction="#ouvrirRepondreForm" prefHeight="26.0" prefWidth="146.0" text="Repondre " />
       <Pane fx:id="addreponseform" layoutX="27.0" layoutY="9.0" prefHeight="382.0" prefWidth="286.0" visible="false">
          <children>

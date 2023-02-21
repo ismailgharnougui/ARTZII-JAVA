@@ -61,9 +61,9 @@ public class ReponseController implements Initializable {
     private Pane reponsePane;
     @FXML
     private Label reponselabel;
-    @FXML
-    private Button btnModifierRep;
     private Reponse SelectedReponse;
+    @FXML
+    private Button btnsupprimerReclamation;
 
     /**
      * Initializes the controller class.
@@ -78,7 +78,7 @@ public class ReponseController implements Initializable {
                 Reclamation recSelected = (Reclamation) tableReclamation.getSelectionModel().getSelectedItem();
                
                 if(recSelected!=null){
-              btnsupprimer.setDisable(false);
+              btnsupprimerReclamation.setDisable(false);
               if(recSelected.getEtat().compareTo("nonresolu")==0){
               btnRepondre.setDisable(false);
               btnafficherreponse.setDisable(true);
@@ -88,7 +88,8 @@ public class ReponseController implements Initializable {
 
               }
                 }else{
-                btnsupprimer.setDisable(true);
+                                  btnsupprimerReclamation.setDisable(true);
+
               btnRepondre.setDisable(true);
               btnafficherreponse.setDisable(true);
 
@@ -172,7 +173,4 @@ rp.supprimerReponse(SelectedReponse.getIdRep());
    
     }
 
-    @FXML
-    private void ModifierRep(ActionEvent event) {
-    }
 }
