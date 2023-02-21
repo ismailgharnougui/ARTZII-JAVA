@@ -10,25 +10,31 @@ public class Reponse {
     private int idRep;
     private String dateRep;
     private String contenuRep;
+    private int idReclmation;
 
     public Reponse() {
     }
 
-    public Reponse(String contenuRep) {
+    public Reponse(String contenuRep,int idReclmation) {
         this.contenuRep = contenuRep;
+        this.idReclmation=idReclmation;
     }
     
 
-    public Reponse(int idRep,  String contenuRep) {
+    public Reponse(int idRep,  String contenuRep,int idReclmation) {
         this.idRep = idRep;
        
         this.contenuRep = contenuRep;
+        this.idReclmation=idReclmation;
+        
     }
 
-    public Reponse(int idRep, String dateRep, String contenuRep) {
+    public Reponse(int idRep, String dateRep, String contenuRep,int idReclmation) {
         this.idRep = idRep;
         this.dateRep = dateRep;
         this.contenuRep = contenuRep;
+        this.idReclmation=idReclmation;
+        
     }
 
   
@@ -85,6 +91,14 @@ public class Reponse {
             return false;
         }
         return true;
+    }
+
+    public int getIdReclmation() {
+        return idReclmation;
+    }
+
+    public void setIdReclmation(int idReclmation) {
+        this.idReclmation = idReclmation;
     }
     
     

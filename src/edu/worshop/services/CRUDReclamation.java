@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 
 public class CRUDReclamation implements InterfaceServices{
@@ -26,7 +28,7 @@ Connection conn = MyConnection.getInstance().getConnection();
     public void ajouterReclamation(Reclamation r) {
     try {
         ste = conn.createStatement();
-        String req = "Insert into Reclamation(TypeR, etat, Description,objet) values('"+r.getTypeR()+"','"+r.getEtat()+"','"+r.getDescription()+"','"+r.getObjet()+"')";
+        String req = "Insert into Reclamation(TypeR, etat, Description,objet,iduser) values('"+r.getTypeR()+"','"+r.getEtat()+"','"+r.getDescription()+"','"+r.getObjet()+"','"+r.getIdUser()+"')";
         ste.executeUpdate(req);
         System.out.println("Reclamation ajouté");
     } catch (SQLException ex) {
@@ -60,19 +62,19 @@ Connection conn = MyConnection.getInstance().getConnection();
 
 
     @Override
-    public List<Reclamation> afficherReclamation() {
+    public ObservableList<Reclamation>  afficherReclamation() {
     try {
         ste= conn.createStatement();
     } catch (SQLException ex) {
         System.err.println("erreur");
     }
-    List<Reclamation> rec = new ArrayList<Reclamation>();
+    ObservableList<Reclamation> rec = FXCollections.observableArrayList();
         try {
         String req = "SELECT * FROM `Reclamation`";
         ResultSet result = ste.executeQuery(req);
         
         while (result.next()) {
-            Reclamation resultReclamation = new Reclamation(result.getInt(1),result.getString(2),result.getString(3), result.getString(4), result.getString(5), result.getString(6));
+            Reclamation resultReclamation = new Reclamation(result.getInt("id"),result.getString("TypeR"),result.getString("Description"), result.getString("objet"), result.getString("dateR"), result.getString("etat"),result.getInt("iduser"));
             rec.add(resultReclamation);
         }
         System.out.println(rec);
@@ -82,5 +84,47 @@ Connection conn = MyConnection.getInstance().getConnection();
     }
    return rec;
     }
-
+public  ObservableList<Reclamation> afficherReclamation(int idUser) {
+    try {
+        ste= conn.createStatement();
+    } catch (SQLException ex) {
+        System.err.println("erreur");
+    }
+    ObservableList<Reclamation> rec = FXCollections.observableArrayList();
+        try {
+        String req = "SELECT * FROM Reclamation where iduser = '" +idUser+"'" ;
+        ResultSet result = ste.executeQuery(req);
+        
+        while (result.next()) {
+            Reclamation resultReclamation = new Reclamation(result.getInt("id"),result.getString("TypeR"),result.getString("Description"), result.getString("objet"), result.getString("dateR"), result.getString("etat"),result.getInt("iduser"));
+            
+            rec.add(resultReclamation);
+        }
+      
+    } catch (SQLException ex) {
+         System.out.println(ex);   
+    }
+   return rec;
+    }
+public Reclamation getReclamationById(int id) {
+ try {
+        ste= conn.createStatement();
+    } catch (SQLException ex) {
+        System.err.println("erreur");
+    }
+        try {
+        String req = "SELECT * FROM Reclamation where id="+id;
+        ResultSet result = ste.executeQuery(req);
+        
+        while (result.next()) {
+            Reclamation resultReclamation = new Reclamation(result.getInt("id"),result.getString("TypeR"),result.getString("Description"), result.getString("objet"), result.getString("dateR"), result.getString("etat"),result.getInt("iduser"));
+            return resultReclamation;
+        }
+      
+    } catch (SQLException ex) {
+         System.out.println(ex);   
+    }
+        return null;
+        
+    }
 }

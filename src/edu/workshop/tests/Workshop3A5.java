@@ -17,7 +17,7 @@ public class Workshop3A5 {
    
     public static void main(String[] args) {
         
-        MyConnection connexion = MyConnection.getInstance();
+        /*MyConnection connexion = MyConnection.getInstance();
         Reclamation r = new Reclamation("rectType2", "en cours", "je redige ce ..","objet2");
         
         CRUDReclamation crud = new CRUDReclamation();
@@ -26,13 +26,14 @@ public class Workshop3A5 {
         //crud.afficherReclamation();
        
         //crud.modifierReclamation(new Reclamation(2,"type14","acqscqsc","ijij","zfzfzfzf"));
-        Reponse rep= new Reponse("yes");
+        Reponse rep= new Reponse("no");
         CRUDReponse cruds = new CRUDReponse(); 
         //cruds.ajouterReponse(rep);
         //cruds.modifierReponse(rep);
         //cruds.supprimerReponse(2);
         //cruds.afficherReponse();
-    
+    */
+        
     }
     
     

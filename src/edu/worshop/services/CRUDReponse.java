@@ -26,11 +26,11 @@ Connection conn = MyConnection.getInstance().getConnection();
     public void ajouterReponse(Reponse r) {
     try {
         ste = conn.createStatement();
-        String req = "Insert into Reponse(contenuRep) values('"+r.getContenuRep()+"')";
+        String req = "Insert into Reponse(contenuRep,idreclamation) values('"+r.getContenuRep()+"','"+r.getIdReclmation()+"')";
         ste.executeUpdate(req);
         System.out.println("Reponse ajouté");
     } catch (SQLException ex) {
-            System.out.println("Reponse non ajouté!!!!");    }
+            System.out.println(ex.getMessage());    }
     }
 
   
@@ -77,7 +77,7 @@ Connection conn = MyConnection.getInstance().getConnection();
         ResultSet result = ste.executeQuery(req);
         
         while (result.next()) {
-            Reponse resultReponse = new Reponse(result.getInt(1), result.getString(2), result.getString(3));
+            Reponse resultReponse = new Reponse(result.getInt(1), result.getString(2), result.getString(3),result.getInt(4));
             rec.add(resultReponse);
         }
         System.out.println(rec);
@@ -86,6 +86,28 @@ Connection conn = MyConnection.getInstance().getConnection();
          System.out.println(ex);   
     }
    return rec;
+    }
+
+    public Reponse getReponseByIdReclamation(int id) {
+ try {
+        ste= conn.createStatement();
+    } catch (SQLException ex) {
+        System.err.println("erreur");
+    }
+        try {
+        String req = "SELECT * FROM `Reponse` where idreclamation="+id;
+        ResultSet result = ste.executeQuery(req);
+        
+        while (result.next()) {
+            Reponse resultReponse = new Reponse(result.getInt(1), result.getString(2), result.getString(3),result.getInt(4));
+            return resultReponse;
+        }
+      
+    } catch (SQLException ex) {
+         System.out.println(ex);   
+    }
+        return null;
+        
     }
 
  

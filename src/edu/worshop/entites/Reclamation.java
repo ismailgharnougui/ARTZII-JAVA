@@ -15,31 +15,36 @@ public class Reclamation {
     private String Objet;
     private String DateR;
     private String etat;
+    private int idUser;
 
     public Reclamation() {
     }
-     public Reclamation(int id, String TypeR, String Description, String Objet, String etat) {
+     public Reclamation(int id, String TypeR, String Description, String Objet, String etat,int idUser) {
         this.id = id;
         this.TypeR = TypeR;
         this.Description = Description;
         this.Objet = Objet;
         this.etat = etat;
+        this.idUser=idUser;
     }
      
-        public Reclamation(String TypeR, String Description, String Objet, String etat) {
+        public Reclamation(String TypeR, String Description, String Objet, String etat,int idUser) {
         this.TypeR = TypeR;
         this.Description = Description;
         this.Objet = Objet;
         this.etat = etat;
+        this.idUser=idUser;
     }
 
-    public Reclamation(int id, String TypeR, String Description, String Objet, String DateR, String etat) {
+    public Reclamation(int id, String TypeR, String Description, String Objet, String DateR, String etat,int idUser) {
         this.id = id;
         this.TypeR = TypeR;
         this.Description = Description;
         this.Objet = Objet;
         this.DateR = DateR;
         this.etat = etat;
+        this.idUser=idUser;
+
     }
    
    
@@ -128,6 +133,15 @@ public class Reclamation {
         }
         return true;
     }
+
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
+    
     
     
     

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="905.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.worsho.gui.ReponseController">
+   <children>
+      <TableView fx:id="tableReclamation" layoutX="397.0" layoutY="42.0" prefHeight="252.0" prefWidth="467.0">
+         <columns>
+            <TableColumn fx:id="id" prefWidth="75.0" text="Id" />
+            <TableColumn fx:id="TypeR" prefWidth="75.0" text="TypeR" />
+            <TableColumn fx:id="dateR" prefWidth="75.0" text="dateR" />
+            <TableColumn fx:id="etat" prefWidth="75.0" text="etat" />
+            <TableColumn fx:id="Description" prefWidth="75.0" text="Description" />
+            <TableColumn fx:id="Objet" prefWidth="75.0" text="Objet" />
+         </columns>
+      </TableView>
+      <Button fx:id="btnsupprimer" disable="true" layoutX="395.0" layoutY="310.0" mnemonicParsing="false" onAction="#supprimerReclamation" prefHeight="26.0" prefWidth="166.0" text="Supprimer" />
+      <Button fx:id="btnRepondre" disable="true" layoutX="570.0" layoutY="310.0" mnemonicParsing="false" onAction="#ouvrirRepondreForm" prefHeight="26.0" prefWidth="146.0" text="Repondre " />
+      <Pane fx:id="addreponseform" layoutX="27.0" layoutY="9.0" prefHeight="382.0" prefWidth="286.0" visible="false">
+         <children>
+            <Button fx:id="btnvalider" layoutX="32.0" layoutY="330.0" mnemonicParsing="false" onAction="#saveReponse" prefHeight="25.0" prefWidth="222.0" text="Valider" />
+            <Label layoutX="33.0" layoutY="29.0" text="Reponse :  " />
+            <TextArea fx:id="contenuRep" layoutX="33.0" layoutY="63.0" prefHeight="252.0" prefWidth="222.0" />
+         </children>
+      </Pane>
+      <Button fx:id="btnafficherreponse" disable="true" layoutX="732.0" layoutY="310.0" mnemonicParsing="false" onAction="#afficherReponse" prefHeight="26.0" prefWidth="131.0" text="Afficher Reponse " />
+      <Pane fx:id="reponsePane" layoutX="27.0" layoutY="25.0" prefHeight="319.0" prefWidth="280.0" visible="false">
+         <children>
+            <Label fx:id="reponselabel" layoutX="26.0" layoutY="33.0" prefHeight="115.0" prefWidth="206.0" />
+            <Button fx:id="btnsupprimer" layoutX="14.0" layoutY="181.0" mnemonicParsing="false" onAction="#supprimerReponse" prefHeight="25.0" prefWidth="258.0" text="Supprimer reponse " />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
