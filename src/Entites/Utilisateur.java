@@ -29,30 +29,32 @@ import java.util.Objects;
 }*/
 public class Utilisateur {
     private int idU;
-    private String nomU,prenomU,emailU,mdpU,roleU;
+    private String nomU,prenomU,emailU,mdpU,roleU,adresse;
 
-    public Utilisateur(int idU, String nomU, String prenomU, String emailU,String mdpU,String roleU) {
+    public Utilisateur(int idU, String nomU, String prenomU, String emailU,String mdpU,String roleU,String adresse) {
         this.idU = idU;
         this.nomU = nomU;
         this.prenomU = prenomU;
         this.emailU = emailU;
         this.mdpU = mdpU;
         this.roleU =roleU;
+        this.adresse=adresse;
     }
 
-    public Utilisateur(String nomU, String prenomU,String emailU,String mdpU,String roleU) {
+    public Utilisateur(String nomU, String prenomU,String emailU,String mdpU,String roleU,String adresse) {
         this.nomU = nomU;
         this.prenomU = prenomU;
         this.emailU = emailU;
         this.mdpU = mdpU;
           this.roleU = roleU;
+          this.adresse=adresse;
     }
     public Utilisateur() {
     }
 
     @Override
     public String toString() {
-        return "Utilisateur{" + "idU=" + idU + ", nomU=" + nomU + ", prenomU=" + prenomU + ", emailU=" + emailU +", mdpU=" + mdpU + ", roleU=" + roleU + '}';
+        return "Utilisateur{" + "idU=" + idU + ", nomU=" + nomU + ", prenomU=" + prenomU + ", emailU=" + emailU +", mdpU=" + mdpU + ", roleU=" + roleU +", adresse=" + adresse + '}';
     }
 
     public int getidU() {
@@ -75,7 +77,9 @@ public class Utilisateur {
         public String getroleU() {
         return roleU;
     }
-
+   public String getadresse() {
+        return adresse;
+    }
     public void setidU(int idU) {
         this.idU = idU;
     }
@@ -96,7 +100,9 @@ public class Utilisateur {
  public void setroleU(String roleU) {
         this.roleU =roleU;
     }
-
+public void setadresse(String adresse) {
+        this.adresse =adresse;
+    }
 
    
     

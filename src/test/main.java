@@ -5,10 +5,11 @@
  */
 package test;
 
-import Entites.Role;
+
 import utils.MyConnection;
 import Entites.Utilisateur;
 import Services.CRUDUtilisateur;
+
 
 /**
  *
@@ -20,15 +21,15 @@ public class main {
     public static void main(String[] args) {
         
         MyConnection connexion = MyConnection.getInstance();
-        Utilisateur U = new Utilisateur("ma","ft","ma@email.com","99","admin");
+       Utilisateur U = new Utilisateur("ma","ftou","ma@email.com","99","admin","ariana");
             
         CRUDUtilisateur crud = new CRUDUtilisateur();
-       //crud.ajouterUtilisateur(U);
+       crud.ajouterUtilisateur(U);
         System.out.println(crud.afficherUtilisateur());
-        //Utilisateur U = new Utilisateur(15,"ma","ft","ma@email.com","99");
-       // crud.modifierUtilisateur(U);
+       // Utilisateur U = new Utilisateur(26,"ma","ftou","ma@email.com","99","client");
+       crud.modifierUtilisateur(U);
         crud.supprimerUtilisateur(23);
-      // Role R = new Role("artist");
+     
      
         
     }

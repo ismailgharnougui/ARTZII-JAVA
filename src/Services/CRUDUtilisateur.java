@@ -16,17 +16,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 
 public class CRUDUtilisateur implements IUtilisateur{
 Statement ste;
 Connection conn = MyConnection.getInstance().getConnection();
-        
+ ObservableList<Utilisateur>obList = FXCollections.observableArrayList();       
 
     public void ajouterUtilisateur(Utilisateur U) {
     try {
         ste = conn.createStatement();
-        String req = "Insert into utilisateur values(0,'"+U.getnomU()+"','"+U.getprenomU()+"','"+U.getemailU()+"','"+U.getmdpU()+"','"+U.getroleU()+"')";
+        String req = "Insert into utilisateur values(0,'"+U.getnomU()+"','"+U.getprenomU()+"','"+U.getemailU()+"','"+U.getmdpU()+"','"+U.getroleU()+"','"+U.getadresse()+"')";
         ste.executeUpdate(req);
         System.out.println("utilisateur ajouté");
     } catch (SQLException ex) {
@@ -36,7 +38,7 @@ Connection conn = MyConnection.getInstance().getConnection();
      
     public void modifierUtilisateur(Utilisateur U) {
         try {
-            String req = "UPDATE `utilisateur` SET `nomU` = '" + U.getnomU() + "', `emailU` = '" + U.getemailU() + "', `mdpU` = '" + U.getmdpU() + "', `prenomU` = '" + U.getprenomU() +"', `roleU` = '" + U.getroleU() + "' WHERE `utilisateur`.`idU` = " + U.getidU();
+            String req = "UPDATE `utilisateur` SET `nomU` = '" + U.getnomU() + "', `emailU` = '" + U.getemailU() + "', `mdpU` = '" + U.getmdpU() + "', `prenomU` = '" + U.getprenomU() +"', `roleU` = '" + U.getroleU() + "',`adresse` = '" + U.getadresse() + "' WHERE `utilisateur`.`idU` = " + U.getidU();
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("utilisateur updated !");
@@ -56,7 +58,7 @@ Connection conn = MyConnection.getInstance().getConnection();
         }
     }
 
-    public List<Utilisateur> afficherUtilisateur() {
+    public ObservableList<Utilisateur> afficherUtilisateur() {
        List<Utilisateur> list = new ArrayList<>();
         try {
             String req = "Select * from utilisateur";
@@ -71,24 +73,26 @@ Connection conn = MyConnection.getInstance().getConnection();
              U.setemailU(RS.getString(4));
              U.setmdpU(RS.getString(5));
              U.setroleU(RS.getString(6));
-             list.add(U);
+             U.setadresse(RS.getString(7));
+             obList.add(U);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
 
-        return list;
+        return obList;
     }
 
     public void ajouterUtilisateur2(Utilisateur U) {
         try {
-            String req = "INSERT INTO `utilisateur` (`nomU`, `prenomU`,`emailU`,`mdpU`) VALUES (?,?,?,?)";
+            String req = "INSERT INTO `utilisateur` (`nomU`, `prenomU`,`emailU`,`mdpU`,`roleU`,`adresse`) VALUES (?,?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(req);
              ps.setString(1, U.getnomU());
             ps.setString(2, U.getprenomU());
             ps.setString(3, U.getemailU());
             ps.setString(4, U.getmdpU());
             ps.setString(5, U.getroleU());
+            ps.setString(6, U.getadresse());
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
