@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui2.Crud_articleController">
+   <children>
+      <AnchorPane id="AnchorPane" prefHeight="410.0" prefWidth="610.0" style="-fx-background-color: #fff3e0;">
+         <children>
+            <Button fx:id="afficherarticle" layoutX="192.0" layoutY="164.0" mnemonicParsing="false" onAction="#afficherarticle" prefHeight="0.0" prefWidth="222.0" style="-fx-background-color: #ffab40;" text="Afficher" />
+            <Button fx:id="ajouter_article" layoutX="192.0" layoutY="200.0" mnemonicParsing="false" onAction="#ajouter_article" prefHeight="14.0" prefWidth="222.0" style="-fx-background-color: #ffab40;" text="Ajouter" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
