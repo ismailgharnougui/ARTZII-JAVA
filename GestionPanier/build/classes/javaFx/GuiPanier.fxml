@@ -23,18 +23,18 @@
                         <Image url="@../resources/ic_usr.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="nomPrenom3" layoutX="160.0" layoutY="22.0" text="Mohamed Mokhtar" textFill="WHITE">
+                  <Label fx:id="nomPrenom3" layoutX="174.0" layoutY="22.0" text="Mokhtar Hadded" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
                </children>
             </Pane>
-            <VBox fx:id="vbox2" layoutX="37.0" layoutY="-12.0" prefHeight="630.0" prefWidth="74.0" style="-fx-background-color: #131022; -fx-background-radius: 15 0 0 15;" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="-12.0">
+            <VBox fx:id="vbox2" layoutX="37.0" layoutY="-12.0" prefHeight="630.0" prefWidth="74.0" style="-fx-background-color: #131022;" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="-12.0">
               
 			<children>
                   <Pane prefHeight="111.0" prefWidth="74.0" style="-fx-background-radius: 15 0 15 15;" />
-                  <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="74.0" styleClass="button3" stylesheets="@./GuiPanier.css" text="Naviguer" textFill="#a868a0">
+                  <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="74.0" styleClass="button3" stylesheets="@./GuiPanier.css" text="Naviguer" textFill="#767676">
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -42,8 +42,11 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <font>
+                        <Font name="System Bold" size="11.0" />
+                     </font>
                   </Button>
-                  <Button contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="74.0" styleClass="button3" stylesheets="@./GuiPanier.css" text="Profile" textFill="#a868a0">
+                  <Button contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="74.0" styleClass="button3" stylesheets="@./GuiPanier.css" text="Profile" textFill="#767676">
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -51,17 +54,11 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
                   </Button>
-                  <Button contentDisplay="TOP" layoutX="10.0" layoutY="76.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="74.0" styleClass="button3" stylesheets="@./GuiPanier.css" text="Panier" textFill="#a868a0">
-                     <graphic>
-                        <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../resources/flag.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button contentDisplay="TOP" layoutX="10.0" layoutY="142.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="74.0" styleClass="button3" stylesheets="@./GuiPanier.css" text="Panier" textFill="#a868a0">
+                  <Button contentDisplay="TOP" layoutX="10.0" layoutY="76.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="74.0" styleClass="button3" stylesheets="@./GuiPanier.css" text="Panier" textFill="#767676">
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -69,6 +66,21 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button contentDisplay="TOP" layoutX="10.0" layoutY="142.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="74.0" styleClass="button3" stylesheets="@./GuiPanier.css" text="Réclamer" textFill="#767676">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/flag.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
                   </Button>
                </children>
             </VBox>

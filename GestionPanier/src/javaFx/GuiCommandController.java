@@ -113,8 +113,8 @@ public class GuiCommandController implements Initializable {
           for (Article article : articles) {
               
              Pane pane = new Pane();
-             pane.setMinHeight(78);
-             pane.setMaxHeight(80);
+             pane.setMinHeight(79);
+             pane.setMaxHeight(79);
 pane.setStyle("-fx-background-color: ffffff; -fx-background-radius: 0;");
 
 Label indexLabel = new Label("Article "+pos+" de "+ articles.size());
@@ -126,7 +126,7 @@ indexLabel.setFont(Font.font("System Bold Italic", 15.0));
 indexLabel.setStyle("-fx-font-weight: bold;");
 
 Label titleLabel = new Label(""+article.getNom());
-titleLabel.setLayoutX(64.0);
+titleLabel.setLayoutX(50.0);
 titleLabel.setLayoutY(23.0);
 titleLabel.setPrefHeight(31.0);
 titleLabel.setPrefWidth(112.0);
@@ -157,7 +157,7 @@ quantityLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: #ffffff;");
 
 
 Line line = new Line(-139.00001525878906, 1.3999786376953125, 350.0, 1.3999786376953125);
-line.setStrokeWidth(0.2);
+line.setStrokeWidth(1.5);
 line.setLayoutX(30.0);
 line.setLayoutY(78.0);
 

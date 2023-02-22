@@ -14,6 +14,7 @@ public class Article {
     private String nom;
     private String dimension;
     private float prix;
+    private String imageUrl;
 
     public Article() {
     }
@@ -24,11 +25,12 @@ public class Article {
         this.prix = prix;
     }
     
-     public Article(int ref,String nom,String dimension, float prix) {
+     public Article(int ref,String nom,String dimension, float prix,String imageUrl) {
          this.ref = ref;
-           this.nom=nom;
+        this.nom=nom;
         this.dimension = dimension;
         this.prix = prix;
+        this.imageUrl=imageUrl;
     }
 
     public int getRef() {
@@ -48,6 +50,11 @@ public class Article {
         return prix;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+    
+
     public void setRef(int ref) {
         this.ref = ref;
     }
@@ -64,36 +71,14 @@ public class Article {
         this.prix = prix;
     }
 
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     @Override
     public String toString() {
-        return "Article{" + "ref=" + ref + ", nom=" + nom + ", dimension=" + dimension + ", prix=" + prix + '}';
+        return "Article{" + "ref=" + ref + ", nom=" + nom + ", dimension=" + dimension + ", prix=" + prix + ", imageUrl=" + imageUrl + '}';
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 97 * hash + this.ref;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Article other = (Article) obj;
-        if (this.ref != other.ref) {
-            return false;
-        }
-        return true;
-    }
-    
     
     
 }

@@ -103,7 +103,8 @@ imageView.setLayoutY(9);
 imageView.setPickOnBounds(true);
 imageView.setPreserveRatio(true);
 
-Image image = new Image(getClass().getResourceAsStream("../resources/eruro.png"));
+Image image = new Image(getClass().getResourceAsStream(article.getImageUrl()));
+             System.out.println(article.getImageUrl());
 imageView.setImage(image);
 
 Label artworkLabel = new Label();

@@ -23,19 +23,29 @@ public class ServiceBasket implements InterfaceServiceBasket{
 Statement ste=null;
 Connection conn = MyConnection.getInstance().getConnection();
 
-
-    @Override
-    public void ajouter(int idClient, int idArticle) {
-         try {
-            String req = "INSERT INTO `basket` (`id_client`, `id_article`) VALUES (?,?)";
-            PreparedStatement ps = conn.prepareStatement(req);
-            ps.setInt(1, idClient);
-            ps.setInt(2, idArticle);
-            ps.executeUpdate();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+@Override
+public void ajouter(int idClient, int idArticle) {
+    try {
+        String selectQuery = "SELECT id_article FROM basket WHERE id_article=?";
+        PreparedStatement selectPs = conn.prepareStatement(selectQuery);
+        selectPs.setInt(1, idArticle);
+        ResultSet resultSet = selectPs.executeQuery();
+        
+        if (!resultSet.next()) {
+            // idArticle does not exist in the database, add a new entry
+            String insertQuery = "INSERT INTO `basket` (`id_client`, `id_article`) VALUES (?,?)";
+            PreparedStatement insertPs = conn.prepareStatement(insertQuery);
+            insertPs.setInt(1, idClient);
+            insertPs.setInt(2, idArticle);
+            insertPs.executeUpdate();
+        } else {
+            // idArticle already exists in the database
+            System.out.println("idArticle already exists in the database");
         }
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
     }
+}
     
      @Override
     public void supprimerArticle(int idClient, int idArticle) {
@@ -77,6 +87,7 @@ Connection conn = MyConnection.getInstance().getConnection();
         while(result.next()){
            Article resultArticle = sa.get(result.getInt(2));
       bask.addArticle(resultArticle);
+     
         }
     } catch (SQLException ex) {
          System.out.println(ex);   
@@ -84,7 +95,7 @@ Connection conn = MyConnection.getInstance().getConnection();
           bask.setRefClient(idClient);
          double totalCost = bask.getArticles().stream().mapToDouble(x->x.getPrix()).sum();
          bask.setTotalCost(totalCost);
-         //bask.setDateAjout(???);
+         
     return bask;
     }
 

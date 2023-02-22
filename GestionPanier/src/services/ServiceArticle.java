@@ -34,7 +34,7 @@ Connection conn = MyConnection.getInstance().getConnection();
         
         ResultSet result = pste.executeQuery();
        result.next();
-           Article resultArticle = new Article(result.getInt(1),result.getString(2),result.getString(3), result.getFloat(4));
+           Article resultArticle = new Article(result.getInt(1),result.getString(2),result.getString(3), result.getFloat(4), result.getString(6));
         return resultArticle;
       
     } catch (SQLException ex) {

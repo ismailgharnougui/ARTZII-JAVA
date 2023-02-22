@@ -62,6 +62,7 @@ public class GuiBackofficeCommandController implements Initializable {
        for (Command command : commands) {
            Pane pane = new Pane();
 pane.setPrefHeight(62.0);
+pane.setMinHeight(62.0);
 pane.setPrefWidth(840.0);
 pane.setStyle("-fx-background-color: #F5F2DC;");
 
@@ -118,7 +119,7 @@ Image image1 = new Image(getClass().getResourceAsStream("../resources/trash.png"
 imageView1.setImage(image1);
 imageView1.setFitHeight(23.0);
 imageView1.setFitWidth(24.0);
-imageView1.setLayoutX(813.0);
+imageView1.setLayoutX(810.0);
 imageView1.setLayoutY(22.0);
 imageView1.setPickOnBounds(true);
 imageView1.setPreserveRatio(true);
