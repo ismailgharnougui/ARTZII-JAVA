@@ -29,6 +29,7 @@ import models.Client;
 import models.Command;
 import services.ServiceClient;
 import services.ServiceCommand;
+//import com.easypost.EasyPost;
 
 /**
  * FXML Controller class
@@ -36,6 +37,9 @@ import services.ServiceCommand;
  * @author medmo
  */
 public class GuiBackofficeCommandController implements Initializable {
+     /* static {
+        EasyPost.apiKey = "EZTK363efa032abc4cbf99e79d3e7588cce7vdaiHvdTrDiJCocO2kkx6Q";
+    } */
 
     @FXML
     private Label nomPrenom;

@@ -53,20 +53,11 @@
 
 .button4
 {
-    -fx-background-color :linear-gradient(to top left, #41951C, #D4CEE3);
-    -fx-background-radius :  30 30 30 30;
+    -fx-background-color :linear-gradient(to top left, #444444, #D4CEE3);
+    -fx-background-radius :  20 20 20 20;
     
 }
-.button4:hover
-{
-    -fx-background-color :linear-gradient(to top left, #D4CEE3, #41951C);
-    -fx-background-radius :  30 30 30 30;
-}
-.button4:pressed
-{
-    -fx-background-color :linear-gradient(to top left, #41951C, #D4CEE3);
-    -fx-background-radius :  30 30 30 30;
-}
+
 
 
 .combo-box

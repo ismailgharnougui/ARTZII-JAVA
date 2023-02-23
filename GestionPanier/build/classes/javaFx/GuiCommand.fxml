@@ -144,9 +144,9 @@
                         <ToggleGroup fx:id="modePayement" />
                      </toggleGroup>
                   </RadioButton>
-                  <Button fx:id="confirmerCommande" layoutX="548.0" layoutY="461.0" mnemonicParsing="false" onAction="#ajouterCommande" prefHeight="31.0" prefWidth="190.0" styleClass="button4" stylesheets="@./GuiPanier.css" text="Confirmer la commande" textFill="WHITE">
+                  <Button fx:id="confirmerCommande" layoutX="548.0" layoutY="461.0" mnemonicParsing="false" onAction="#ajouterCommande" prefHeight="31.0" prefWidth="202.0" styleClass="button4" stylesheets="@./GuiPanier.css" text="Confirmer la commande" textFill="WHITE">
                      <font>
-                        <Font size="15.0" />
+                        <Font name="System Bold" size="15.0" />
                      </font>
                   </Button>
                   <Label layoutX="56.0" layoutY="214.0" text="chez vous en toute en toute simplicité">

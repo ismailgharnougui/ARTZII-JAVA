@@ -35,7 +35,7 @@ public class GestionPanier {
         //System.out.println(scl.get(4));
         
         ServiceBasket sb = new ServiceBasket();
-        sb.ajouter(4, 4);
+        sb.ajouter(4, 8);
         //sb.vider(2);
         //sb.supprimerArticle(4,6);
         //System.out.println(sb.get(4));

@@ -106,23 +106,19 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Pane layoutX="569.0" layoutY="46.0" prefHeight="297.0" prefWidth="270.0" style="-fx-background-radius: 20;" styleClass="linear-grad" stylesheets="@./GuiPanier.css">
+                  <Pane layoutX="569.0" layoutY="46.0" prefHeight="298.0" prefWidth="288.0" style="-fx-background-radius: 20; -fx-background-color: EBC45C;" styleClass="linear-grad">
                      <children>
-                        <Button layoutX="63.0" layoutY="285.0" mnemonicParsing="false" onAction="#onCommanderButtonClicked" prefHeight="25.0" prefWidth="145.0" styleClass="button4" stylesheets="@./GuiPanier.css" text="Commander" textFill="WHITE">
-                           <font>
-                              <Font size="15.0" />
-                           </font></Button>
                         <Label fx:id="totalCout" layoutX="79.0" layoutY="149.0" text="135 DT" textAlignment="CENTER" textFill="WHITE">
                            <font>
-                              <Font size="36.0" />
+                              <Font name="System Bold" size="36.0" />
                            </font>
                         </Label>
-                        <Label fx:id="nomPrenom" layoutX="93.0" layoutY="218.0" text="Med Mokhtar" textAlignment="CENTER" textFill="WHITE">
+                        <Label fx:id="nomPrenom" layoutX="78.0" layoutY="218.0" text="Mokhtar Hadded" textAlignment="CENTER" textFill="WHITE">
                            <font>
-                              <Font size="17.0" />
+                              <Font name="System Bold Italic" size="17.0" />
                            </font>
                         </Label>
-                        <Label fx:id="address" layoutX="93.0" layoutY="238.0" text="Bizerte" textFill="#b5adad">
+                        <Label fx:id="address" layoutX="78.0" layoutY="238.0" text="Bizerte" textFill="#532828">
                            <font>
                               <Font size="17.0" />
                            </font>
@@ -134,7 +130,7 @@
                         </ImageView>
                         <Label layoutX="51.0" layoutY="97.0" text="Coût totale" textAlignment="CENTER" textFill="WHITE">
                            <font>
-                              <Font size="36.0" />
+                              <Font name="System Bold" size="36.0" />
                            </font>
                         </Label>
                      </children>
@@ -174,6 +170,11 @@
                         <VBox fx:id="vbox1" prefWidth="490.0" />
                      </content>
                   </ScrollPane>
+                  <Button layoutX="653.0" layoutY="328.0" mnemonicParsing="false" onAction="#onCommanderButtonClicked" prefHeight="25.0" prefWidth="145.0" styleClass="button4" stylesheets="@./GuiPanier.css" text="Commander" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
             <ImageView fitHeight="86.0" fitWidth="154.0" layoutX="111.0" layoutY="-11.0" pickOnBounds="true" preserveRatio="true">
