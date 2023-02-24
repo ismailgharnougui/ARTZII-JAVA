@@ -16,7 +16,7 @@ public class Basket {
     private ArrayList<Article> articles;
     private double totalCost;
     private String dateAjout;
-    private final double tax= 0.07;
+    private final double tax= 0.025;
     
      public Basket() {
         articles = new ArrayList<>();

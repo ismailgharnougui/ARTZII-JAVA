@@ -104,11 +104,5 @@ public class Command {
     public String toString() {
         return "Command{" + "id=" + id + ", idClient=" + idClient + ", comDate=" + comDate + ", totalCost=" + totalCost + ", payMethod=" + payMethod + ", livMethod=" + livMethod + ", etatCommande=" + etatCommande + '}';
     }
-
-    
-    
-
-    
-
     
 }
