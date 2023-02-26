@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.web.WebView?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="905.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.worsho.gui.ReclamationController">
    <children>
@@ -15,7 +16,7 @@
       <TextField fx:id="tfTypeR" layoutX="190.0" layoutY="117.0" />
       <TextField fx:id="tfDescription" layoutX="190.0" layoutY="162.0" />
       <TextField fx:id="tfObjet" layoutX="190.0" layoutY="204.0" />
-      <Button fx:id="btnValider" layoutX="66.0" layoutY="245.0" mnemonicParsing="false" onAction="#saveReclamation" prefHeight="26.0" prefWidth="273.0" text="Valider" />
+      <Button fx:id="btnValider" layoutX="66.0" layoutY="324.0" mnemonicParsing="false" onAction="#saveReclamation" prefHeight="26.0" prefWidth="273.0" text="Valider" />
       <TableView fx:id="tableReclamation" layoutX="401.0" layoutY="30.0" prefHeight="200.0" prefWidth="489.0">
         <columns>
           <TableColumn fx:id="id" prefWidth="75.0" text="Id" />
@@ -30,5 +31,8 @@
       <Button fx:id="btnmodifier" disable="true" layoutX="560.0" layoutY="245.0" mnemonicParsing="false" onAction="#remplirModifierform" prefHeight="26.0" prefWidth="150.0" text="Modifier" />
       <Label fx:id="reponsevalue" layoutX="401.0" layoutY="280.0" prefHeight="116.0" prefWidth="490.0" />
       <Button fx:id="btnafficherReponse" layoutX="711.0" layoutY="246.0" mnemonicParsing="false" onAction="#AfficherReponse" prefHeight="26.0" prefWidth="150.0" text="AfficherReponse" visible="false" />
+      <WebView fx:id="captchawebview" layoutX="66.0" layoutY="255.0" prefHeight="50.0" prefWidth="274.0" />
+      <Label layoutX="67.0" layoutY="251.0" text="Contact " />
+      <TextField fx:id="numtell" layoutX="190.0" layoutY="247.0" />
    </children>
 </AnchorPane>

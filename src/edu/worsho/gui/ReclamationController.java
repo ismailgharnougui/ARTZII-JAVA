@@ -22,6 +22,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
+import javafx.scene.web.WebView;
 
 /**
  * FXML Controller class
@@ -63,12 +67,23 @@ public class ReclamationController implements Initializable {
     private Label reponsevalue;
     @FXML
     private Button btnafficherReponse;
+    public static final String ACCOUNT_SID = "AC42e7b8e7f305a86408122fb767b0e3dc";
+    public static final String AUTH_TOKEN = "5c45a6411714c20eedea6cc9ea8c2a4b";
+    @FXML
+    private TextField numtell;
+
+
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+        
+      
+        
      Refresh();
      ObservableList selectedCells = tableReclamation.getSelectionModel().getSelectedCells();
         selectedCells.addListener(new ListChangeListener() {
@@ -116,6 +131,15 @@ public class ReclamationController implements Initializable {
     
    Reclamation r = new Reclamation(0,TypeR,Description,objet,etat,idUser);
     rc.ajouterReclamation(r);
+    try{
+      Message message = Message.creator(
+                new com.twilio.type.PhoneNumber("+216"+numtell.getText()),
+                new com.twilio.type.PhoneNumber("+12766246381"),
+                "Votre réclamation a été ajoutée avec succès. Nous allons l'examiner dès que possible et vous contacterons si nous avons besoin de plus d'informations. Merci de nous avoir contacté.")
+            .create();
+    }catch(Exception e){
+        System.out.print(e.getMessage());
+    }
         Refresh();
 
        }else{

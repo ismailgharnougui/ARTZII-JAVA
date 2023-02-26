@@ -9,13 +9,18 @@ import edu.worshop.entites.Reclamation;
 import edu.worshop.entites.Reponse;
 import edu.worshop.services.CRUDReclamation;
 import edu.worshop.services.CRUDReponse;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -64,6 +69,8 @@ public class ReponseController implements Initializable {
     private Reponse SelectedReponse;
     @FXML
     private Button btnsupprimerReclamation;
+    @FXML
+    private Button btnstatreclmation;
 
     /**
      * Initializes the controller class.
@@ -171,6 +178,18 @@ rp.supprimerReponse(SelectedReponse.getIdRep());
   reponsePane.setVisible(false);
 
    
+    }
+
+    @FXML
+    private void gotostat(ActionEvent event) {
+            try {
+           FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminStatReclmation.fxml"));
+           Parent root= loader.load();
+            btnstatreclmation.getScene().setRoot(root);
+            } catch (IOException ex) {
+            Logger.getLogger(ReponseController.class.getName()).log(Level.SEVERE, null, ex);
+     
+    }
     }
 
 }
