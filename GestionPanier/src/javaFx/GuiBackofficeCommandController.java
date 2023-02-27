@@ -6,10 +6,12 @@
 package javaFx;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -24,7 +26,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
-import models.Article;
+import models.Chart;
 import models.Client;
 import models.Command;
 import services.ServiceClient;
@@ -178,5 +180,14 @@ pane.getChildren().addAll(label1, label2, label3, label4, label5, label6, choice
        }
         vbox1.setSpacing(2);
     }    
+    
+    
+    
+    
+    @FXML
+    void displayChart(ActionEvent event) throws SQLException {
+        Chart chart = new Chart();
+        chart.main(new String[]{});
+    }
     
 }

@@ -14,14 +14,14 @@
      <children>
       <AnchorPane layoutX="-38.0" layoutY="14.0" prefHeight="616.0" prefWidth="993.0" style="-fx-background-color: #f8f5f5; -fx-background-radius: 15;">
          <children>
-            <Pane layoutX="590.0" layoutY="-8.0" prefHeight="101.0" prefWidth="412.0" style="-fx-background-radius: 20 20 0 0;" styleClass="linear-grad" stylesheets="@./guicommand.css">
+            <Pane layoutX="635.0" layoutY="-8.0" prefHeight="102.0" prefWidth="367.0" style="-fx-background-radius: 20 20 0 0;" styleClass="linear-grad" stylesheets="@./guicommand.css">
                <children>
-                  <ImageView fitHeight="76.0" fitWidth="58.0" layoutX="334.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="76.0" fitWidth="58.0" layoutX="274.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/ic_usr.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="nomPrenom" layoutX="190.0" layoutY="28.0" text="Administrateur" textFill="#fffefe">
+                  <Label fx:id="nomPrenom" layoutX="130.0" layoutY="23.0" text="Administrateur" textFill="#fffefe">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -138,6 +138,11 @@
                         <Font name="System Bold" size="31.0" />
                      </font>
                   </Label>
+                  <Button fx:id="btn1" layoutX="646.0" layoutY="29.0" mnemonicParsing="false" onAction="#displayChart" prefHeight="40.0" prefWidth="226.0" style="-fx-background-color: #4D3F18; -fx-background-radius: 7;" text="Graphique des commandes" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
             <ImageView fitHeight="86.0" fitWidth="154.0" layoutX="139.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">

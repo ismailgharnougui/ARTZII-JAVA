@@ -5,13 +5,6 @@
  */
 package javaFx;
 
-//import com.itextpdf.
-import com.itextpdf.kernel.geom.PageSize;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.layout.Document;
-import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.element.Table;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.FontFactory;
@@ -24,6 +17,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -33,19 +27,13 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.Cell;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -54,17 +42,9 @@ import javafx.scene.text.Font;
 import javax.swing.JFileChooser;
 import models.Article;
 import models.Basket;
+import models.Chart;
 import models.Client;
 import models.Command;
-import models.InvoiceGenerator;
-import static models.InvoiceGenerator.getAccountsCell;
-import static models.InvoiceGenerator.getAccountsCellR;
-import static models.InvoiceGenerator.getBillHeaderCell;
-import static models.InvoiceGenerator.getBillRowCell;
-import static models.InvoiceGenerator.getIRDCell;
-import static models.InvoiceGenerator.getIRHCell;
-import static models.InvoiceGenerator.getValidityCell;
-import static models.InvoiceGenerator.getdescCell;
 import services.ServiceBasket;
 import services.ServiceClient;
 import services.ServiceCommand;
@@ -101,6 +81,12 @@ public class GuiCommandController implements Initializable {
     private Label sousTotale;
     @FXML
     private Label totalCommand;
+    @FXML
+    private Button confirmerCommande;
+    @FXML
+    private RadioButton payCash;
+    @FXML
+    private RadioButton payEnLigne;
     
     ServiceBasket sb = new ServiceBasket();
     Basket panier;
@@ -116,14 +102,7 @@ public class GuiCommandController implements Initializable {
 
     
    public int pos;
-    @FXML
-    private Button confirmerCommande;
-    @FXML
-    private Button modifierAddress;
-    @FXML
-    private RadioButton payCash;
-    @FXML
-    private RadioButton payEnLigne;
+   
 
     /**
      * Initializes the controller class.
@@ -390,7 +369,7 @@ if (userSelection == JFileChooser.APPROVE_OPTION) {
     
     
     
-        public static PdfPCell getIRHCell(String text, int alignment) {
+    public static PdfPCell getIRHCell(String text, int alignment) {
         FontSelector fs = new FontSelector();
         com.itextpdf.text.Font font = FontFactory.getFont(FontFactory.HELVETICA, 16);
         /*	font.setColor(BaseColor.GRAY);*/
@@ -489,4 +468,6 @@ if (userSelection == JFileChooser.APPROVE_OPTION) {
         cell.setBorder(0);
         return cell;
     }
+    
+    
 }
