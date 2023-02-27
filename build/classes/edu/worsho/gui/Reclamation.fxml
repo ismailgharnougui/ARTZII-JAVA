@@ -5,19 +5,36 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="905.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.worsho.gui.ReclamationController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="976.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.worsho.gui.ReclamationController">
    <children>
-      <Label layoutX="66.0" layoutY="121.0" text="TypeR" />
-      <Label layoutX="66.0" layoutY="166.0" text="Description" />
-      <Label layoutX="66.0" layoutY="208.0" text="Objet" />
-      <TextField fx:id="tfTypeR" layoutX="190.0" layoutY="117.0" />
-      <TextField fx:id="tfDescription" layoutX="190.0" layoutY="162.0" />
-      <TextField fx:id="tfObjet" layoutX="190.0" layoutY="204.0" />
-      <Button fx:id="btnValider" layoutX="66.0" layoutY="324.0" mnemonicParsing="false" onAction="#saveReclamation" prefHeight="26.0" prefWidth="273.0" text="Valider" />
-      <TableView fx:id="tableReclamation" layoutX="401.0" layoutY="30.0" prefHeight="200.0" prefWidth="489.0">
+      <Label layoutX="140.0" layoutY="207.0" text="TypeR">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="140.0" layoutY="252.0" text="Description">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="140.0" layoutY="294.0" text="Objet">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <TextField fx:id="tfTypeR" layoutX="264.0" layoutY="203.0" promptText="Type réclamation" />
+      <TextField fx:id="tfDescription" layoutX="264.0" layoutY="248.0" promptText="Description" />
+      <TextField fx:id="tfObjet" layoutX="264.0" layoutY="290.0" promptText="objet" />
+      <Button fx:id="btnValider" layoutX="166.0" layoutY="400.0" mnemonicParsing="false" onAction="#saveReclamation" prefHeight="39.0" prefWidth="228.0" style="-fx-background-color: #eab95f; -fx-background-radius: 7;" text="Valider" textFill="#fafafa">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Button>
+      <TableView fx:id="tableReclamation" layoutX="459.0" layoutY="172.0" prefHeight="225.0" prefWidth="490.0">
         <columns>
           <TableColumn fx:id="id" prefWidth="75.0" text="Id" />
             <TableColumn fx:id="TypeR" prefWidth="75.0" text="TypeR" />
@@ -27,12 +44,98 @@
             <TableColumn fx:id="Objet" prefWidth="75.0" text="Objet" />
         </columns>
       </TableView>
-      <Button fx:id="btnSupprimer" disable="true" layoutX="401.0" layoutY="244.0" mnemonicParsing="false" onAction="#supprimerReclamation" prefHeight="26.0" prefWidth="139.0" text="Supprimer" />
-      <Button fx:id="btnmodifier" disable="true" layoutX="560.0" layoutY="245.0" mnemonicParsing="false" onAction="#remplirModifierform" prefHeight="26.0" prefWidth="150.0" text="Modifier" />
+      <Button fx:id="btnSupprimer" disable="true" layoutX="544.0" layoutY="419.0" mnemonicParsing="false" onAction="#supprimerReclamation" prefHeight="26.0" prefWidth="139.0" style="-fx-background-color: #eab95f; -fx-background-radius: 7;" text="Supprimer" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Button>
+      <Button fx:id="btnmodifier" disable="true" layoutX="719.0" layoutY="419.0" mnemonicParsing="false" onAction="#remplirModifierform" prefHeight="37.0" prefWidth="150.0" style="-fx-background-color: #eab95f; -fx-background-radius: 7;" text="Modifier" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Button>
       <Label fx:id="reponsevalue" layoutX="401.0" layoutY="280.0" prefHeight="116.0" prefWidth="490.0" />
       <Button fx:id="btnafficherReponse" layoutX="711.0" layoutY="246.0" mnemonicParsing="false" onAction="#AfficherReponse" prefHeight="26.0" prefWidth="150.0" text="AfficherReponse" visible="false" />
-      <WebView fx:id="captchawebview" layoutX="66.0" layoutY="255.0" prefHeight="50.0" prefWidth="274.0" />
-      <Label layoutX="67.0" layoutY="251.0" text="Contact " />
-      <TextField fx:id="numtell" layoutX="190.0" layoutY="247.0" />
+      <WebView fx:id="captchawebview" layoutX="140.0" layoutY="438.0" prefHeight="50.0" prefWidth="274.0" />
+      <Label layoutX="141.0" layoutY="337.0" text="Contact ">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <TextField fx:id="numtell" layoutX="264.0" layoutY="333.0" promptText="Contacter" />
+      <VBox fx:id="vbox2" layoutY="-1.0" prefHeight="606.0" prefWidth="80.0" style="-fx-background-color: #131022;">
+         <children>
+            <Pane prefHeight="111.0" prefWidth="74.0" style="-fx-background-radius: 15 0 15 15;" />
+            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="74.0" styleClass="button3" stylesheets="@reclamation.css" text="Naviguer" textFill="#767676">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="file:/C:/Users/21628/Desktop/Workshop3A5/resources/flag.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="74.0" styleClass="button3" stylesheets="@reclamation.css" text="Profile" textFill="#767676">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="file:/C:/Users/21628/Desktop/Workshop3A5/resources/time.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button contentDisplay="TOP" layoutX="10.0" layoutY="76.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="74.0" style="-fx-background-color: #181424;" styleClass="button3" stylesheets="@../../../../../Artzii-Gestion_panier/GestionPanier/src/javaFx/GuiPanier.css" text="Panier" textFill="#767676">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" styleClass="button3">
+                     <image>
+                        <Image url="file:/C:/Users/21628/Desktop/Workshop3A5/resources/group.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button contentDisplay="TOP" layoutX="10.0" layoutY="142.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="74.0" style="-fx-background-color: #181424;" styleClass="button3" stylesheets="@../../../../../Artzii-Gestion_panier/GestionPanier/src/javaFx/GuiPanier.css" text="Réclamer" textFill="#767676">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="file:/C:/Users/21628/Desktop/Workshop3A5/resources/flag.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <Pane layoutX="80.0" prefHeight="155.0" prefWidth="895.0">
+         <children>
+            <ImageView fitHeight="142.0" fitWidth="204.0" layoutX="28.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/C:/Users/21628/Desktop/Workshop3A5/resources/logo.png" />
+               </image>
+            </ImageView>
+            <Pane layoutX="483.0" layoutY="7.0" prefHeight="101.0" prefWidth="412.0" style="-fx-background-radius: 20 20 0 0;" styleClass="linear-grad" stylesheets="@reclamation.css">
+               <children>
+                  <ImageView fitHeight="76.0" fitWidth="58.0" layoutX="329.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="file:/C:/Users/21628/Desktop/Artzii-Gestion_panier/GestionPanier/src/resources/ic_usr.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="nomPrenom" layoutX="179.0" layoutY="37.0" text="Mahdi Mokrani" textFill="#fffefe">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <AnchorPane layoutX="447.0" layoutY="93.0" prefHeight="39.0" prefWidth="526.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10;" />
    </children>
 </AnchorPane>
