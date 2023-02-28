@@ -18,7 +18,7 @@ import java.util.Map;
 public class PaymentApi {
     
     public static void pay(int f) throws StripeException {
-        Stripe.apiKey ="sk_test_51MfmZCAyRwA2k3iVYHgxsElKg90nJP1n7s5xCZHH1pE2ZMNnllelyJGpfoXt5RaKKAFjdizlCONe6Qgt0nmZpXBy0068HpRI3i"; // add your api key
+        Stripe.apiKey ="sk_test_51MfmZCAyRwA2k3iVYHgxsElKg90nJP1n7s5xCZHH1pE2ZMNnllelyJGpfoXt5RaKKAFjdizlCONe6Qgt0nmZpXBy0068HpRI3i";
     		Map<String, Object> params = new HashMap<>();
 		params.put("amount", f);
 		params.put("currency", "usd");

@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 package javaFx;
+import models.InvoiceGenerator;
 
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Element;
+import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.FontSelector;
@@ -17,7 +17,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URL;
-import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -27,7 +26,9 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -42,21 +43,13 @@ import javafx.scene.text.Font;
 import javax.swing.JFileChooser;
 import models.Article;
 import models.Basket;
-import models.Chart;
 import models.Client;
 import models.Command;
 import services.ServiceBasket;
 import services.ServiceClient;
 import services.ServiceCommand;
 
-/**
- * FXML Controller class
- *
- * @author medmo
- */
 public class GuiCommandController implements Initializable {
-
-    
     @FXML
     private RadioButton livArtziiNow;
     @FXML
@@ -113,9 +106,7 @@ public class GuiCommandController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         client=sc.get(4);
        
-        // TODO  
-        pos=1;
-         List<Article> articles = sb.get(4).getArticles();
+        pos=1; List<Article> articles = sb.get(4).getArticles();
          System.out.println(articles);
          vbox1.setFillWidth(true);
        
@@ -148,7 +139,6 @@ deliveryLabel.setPrefHeight(31.0);
 deliveryLabel.setPrefWidth(342.0);
 deliveryLabel.setFont(Font.font(15.0));
 deliveryLabel.setStyle("-fx-font-weight: bold;");
-
 
 Label priceLabel = new Label(article.getPrix()+" DT");
 priceLabel.setLayoutX(67.0);
@@ -188,21 +178,39 @@ pane.getChildren().addAll(indexLabel, titleLabel, deliveryLabel, priceLabel, qua
         
         addressContent.setValue(client.getAddress());
         address1.textProperty().bindBidirectional(addressContent);
-        
-        //Ajout dans le commande
-        //command.setIdClient(4);
-        
          }
 
     @FXML
     private void ajouterCommande(ActionEvent event) throws IOException {
-        
-         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-    alert.setTitle("Confirmer la commande");
-    alert.setHeaderText("Êtes-vous sûr de confirmer cette  commande ?");
+       if (payEnLigne.isSelected()) {
+           
+             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+    alert.setTitle("Payement");
+    alert.setHeaderText("Vous êtes en train de redirectionner ver la page de paiement, confirmer?");
     Optional<ButtonType> result = alert.showAndWait();
 
     if (result.get() == ButtonType.OK){
+           FXMLLoader loader = new FXMLLoader(getClass().getResource("GuiPaiement.fxml"));
+           try{
+            Parent root = loader.load();
+            bord.getChildren().setAll(root);
+           
+           }
+        catch(IOException ex){
+            System.out.println(ex);
+        }
+           
+    }
+       }
+                 
+       else if (payCash.isSelected()) {
+           
+         Alert alert2 = new Alert(Alert.AlertType.CONFIRMATION);
+    alert2.setTitle("Confirmer la commande");
+    alert2.setHeaderText("Êtes-vous sûr de confirmer cette  commande ?");
+    Optional<ButtonType> result2 = alert2.showAndWait();
+
+    if (result2.get() == ButtonType.OK){
           Command command = new Command();
            client=sc.get(4);
            //insertion dans la commande
@@ -216,19 +224,9 @@ pane.getChildren().addAll(indexLabel, titleLabel, deliveryLabel, priceLabel, qua
         } else {
             System.out.println("No option selected");
         }
-           //cheking paiement method
-            if (payCash.isSelected()) {
-                
-                command.setPayMethod("Cash");
-        } else if (payEnLigne.isSelected()) {
-            command.setPayMethod("En ligne");
-        } else {
-            System.out.println("No option selected");
-        }
+          command.setPayMethod("Cash");
           scom.ajouter(command);
     }
-    
-    
     String pdfFilename;
 JFileChooser fileChooser = new JFileChooser();
 fileChooser.setDialogTitle("Specify a file to save");
@@ -241,8 +239,6 @@ if (userSelection == JFileChooser.APPROVE_OPTION) {
     // User canceled the file chooser
     return;
 }
-    
-    
       panier=sb.get(client.getId());
         //String pdfFilename = "Facture.pdf" ;
           try {
@@ -256,22 +252,22 @@ if (userSelection == JFileChooser.APPROVE_OPTION) {
             image.scaleAbsolute(445f, 100.5f);//image width,height 
 
             PdfPTable irdTable = new PdfPTable(2);
-            irdTable.addCell(getIRDCell("N° facture"));
-            irdTable.addCell(getIRDCell("Date facture"));
-            irdTable.addCell(getIRDCell("XE1234")); 
+            irdTable.addCell(InvoiceGenerator.getIRDCell("N° facture"));
+            irdTable.addCell(InvoiceGenerator.getIRDCell("Date facture"));
+            irdTable.addCell(InvoiceGenerator.getIRDCell("XE1234")); 
             LocalDateTime currentDateTime = LocalDateTime.now();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
             String formattedDateTime = currentDateTime.format(formatter);
-            irdTable.addCell(getIRDCell(formattedDateTime + "")); // pass invoice date				
+            irdTable.addCell(InvoiceGenerator.getIRDCell(formattedDateTime + "")); // pass invoice date				
 
             PdfPTable irhTable = new PdfPTable(3);
             irhTable.setWidthPercentage(100);
 
-            irhTable.addCell(getIRHCell("", PdfPCell.ALIGN_RIGHT));
-            irhTable.addCell(getIRHCell("", PdfPCell.ALIGN_RIGHT));
-            irhTable.addCell(getIRHCell("Facture", PdfPCell.ALIGN_RIGHT));
-            irhTable.addCell(getIRHCell("", PdfPCell.ALIGN_RIGHT));
-            irhTable.addCell(getIRHCell("", PdfPCell.ALIGN_RIGHT));
+            irhTable.addCell( InvoiceGenerator.getIRHCell("", PdfPCell.ALIGN_RIGHT));
+            irhTable.addCell(InvoiceGenerator.getIRHCell("", PdfPCell.ALIGN_RIGHT));
+            irhTable.addCell(InvoiceGenerator.getIRHCell("Facture", PdfPCell.ALIGN_RIGHT));
+            irhTable.addCell(InvoiceGenerator.getIRHCell("", PdfPCell.ALIGN_RIGHT));
+            irhTable.addCell(InvoiceGenerator.getIRHCell("", PdfPCell.ALIGN_RIGHT));
             PdfPCell invoiceTable = new PdfPCell(irdTable);
             invoiceTable.setBorder(0);
             irhTable.addCell(invoiceTable);
@@ -291,38 +287,37 @@ if (userSelection == JFileChooser.APPROVE_OPTION) {
             billTable.setWidthPercentage(100);
             billTable.setWidths(new float[]{1, 2, 5, 2, 1, 2});
             billTable.setSpacingBefore(30.0f);
-            billTable.addCell(getBillHeaderCell("Ref"));
-            billTable.addCell(getBillHeaderCell("Article"));
-            billTable.addCell(getBillHeaderCell("Description"));
-            billTable.addCell(getBillHeaderCell("Dimension"));
-            billTable.addCell(getBillHeaderCell("Quant"));
-            billTable.addCell(getBillHeaderCell("Prix"));
+            billTable.addCell(InvoiceGenerator.getBillHeaderCell("Ref"));
+            billTable.addCell(InvoiceGenerator.getBillHeaderCell("Article"));
+            billTable.addCell(InvoiceGenerator.getBillHeaderCell("Description"));
+            billTable.addCell(InvoiceGenerator.getBillHeaderCell("Dimension"));
+            billTable.addCell(InvoiceGenerator.getBillHeaderCell("Quant"));
+            billTable.addCell(InvoiceGenerator.getBillHeaderCell("Prix"));
             
             int pos =1;
             for(Article article : panier.getArticles()){
                
-            billTable.addCell(getBillRowCell(pos++ +""));
-            billTable.addCell(getBillRowCell(article.getNom()));
-            billTable.addCell(getBillRowCell("Piece d'art"));
-            billTable.addCell(getBillRowCell(article.getDimension()+""));
-            billTable.addCell(getBillRowCell("x1"));
-            billTable.addCell(getBillRowCell(article.getPrix()+ " DT"));}
+            billTable.addCell(InvoiceGenerator.getBillRowCell(pos++ +""));
+            billTable.addCell(InvoiceGenerator.getBillRowCell(article.getNom()));
+            billTable.addCell(InvoiceGenerator.getBillRowCell("Piece d'art"));
+            billTable.addCell(InvoiceGenerator.getBillRowCell(article.getDimension()+""));
+            billTable.addCell(InvoiceGenerator.getBillRowCell("x1"));
+            billTable.addCell(InvoiceGenerator.getBillRowCell(article.getPrix()+ " DT"));}
 
          for(int i=0;i<=4; i++){
-            billTable.addCell(getBillRowCell(" "));
-            billTable.addCell(getBillRowCell(""));
-            billTable.addCell(getBillRowCell(""));
-            billTable.addCell(getBillRowCell(""));
-            billTable.addCell(getBillRowCell(""));
-            billTable.addCell(getBillRowCell(""));
+            billTable.addCell(InvoiceGenerator.getBillRowCell(" "));
+            billTable.addCell(InvoiceGenerator.getBillRowCell(""));
+            billTable.addCell(InvoiceGenerator.getBillRowCell(""));
+            billTable.addCell(InvoiceGenerator.getBillRowCell(""));
+            billTable.addCell(InvoiceGenerator.getBillRowCell(""));
+            billTable.addCell(InvoiceGenerator.getBillRowCell(""));
             }
          
             PdfPTable validity = new PdfPTable(1);
             validity.setWidthPercentage(100);
-            validity.addCell(getValidityCell(" "));
-            validity.addCell(getValidityCell("Garantie"));
-            validity.addCell(getValidityCell(" * Les articles achetés sont livrés avec une garantie d'un an \n (si applicable)"));
-            //validity.addCell(getValidityCell(" * Warranty should be claimed only from the respective manufactures"));		    
+            validity.addCell(InvoiceGenerator.getValidityCell(" "));
+            validity.addCell(InvoiceGenerator.getValidityCell("Garantie"));
+            validity.addCell(InvoiceGenerator.getValidityCell(" * Les articles achetés sont livrés avec une garantie d'un an \n (si applicable)"));    
             PdfPCell summaryL = new PdfPCell(validity);
             summaryL.setColspan(3);
             summaryL.setPadding(1.0f);
@@ -330,19 +325,19 @@ if (userSelection == JFileChooser.APPROVE_OPTION) {
 
             PdfPTable accounts = new PdfPTable(2);
             accounts.setWidthPercentage(100);
-            accounts.addCell(getAccountsCell("Sous total"));
-            accounts.addCell(getAccountsCellR(panier.getTotalCost()+" DT"));
-            accounts.addCell(getAccountsCell("Tax (2.5%)"));
-            accounts.addCell(getAccountsCellR(panier.getTotalCost()*0.025+" DT"));
-            accounts.addCell(getAccountsCell("Total"));
-            accounts.addCell(getAccountsCellR(panier.getTotalCostTTC()+" DT"));
+            accounts.addCell(InvoiceGenerator.getAccountsCell("Sous total"));
+            accounts.addCell(InvoiceGenerator.getAccountsCellR(panier.getTotalCost()+" DT"));
+            accounts.addCell(InvoiceGenerator.getAccountsCell("Tax (2.5%)"));
+            accounts.addCell(InvoiceGenerator.getAccountsCellR(panier.getTotalCost()*0.025+" DT"));
+            accounts.addCell(InvoiceGenerator.getAccountsCell("Total"));
+            accounts.addCell(InvoiceGenerator.getAccountsCellR(panier.getTotalCostTTC()+" DT"));
             PdfPCell summaryR = new PdfPCell(accounts);
             summaryR.setColspan(3);
             billTable.addCell(summaryR);
 
             PdfPTable describer = new PdfPTable(1);
             describer.setWidthPercentage(100);
-            describer.addCell(getdescCell(" "));
+            describer.addCell(InvoiceGenerator.getdescCell(" "));
 
             document.open();//PDF document opened........	
 
@@ -358,116 +353,8 @@ if (userSelection == JFileChooser.APPROVE_OPTION) {
             document.close();
 
             file.close();
-
             System.out.println("Pdf created successfully..");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-         
+        } catch (DocumentException | IOException e) {}
+       }
     }
-    
-    
-    
-    public static PdfPCell getIRHCell(String text, int alignment) {
-        FontSelector fs = new FontSelector();
-        com.itextpdf.text.Font font = FontFactory.getFont(FontFactory.HELVETICA, 16);
-        /*	font.setColor(BaseColor.GRAY);*/
-        fs.addFont(font);
-        Phrase phrase = fs.process(text);
-        PdfPCell cell = new PdfPCell(phrase);
-        cell.setPadding(5);
-        cell.setHorizontalAlignment(alignment);
-        cell.setBorder(PdfPCell.NO_BORDER);
-        return cell;
-    }
-
-    public static PdfPCell getIRDCell(String text) {
-        PdfPCell cell = new PdfPCell(new com.itextpdf.text.Paragraph(text));
-        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-        cell.setPadding(5.0f);
-        cell.setBorderColor(BaseColor.LIGHT_GRAY);
-        return cell;
-    }
-
-    public static PdfPCell getBillHeaderCell(String text) {
-        FontSelector fs = new FontSelector();
-        com.itextpdf.text.Font font = FontFactory.getFont(FontFactory.HELVETICA, 11);
-        font.setColor(BaseColor.GRAY);
-        fs.addFont(font);
-        Phrase phrase = fs.process(text);
-        PdfPCell cell = new PdfPCell(phrase);
-        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-        cell.setPadding(5.0f);
-        return cell;
-    }
-
-    public static PdfPCell getBillRowCell(String text) {
-        PdfPCell cell = new PdfPCell(new com.itextpdf.text.Paragraph(text));
-        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-        cell.setPadding(5.0f);
-        cell.setBorderWidthBottom(0);
-        cell.setBorderWidthTop(0);
-        return cell;
-    }
-
-    public static PdfPCell getBillFooterCell(String text) {
-        PdfPCell cell = new PdfPCell(new com.itextpdf.text.Paragraph(text));
-        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-        cell.setPadding(5.0f);
-        cell.setBorderWidthBottom(0);
-        cell.setBorderWidthTop(0);
-        return cell;
-    }
-
-    public static PdfPCell getValidityCell(String text) {
-        FontSelector fs = new FontSelector();
-        com.itextpdf.text.Font font = FontFactory.getFont(FontFactory.HELVETICA, 10);
-        font.setColor(BaseColor.GRAY);
-        fs.addFont(font);
-        Phrase phrase = fs.process(text);
-        PdfPCell cell = new PdfPCell(phrase);
-        cell.setBorder(0);
-        return cell;
-    }
-
-    public static PdfPCell getAccountsCell(String text) {
-        FontSelector fs = new FontSelector();
-        com.itextpdf.text.Font font = FontFactory.getFont(FontFactory.HELVETICA, 10);
-        fs.addFont(font);
-        Phrase phrase = fs.process(text);
-        PdfPCell cell = new PdfPCell(phrase);
-        cell.setBorderWidthRight(0);
-        cell.setBorderWidthTop(0);
-        cell.setPadding(5.0f);
-        return cell;
-    }
-
-    public static PdfPCell getAccountsCellR(String text) {
-        FontSelector fs = new FontSelector();
-        com.itextpdf.text.Font font = FontFactory.getFont(FontFactory.HELVETICA, 10);
-        fs.addFont(font);
-        Phrase phrase = fs.process(text);
-        PdfPCell cell = new PdfPCell(phrase);
-        cell.setBorderWidthLeft(0);
-        cell.setBorderWidthTop(0);
-        cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
-        cell.setPadding(5.0f);
-        cell.setPaddingRight(20.0f);
-        return cell;
-    }
-
-    public static PdfPCell getdescCell(String text) {
-        FontSelector fs = new FontSelector();
-        com.itextpdf.text.Font font = FontFactory.getFont(FontFactory.HELVETICA, 10);
-        font.setColor(BaseColor.GRAY);
-        fs.addFont(font);
-        Phrase phrase = fs.process(text);
-        PdfPCell cell = new PdfPCell(phrase);
-        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-        cell.setBorder(0);
-        return cell;
-    }
-    
-    
 }
