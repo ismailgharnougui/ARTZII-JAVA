@@ -44,10 +44,10 @@ import javafx.scene.text.Font;
 import javax.swing.JFileChooser;
 import models.Article;
 import models.Basket;
-import models.Client;
+import models.User;
 import models.Command;
 import services.ServiceBasket;
-import services.ServiceClient;
+import services.ServiceUser;
 import services.ServiceCommand;
 
 public class GuiCommandController implements Initializable {
@@ -84,8 +84,8 @@ public class GuiCommandController implements Initializable {
 
     ServiceBasket sb = new ServiceBasket();
     Basket panier;
-    ServiceClient sc = new ServiceClient();
-    Client client;
+    ServiceUser sc = new ServiceUser();
+    User client;
     ServiceCommand scom = new ServiceCommand();
     Command command;
 
@@ -226,6 +226,8 @@ public class GuiCommandController implements Initializable {
                 command.setPayMethod("Cash");
                 scom.ajouter(command);
             }
+            
+            //PDF FILE
             String pdfFilename;
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setDialogTitle("Specify a file to save");
@@ -238,6 +240,7 @@ public class GuiCommandController implements Initializable {
                 // User canceled the file chooser
                 return;
             }
+            
             panier = sb.get(client.getId());
             // String pdfFilename = "Facture.pdf" ;
             try {
@@ -248,7 +251,7 @@ public class GuiCommandController implements Initializable {
 
                 // Inserting Image in PDF
                 com.itextpdf.text.Image image = com.itextpdf.text.Image.getInstance("src/resources/logo.jpg");// Header
-                                                                                                              // Image
+                                                                                                             
                 image.scaleAbsolute(445f, 100.5f);// image width,height
 
                 PdfPTable irdTable = new PdfPTable(2);
@@ -358,7 +361,7 @@ public class GuiCommandController implements Initializable {
                 document.close();
 
                 file.close();
-                System.out.println("Pdf created successfully..");
+                System.out.println("Pdf crée avec succée");
             } catch (DocumentException | IOException e) {
             }
         }

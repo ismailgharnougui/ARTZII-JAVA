@@ -63,8 +63,8 @@ public class GuiPanierController implements Initializable {
 
     ServiceBasket sb = new ServiceBasket();
     Basket panier;
-    ServiceClient sc = new ServiceClient();
-    Client client;
+    ServiceUser sc = new ServiceUser();
+    User client;
     @FXML
     private Label nomPrenom;
     @FXML

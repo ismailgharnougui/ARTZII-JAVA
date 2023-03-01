@@ -27,9 +27,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import models.Chart;
-import models.Client;
+import models.User;
 import models.Command;
-import services.ServiceClient;
+import services.ServiceUser;
 import services.ServiceCommand;
 //import com.easypost.EasyPost;
 
@@ -55,8 +55,8 @@ public class GuiBackofficeCommandController implements Initializable {
 
     ServiceCommand scom = new ServiceCommand();
     Command command;
-    ServiceClient sc = new ServiceClient();
-    Client client;
+    ServiceUser sc = new ServiceUser();
+    User User;
 
     /**
      * Initializes the controller class.

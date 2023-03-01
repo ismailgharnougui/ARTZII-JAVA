@@ -37,7 +37,7 @@ import javafx.scene.control.TextField;
 import javax.swing.JFileChooser;
 import models.Article;
 import models.Basket;
-import models.Client;
+import models.User;
 import models.Command;
 import models.InvoiceGenerator;
 
@@ -78,8 +78,8 @@ public class GuiPaiementController implements Initializable {
     private void Pay(ActionEvent event) throws StripeException, Exception {
         ServiceCommand scom = new ServiceCommand();
         Command command;
-        ServiceClient sc = new ServiceClient();
-        Client client;
+        ServiceUser sc = new ServiceUser();
+        User client;
 
         ServiceBasket sb = new ServiceBasket();
 

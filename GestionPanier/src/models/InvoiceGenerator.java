@@ -22,7 +22,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class InvoiceGenerator {
-    ServiceClient sc ;
+    /*ServiceClient sc ;
     ServiceBasket sb;
     Client cl ;//= sc.get(c.getIdClient());
     Basket basket;// = sb.get(c.getIdClient());
@@ -192,7 +192,7 @@ public class InvoiceGenerator {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
 
    

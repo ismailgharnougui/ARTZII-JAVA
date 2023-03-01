@@ -202,6 +202,7 @@
                   <Image url="@../resources/logo.png" />
                </image>
             </ImageView>
+            <ImageView fitHeight="66.0" fitWidth="102.0" layoutX="481.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
    </children>
