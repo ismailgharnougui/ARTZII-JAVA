@@ -21,7 +21,7 @@ public class GuiBasket extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("GuiBackofficeCommand.fxml")); //GuiBackofficeCommand
+            Parent root = FXMLLoader.load(getClass().getResource("GuiPanier.fxml")); //GuiBackofficeCommand
                     
                     Scene scene = new Scene(root, 967, 600);
                     

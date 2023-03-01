@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package javaFx;
+
 import models.InvoiceGenerator;
 
 import com.itextpdf.text.DocumentException;
@@ -80,281 +81,286 @@ public class GuiCommandController implements Initializable {
     private RadioButton payCash;
     @FXML
     private RadioButton payEnLigne;
-    
+
     ServiceBasket sb = new ServiceBasket();
     Basket panier;
     ServiceClient sc = new ServiceClient();
     Client client;
     ServiceCommand scom = new ServiceCommand();
     Command command;
-    
-    private StringProperty sousTotaleContent= new SimpleStringProperty();
-    private StringProperty totalCommandContent= new SimpleStringProperty();
-    private StringProperty nomPrenomContent= new SimpleStringProperty();
-    private StringProperty addressContent= new SimpleStringProperty();
 
-    
-   public int pos;
-   
+    private final StringProperty sousTotaleContent = new SimpleStringProperty();
+    private final StringProperty totalCommandContent = new SimpleStringProperty();
+    private final StringProperty nomPrenomContent = new SimpleStringProperty();
+    private final StringProperty addressContent = new SimpleStringProperty();
+
+    public int pos;
 
     /**
      * Initializes the controller class.
+     * 
      * @param url
      * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        client=sc.get(4);
-       
-        pos=1; List<Article> articles = sb.get(4).getArticles();
-         System.out.println(articles);
-         vbox1.setFillWidth(true);
-       
-          for (Article article : articles) {
-              
-             Pane pane = new Pane();
-             pane.setMinHeight(79);
-             pane.setMaxHeight(79);
-pane.setStyle("-fx-background-color: ffffff; -fx-background-radius: 0;");
+        client = sc.get(4);
 
-Label indexLabel = new Label("Article "+pos+" de "+ articles.size());
-indexLabel.setLayoutX(19.0);
-indexLabel.setLayoutY(-2.0);
-indexLabel.setPrefHeight(31.0);
-indexLabel.setPrefWidth(120.0);
-indexLabel.setFont(Font.font("System Bold Italic", 15.0));
-indexLabel.setStyle("-fx-font-weight: bold;");
+        pos = 1;
+        List<Article> articles = sb.get(4).getArticles();
+        System.out.println(articles);
+        vbox1.setFillWidth(true);
 
-Label titleLabel = new Label(""+article.getNom());
-titleLabel.setLayoutX(50.0);
-titleLabel.setLayoutY(23.0);
-titleLabel.setPrefHeight(31.0);
-titleLabel.setPrefWidth(112.0);
-titleLabel.setFont(Font.font(15.0));
+        for (Article article : articles) {
 
-Label deliveryLabel = new Label("Prix :");
-deliveryLabel.setLayoutX(25.0);
-deliveryLabel.setLayoutY(46.0);
-deliveryLabel.setPrefHeight(31.0);
-deliveryLabel.setPrefWidth(342.0);
-deliveryLabel.setFont(Font.font(15.0));
-deliveryLabel.setStyle("-fx-font-weight: bold;");
+            Pane pane = new Pane();
+            pane.setMinHeight(79);
+            pane.setMaxHeight(79);
+            pane.setStyle("-fx-background-color: ffffff; -fx-background-radius: 0;");
 
-Label priceLabel = new Label(article.getPrix()+" DT");
-priceLabel.setLayoutX(67.0);
-priceLabel.setLayoutY(46.0);
-priceLabel.setPrefHeight(31.0);
-priceLabel.setPrefWidth(100.0);
+            Label indexLabel = new Label("Article " + pos + " de " + articles.size());
+            indexLabel.setLayoutX(19.0);
+            indexLabel.setLayoutY(-2.0);
+            indexLabel.setPrefHeight(31.0);
+            indexLabel.setPrefWidth(120.0);
+            indexLabel.setFont(Font.font("System Bold Italic", 15.0));
+            indexLabel.setStyle("-fx-font-weight: bold;");
 
-Label quantityLabel = new Label("1x");
-quantityLabel.setLayoutX(29.0);
-quantityLabel.setLayoutY(23.0);
-quantityLabel.setPrefHeight(31.0);
-quantityLabel.setPrefWidth(24.0);
-quantityLabel.setFont(Font.font("System Bold Italic", 15.0));
-quantityLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: #ffffff;");
+            Label titleLabel = new Label("" + article.getNom());
+            titleLabel.setLayoutX(50.0);
+            titleLabel.setLayoutY(23.0);
+            titleLabel.setPrefHeight(31.0);
+            titleLabel.setPrefWidth(112.0);
+            titleLabel.setFont(Font.font(15.0));
 
+            Label deliveryLabel = new Label("Prix :");
+            deliveryLabel.setLayoutX(25.0);
+            deliveryLabel.setLayoutY(46.0);
+            deliveryLabel.setPrefHeight(31.0);
+            deliveryLabel.setPrefWidth(342.0);
+            deliveryLabel.setFont(Font.font(15.0));
+            deliveryLabel.setStyle("-fx-font-weight: bold;");
 
-Line line = new Line(-139.00001525878906, 1.3999786376953125, 350.0, 1.3999786376953125);
-line.setStrokeWidth(1.5);
-line.setLayoutX(30.0);
-line.setLayoutY(78.0);
+            Label priceLabel = new Label(article.getPrix() + " DT");
+            priceLabel.setLayoutX(67.0);
+            priceLabel.setLayoutY(46.0);
+            priceLabel.setPrefHeight(31.0);
+            priceLabel.setPrefWidth(100.0);
 
-pane.getChildren().addAll(indexLabel, titleLabel, deliveryLabel, priceLabel, quantityLabel, line);
- vbox1.getChildren().add(pane);
- pos++; 
-          }
-          vbox1.setSpacing(0.2);
-          
-           sousTotaleContent.setValue(sb.get(4).getTotalCostHT()+"");
+            Label quantityLabel = new Label("1x");
+            quantityLabel.setLayoutX(29.0);
+            quantityLabel.setLayoutY(23.0);
+            quantityLabel.setPrefHeight(31.0);
+            quantityLabel.setPrefWidth(24.0);
+            quantityLabel.setFont(Font.font("System Bold Italic", 15.0));
+            quantityLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: #ffffff;");
+
+            Line line = new Line(-139.00001525878906, 1.3999786376953125, 350.0, 1.3999786376953125);
+            line.setStrokeWidth(1.5);
+            line.setLayoutX(30.0);
+            line.setLayoutY(78.0);
+
+            pane.getChildren().addAll(indexLabel, titleLabel, deliveryLabel, priceLabel, quantityLabel, line);
+            vbox1.getChildren().add(pane);
+            pos++;
+        }
+        vbox1.setSpacing(0.2);
+
+        sousTotaleContent.setValue(sb.get(4).getTotalCostHT() + "");
         sousTotale.textProperty().bindBidirectional(sousTotaleContent);
-        
-         totalCommandContent.setValue((sb.get(4).getTotalCostHT()+7)+"");
+
+        totalCommandContent.setValue((sb.get(4).getTotalCostHT() + 7) + "");
         totalCommand.textProperty().bindBidirectional(totalCommandContent);
-        
-        nomPrenomContent.setValue(client.getNom()+" "+client.getPrenom());
+
+        nomPrenomContent.setValue(client.getNom() + " " + client.getPrenom());
         nomPrenom.textProperty().bindBidirectional(nomPrenomContent);
         nomPrenom2.textProperty().bindBidirectional(nomPrenomContent);
-        
+
         addressContent.setValue(client.getAddress());
         address1.textProperty().bindBidirectional(addressContent);
-         }
+    }
 
     @FXML
     private void ajouterCommande(ActionEvent event) throws IOException {
-       if (payEnLigne.isSelected()) {
-           
-             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-    alert.setTitle("Payement");
-    alert.setHeaderText("Vous êtes en train de redirectionner ver la page de paiement, confirmer?");
-    Optional<ButtonType> result = alert.showAndWait();
+        if (payEnLigne.isSelected()) {
 
-    if (result.get() == ButtonType.OK){
-           FXMLLoader loader = new FXMLLoader(getClass().getResource("GuiPaiement.fxml"));
-           try{
-            Parent root = loader.load();
-            bord.getChildren().setAll(root);
-           
-           }
-        catch(IOException ex){
-            System.out.println(ex);
-        }
-           
-    }
-       }
-                 
-       else if (payCash.isSelected()) {
-           
-         Alert alert2 = new Alert(Alert.AlertType.CONFIRMATION);
-    alert2.setTitle("Confirmer la commande");
-    alert2.setHeaderText("Êtes-vous sûr de confirmer cette  commande ?");
-    Optional<ButtonType> result2 = alert2.showAndWait();
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Payement");
+            alert.setHeaderText("Vous êtes en train de redirectionner ver la page de paiement, confirmer?");
+            Optional<ButtonType> result = alert.showAndWait();
 
-    if (result2.get() == ButtonType.OK){
-          Command command = new Command();
-           client=sc.get(4);
-           //insertion dans la commande
-            command.setIdClient(4);
-          command.setTotalCost((float)sb.get(4).getTotalCostHT()+7);
-          //checking livraison method
-          if (livArtziiNow.isSelected()) {
-                command.setLivMethod("Artzii now");
-        } else if (livDomicile.isSelected()) {
-            command.setLivMethod("Livraison domicile");
-        } else {
-            System.out.println("No option selected");
-        }
-          command.setPayMethod("Cash");
-          scom.ajouter(command);
-    }
-    String pdfFilename;
-JFileChooser fileChooser = new JFileChooser();
-fileChooser.setDialogTitle("Specify a file to save");
-int userSelection = fileChooser.showSaveDialog(null);
-if (userSelection == JFileChooser.APPROVE_OPTION) {
-    File fileToSave = fileChooser.getSelectedFile();
-    pdfFilename = fileToSave.getAbsolutePath();
-    System.out.println("Save as file: " + pdfFilename);
-} else {
-    // User canceled the file chooser
-    return;
-}
-      panier=sb.get(client.getId());
-        //String pdfFilename = "Facture.pdf" ;
-          try {
+            if (result.get() == ButtonType.OK) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("GuiPaiement.fxml"));
+                try {
+                    Parent root = loader.load();
+                    bord.getChildren().setAll(root);
 
-            OutputStream file = new FileOutputStream(new File(pdfFilename));
-            com.itextpdf.text.Document document = new com.itextpdf.text.Document();
-            com.itextpdf.text.pdf.PdfWriter.getInstance(document, file);
+                } catch (IOException ex) {
+                    System.out.println(ex);
+                }
 
-            //Inserting Image in PDF
-            com.itextpdf.text.Image image = com.itextpdf.text.Image.getInstance("src/resources/logo.jpg");//Header Image
-            image.scaleAbsolute(445f, 100.5f);//image width,height 
-
-            PdfPTable irdTable = new PdfPTable(2);
-            irdTable.addCell(InvoiceGenerator.getIRDCell("N° facture"));
-            irdTable.addCell(InvoiceGenerator.getIRDCell("Date facture"));
-            irdTable.addCell(InvoiceGenerator.getIRDCell("XE1234")); 
-            LocalDateTime currentDateTime = LocalDateTime.now();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-            String formattedDateTime = currentDateTime.format(formatter);
-            irdTable.addCell(InvoiceGenerator.getIRDCell(formattedDateTime + "")); // pass invoice date				
-
-            PdfPTable irhTable = new PdfPTable(3);
-            irhTable.setWidthPercentage(100);
-
-            irhTable.addCell( InvoiceGenerator.getIRHCell("", PdfPCell.ALIGN_RIGHT));
-            irhTable.addCell(InvoiceGenerator.getIRHCell("", PdfPCell.ALIGN_RIGHT));
-            irhTable.addCell(InvoiceGenerator.getIRHCell("Facture", PdfPCell.ALIGN_RIGHT));
-            irhTable.addCell(InvoiceGenerator.getIRHCell("", PdfPCell.ALIGN_RIGHT));
-            irhTable.addCell(InvoiceGenerator.getIRHCell("", PdfPCell.ALIGN_RIGHT));
-            PdfPCell invoiceTable = new PdfPCell(irdTable);
-            invoiceTable.setBorder(0);
-            irhTable.addCell(invoiceTable);
-
-            FontSelector fs = new FontSelector();
-            com.itextpdf.text.Font font = FontFactory.getFont(FontFactory.TIMES_ROMAN, 13, com.itextpdf.text.Font.BOLD);
-            fs.addFont(font);
-            Phrase bill = fs.process("Facture à"); // customer information
-            com.itextpdf.text.Paragraph name = new com.itextpdf.text.Paragraph(client.getPrenom()+ " " +client.getNom() );  //cl.getPrenom()+ " " +cl.getNom() 
-            name.setIndentationLeft(20);
-            com.itextpdf.text.Paragraph contact = new com.itextpdf.text.Paragraph("");
-            contact.setIndentationLeft(20);
-            com.itextpdf.text.Paragraph address = new com.itextpdf.text.Paragraph("Adresse: "+client.getAddress());  //+cl.getAddress()
-            address.setIndentationLeft(20);
-
-            PdfPTable billTable = new PdfPTable(6); //one page contains 15 records 
-            billTable.setWidthPercentage(100);
-            billTable.setWidths(new float[]{1, 2, 5, 2, 1, 2});
-            billTable.setSpacingBefore(30.0f);
-            billTable.addCell(InvoiceGenerator.getBillHeaderCell("Ref"));
-            billTable.addCell(InvoiceGenerator.getBillHeaderCell("Article"));
-            billTable.addCell(InvoiceGenerator.getBillHeaderCell("Description"));
-            billTable.addCell(InvoiceGenerator.getBillHeaderCell("Dimension"));
-            billTable.addCell(InvoiceGenerator.getBillHeaderCell("Quant"));
-            billTable.addCell(InvoiceGenerator.getBillHeaderCell("Prix"));
-            
-            int pos =1;
-            for(Article article : panier.getArticles()){
-               
-            billTable.addCell(InvoiceGenerator.getBillRowCell(pos++ +""));
-            billTable.addCell(InvoiceGenerator.getBillRowCell(article.getNom()));
-            billTable.addCell(InvoiceGenerator.getBillRowCell("Piece d'art"));
-            billTable.addCell(InvoiceGenerator.getBillRowCell(article.getDimension()+""));
-            billTable.addCell(InvoiceGenerator.getBillRowCell("x1"));
-            billTable.addCell(InvoiceGenerator.getBillRowCell(article.getPrix()+ " DT"));}
-
-         for(int i=0;i<=4; i++){
-            billTable.addCell(InvoiceGenerator.getBillRowCell(" "));
-            billTable.addCell(InvoiceGenerator.getBillRowCell(""));
-            billTable.addCell(InvoiceGenerator.getBillRowCell(""));
-            billTable.addCell(InvoiceGenerator.getBillRowCell(""));
-            billTable.addCell(InvoiceGenerator.getBillRowCell(""));
-            billTable.addCell(InvoiceGenerator.getBillRowCell(""));
             }
-         
-            PdfPTable validity = new PdfPTable(1);
-            validity.setWidthPercentage(100);
-            validity.addCell(InvoiceGenerator.getValidityCell(" "));
-            validity.addCell(InvoiceGenerator.getValidityCell("Garantie"));
-            validity.addCell(InvoiceGenerator.getValidityCell(" * Les articles achetés sont livrés avec une garantie d'un an \n (si applicable)"));    
-            PdfPCell summaryL = new PdfPCell(validity);
-            summaryL.setColspan(3);
-            summaryL.setPadding(1.0f);
-            billTable.addCell(summaryL);
+        }
 
-            PdfPTable accounts = new PdfPTable(2);
-            accounts.setWidthPercentage(100);
-            accounts.addCell(InvoiceGenerator.getAccountsCell("Sous total"));
-            accounts.addCell(InvoiceGenerator.getAccountsCellR(panier.getTotalCost()+" DT"));
-            accounts.addCell(InvoiceGenerator.getAccountsCell("Tax (2.5%)"));
-            accounts.addCell(InvoiceGenerator.getAccountsCellR(panier.getTotalCost()*0.025+" DT"));
-            accounts.addCell(InvoiceGenerator.getAccountsCell("Total"));
-            accounts.addCell(InvoiceGenerator.getAccountsCellR(panier.getTotalCostTTC()+" DT"));
-            PdfPCell summaryR = new PdfPCell(accounts);
-            summaryR.setColspan(3);
-            billTable.addCell(summaryR);
+        else if (payCash.isSelected()) {
 
-            PdfPTable describer = new PdfPTable(1);
-            describer.setWidthPercentage(100);
-            describer.addCell(InvoiceGenerator.getdescCell(" "));
+            Alert alert2 = new Alert(Alert.AlertType.CONFIRMATION);
+            alert2.setTitle("Confirmer la commande");
+            alert2.setHeaderText("Êtes-vous sûr de confirmer cette  commande ?");
+            Optional<ButtonType> result2 = alert2.showAndWait();
 
-            document.open();//PDF document opened........	
+            if (result2.get() == ButtonType.OK) {
+                Command command = new Command();
+                client = sc.get(4);
+                // insertion dans la commande
+                command.setIdClient(4);
+                command.setTotalCost((float) sb.get(4).getTotalCostHT() + 7);
+                // checking livraison method
+                if (livArtziiNow.isSelected()) {
+                    command.setLivMethod("Artzii now");
+                } else if (livDomicile.isSelected()) {
+                    command.setLivMethod("Livraison domicile");
+                } else {
+                    System.out.println("No option selected");
+                }
+                command.setPayMethod("Cash");
+                scom.ajouter(command);
+            }
+            String pdfFilename;
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setDialogTitle("Specify a file to save");
+            int userSelection = fileChooser.showSaveDialog(null);
+            if (userSelection == JFileChooser.APPROVE_OPTION) {
+                File fileToSave = fileChooser.getSelectedFile();
+                pdfFilename = fileToSave.getAbsolutePath();
+                System.out.println("Save as file: " + pdfFilename);
+            } else {
+                // User canceled the file chooser
+                return;
+            }
+            panier = sb.get(client.getId());
+            // String pdfFilename = "Facture.pdf" ;
+            try {
 
-            document.add(image);
-            document.add(irhTable);
-            document.add(bill);
-            document.add(name);
-            document.add(contact);
-            document.add(address);
-            document.add(billTable);
-            document.add(describer);
+                OutputStream file = new FileOutputStream(new File(pdfFilename));
+                com.itextpdf.text.Document document = new com.itextpdf.text.Document();
+                com.itextpdf.text.pdf.PdfWriter.getInstance(document, file);
 
-            document.close();
+                // Inserting Image in PDF
+                com.itextpdf.text.Image image = com.itextpdf.text.Image.getInstance("src/resources/logo.jpg");// Header
+                                                                                                              // Image
+                image.scaleAbsolute(445f, 100.5f);// image width,height
 
-            file.close();
-            System.out.println("Pdf created successfully..");
-        } catch (DocumentException | IOException e) {}
-       }
+                PdfPTable irdTable = new PdfPTable(2);
+                irdTable.addCell(InvoiceGenerator.getIRDCell("N° facture"));
+                irdTable.addCell(InvoiceGenerator.getIRDCell("Date facture"));
+                irdTable.addCell(InvoiceGenerator.getIRDCell("XE1234"));
+                LocalDateTime currentDateTime = LocalDateTime.now();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                String formattedDateTime = currentDateTime.format(formatter);
+                irdTable.addCell(InvoiceGenerator.getIRDCell(formattedDateTime + "")); // pass invoice date
+
+                PdfPTable irhTable = new PdfPTable(3);
+                irhTable.setWidthPercentage(100);
+
+                irhTable.addCell(InvoiceGenerator.getIRHCell("", PdfPCell.ALIGN_RIGHT));
+                irhTable.addCell(InvoiceGenerator.getIRHCell("", PdfPCell.ALIGN_RIGHT));
+                irhTable.addCell(InvoiceGenerator.getIRHCell("Facture", PdfPCell.ALIGN_RIGHT));
+                irhTable.addCell(InvoiceGenerator.getIRHCell("", PdfPCell.ALIGN_RIGHT));
+                irhTable.addCell(InvoiceGenerator.getIRHCell("", PdfPCell.ALIGN_RIGHT));
+                PdfPCell invoiceTable = new PdfPCell(irdTable);
+                invoiceTable.setBorder(0);
+                irhTable.addCell(invoiceTable);
+
+                FontSelector fs = new FontSelector();
+                com.itextpdf.text.Font font = FontFactory.getFont(FontFactory.TIMES_ROMAN, 13,
+                        com.itextpdf.text.Font.BOLD);
+                fs.addFont(font);
+                Phrase bill = fs.process("Facture à"); // customer information
+                com.itextpdf.text.Paragraph name = new com.itextpdf.text.Paragraph(
+                        client.getPrenom() + " " + client.getNom()); // cl.getPrenom()+ " " +cl.getNom()
+                name.setIndentationLeft(20);
+                com.itextpdf.text.Paragraph contact = new com.itextpdf.text.Paragraph("");
+                contact.setIndentationLeft(20);
+                com.itextpdf.text.Paragraph address = new com.itextpdf.text.Paragraph(
+                        "Adresse: " + client.getAddress()); // +cl.getAddress()
+                address.setIndentationLeft(20);
+
+                PdfPTable billTable = new PdfPTable(6); // one page contains 15 records
+                billTable.setWidthPercentage(100);
+                billTable.setWidths(new float[] { 1, 2, 5, 2, 1, 2 });
+                billTable.setSpacingBefore(30.0f);
+                billTable.addCell(InvoiceGenerator.getBillHeaderCell("Ref"));
+                billTable.addCell(InvoiceGenerator.getBillHeaderCell("Article"));
+                billTable.addCell(InvoiceGenerator.getBillHeaderCell("Description"));
+                billTable.addCell(InvoiceGenerator.getBillHeaderCell("Dimension"));
+                billTable.addCell(InvoiceGenerator.getBillHeaderCell("Quant"));
+                billTable.addCell(InvoiceGenerator.getBillHeaderCell("Prix"));
+
+                int pos = 1;
+                for (Article article : panier.getArticles()) {
+
+                    billTable.addCell(InvoiceGenerator.getBillRowCell(pos++ + ""));
+                    billTable.addCell(InvoiceGenerator.getBillRowCell(article.getNom()));
+                    billTable.addCell(InvoiceGenerator.getBillRowCell("Piece d'art"));
+                    billTable.addCell(InvoiceGenerator.getBillRowCell(article.getDimension() + ""));
+                    billTable.addCell(InvoiceGenerator.getBillRowCell("x1"));
+                    billTable.addCell(InvoiceGenerator.getBillRowCell(article.getPrix() + " DT"));
+                }
+
+                for (int i = 0; i <= 4; i++) {
+                    billTable.addCell(InvoiceGenerator.getBillRowCell(" "));
+                    billTable.addCell(InvoiceGenerator.getBillRowCell(""));
+                    billTable.addCell(InvoiceGenerator.getBillRowCell(""));
+                    billTable.addCell(InvoiceGenerator.getBillRowCell(""));
+                    billTable.addCell(InvoiceGenerator.getBillRowCell(""));
+                    billTable.addCell(InvoiceGenerator.getBillRowCell(""));
+                }
+
+                PdfPTable validity = new PdfPTable(1);
+                validity.setWidthPercentage(100);
+                validity.addCell(InvoiceGenerator.getValidityCell(" "));
+                validity.addCell(InvoiceGenerator.getValidityCell("Garantie"));
+                validity.addCell(InvoiceGenerator.getValidityCell(
+                        " * Les articles achetés sont livrés avec une garantie d'un an \n (si applicable)"));
+                PdfPCell summaryL = new PdfPCell(validity);
+                summaryL.setColspan(3);
+                summaryL.setPadding(1.0f);
+                billTable.addCell(summaryL);
+
+                PdfPTable accounts = new PdfPTable(2);
+                accounts.setWidthPercentage(100);
+                accounts.addCell(InvoiceGenerator.getAccountsCell("Sous total"));
+                accounts.addCell(InvoiceGenerator.getAccountsCellR(panier.getTotalCost() + " DT"));
+                accounts.addCell(InvoiceGenerator.getAccountsCell("Tax (2.5%)"));
+                accounts.addCell(InvoiceGenerator.getAccountsCellR(panier.getTotalCost() * 0.025 + " DT"));
+                accounts.addCell(InvoiceGenerator.getAccountsCell("Total"));
+                accounts.addCell(InvoiceGenerator.getAccountsCellR(panier.getTotalCostTTC() + " DT"));
+                PdfPCell summaryR = new PdfPCell(accounts);
+                summaryR.setColspan(3);
+                billTable.addCell(summaryR);
+
+                PdfPTable describer = new PdfPTable(1);
+                describer.setWidthPercentage(100);
+                describer.addCell(InvoiceGenerator.getdescCell(" "));
+
+                document.open();// PDF document opened........
+
+                document.add(image);
+                document.add(irhTable);
+                document.add(bill);
+                document.add(name);
+                document.add(contact);
+                document.add(address);
+                document.add(billTable);
+                document.add(describer);
+
+                document.close();
+
+                file.close();
+                System.out.println("Pdf created successfully..");
+            } catch (DocumentException | IOException e) {
+            }
+        }
     }
 }

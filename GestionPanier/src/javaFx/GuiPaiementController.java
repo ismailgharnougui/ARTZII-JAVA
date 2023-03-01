@@ -48,7 +48,7 @@ import models.InvoiceGenerator;
  */
 public class GuiPaiementController implements Initializable {
 
-   @FXML
+    @FXML
     private TextField anneeExp;
 
     @FXML
@@ -62,175 +62,181 @@ public class GuiPaiementController implements Initializable {
 
     @FXML
     private Button pay;
+
     /**
      * Initializes the controller class.
+     * 
      * @param url
      * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO 
-    }    
+        // TODO
+    }
 
     @FXML
     private void Pay(ActionEvent event) throws StripeException, Exception {
-          ServiceCommand scom = new ServiceCommand();
-          Command command;
-          ServiceClient sc = new ServiceClient();
-          Client client;
-    
+        ServiceCommand scom = new ServiceCommand();
+        Command command;
+        ServiceClient sc = new ServiceClient();
+        Client client;
+
         ServiceBasket sb = new ServiceBasket();
-     
+
         System.out.println(isNum(moisExp.getText()));
-          if ((isValidVisaCardNo(carte.getText()) && (!carte.getText().isEmpty()) && (isNum(carte.getText())))
+        if ((isValidVisaCardNo(carte.getText()) && (!carte.getText().isEmpty()) && (isNum(carte.getText())))
                 && (!moisExp.getText().isEmpty()) && (isNum(moisExp.getText()))
-                && (parseInt(anneeExp.getText()) >= LocalDate.now().getYear()) && (!anneeExp.getText().isEmpty()) && (isNum(anneeExp.getText())) && (isNum(cvc.getText()))) {
-             float f = (float) sb.get(4).getTotalCostTTC()*32;
-             int k =floatToInt(f);
-             PaymentApi.pay(k);
+                && (parseInt(anneeExp.getText()) >= LocalDate.now().getYear()) && (!anneeExp.getText().isEmpty())
+                && (isNum(anneeExp.getText())) && (isNum(cvc.getText()))) {
+            float f = (float) sb.get(4).getTotalCostTTC() * 32;
+            int k = floatToInt(f);
+            PaymentApi.pay(k);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Paiement");
-            alert.setContentText("Paiement effectué avec succès \n Redirection vers la page de commande");
-             Optional<ButtonType> result2 = alert.showAndWait();
-              if (result2.get() == ButtonType.OK){
-                  
-                  
-                  
-           client=sc.get(4);
-                  Basket panier=sb.get(client.getId());
-                  
-                   String pdfFilename;
-JFileChooser fileChooser = new JFileChooser();
-fileChooser.setDialogTitle("Specify a file to save");
-int userSelection = fileChooser.showSaveDialog(null);
-if (userSelection == JFileChooser.APPROVE_OPTION) {
-    File fileToSave = fileChooser.getSelectedFile();
-    pdfFilename = fileToSave.getAbsolutePath();
-    System.out.println("Save as file: " + pdfFilename);
-} else {
-    // User canceled the file chooser
-    return;
-}
-                  try {
+            alert.setContentText("Paiement effectué avec succès \n Génération du fichier PDF");
+            Optional<ButtonType> result2 = alert.showAndWait();
+            if (result2.get() == ButtonType.OK) {
 
-            OutputStream file = new FileOutputStream(new File(pdfFilename));
-            com.itextpdf.text.Document document = new com.itextpdf.text.Document();
-            com.itextpdf.text.pdf.PdfWriter.getInstance(document, file);
+                client = sc.get(4);
+                Basket panier = sb.get(client.getId());
 
-            //Inserting Image in PDF
-            com.itextpdf.text.Image image = com.itextpdf.text.Image.getInstance("src/resources/logo.jpg");//Header Image
-            image.scaleAbsolute(445f, 100.5f);//image width,height 
+                String pdfFilename;
+                JFileChooser fileChooser = new JFileChooser();
+                fileChooser.setDialogTitle("Specify a file to save");
+                int userSelection = fileChooser.showSaveDialog(null);
+                if (userSelection == JFileChooser.APPROVE_OPTION) {
+                    File fileToSave = fileChooser.getSelectedFile();
+                    pdfFilename = fileToSave.getAbsolutePath();
+                    System.out.println("Save as file: " + pdfFilename);
+                } else {
+                    // User canceled the file chooser
+                    return;
+                }
+                try {
 
-            PdfPTable irdTable = new PdfPTable(2);
-            irdTable.addCell(InvoiceGenerator.getIRDCell("N° facture"));
-            irdTable.addCell(InvoiceGenerator.getIRDCell("Date facture"));
-            irdTable.addCell(InvoiceGenerator.getIRDCell("XE1234")); 
-            LocalDateTime currentDateTime = LocalDateTime.now();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-            String formattedDateTime = currentDateTime.format(formatter);
-            irdTable.addCell(InvoiceGenerator.getIRDCell(formattedDateTime + "")); // pass invoice date				
+                    OutputStream file = new FileOutputStream(new File(pdfFilename));
+                    com.itextpdf.text.Document document = new com.itextpdf.text.Document();
+                    com.itextpdf.text.pdf.PdfWriter.getInstance(document, file);
 
-            PdfPTable irhTable = new PdfPTable(3);
-            irhTable.setWidthPercentage(100);
+                    // Inserting Image in PDF
+                    com.itextpdf.text.Image image = com.itextpdf.text.Image.getInstance("src/resources/logo.jpg");// Header
+                                                                                                                  // Image
+                    image.scaleAbsolute(445f, 100.5f);// image width,height
 
-            irhTable.addCell( InvoiceGenerator.getIRHCell("", PdfPCell.ALIGN_RIGHT));
-            irhTable.addCell(InvoiceGenerator.getIRHCell("", PdfPCell.ALIGN_RIGHT));
-            irhTable.addCell(InvoiceGenerator.getIRHCell("Facture", PdfPCell.ALIGN_RIGHT));
-            irhTable.addCell(InvoiceGenerator.getIRHCell("", PdfPCell.ALIGN_RIGHT));
-            irhTable.addCell(InvoiceGenerator.getIRHCell("", PdfPCell.ALIGN_RIGHT));
-            PdfPCell invoiceTable = new PdfPCell(irdTable);
-            invoiceTable.setBorder(0);
-            irhTable.addCell(invoiceTable);
+                    PdfPTable irdTable = new PdfPTable(2);
+                    irdTable.addCell(InvoiceGenerator.getIRDCell("N° facture"));
+                    irdTable.addCell(InvoiceGenerator.getIRDCell("Date facture"));
+                    irdTable.addCell(InvoiceGenerator.getIRDCell("XE1234"));
+                    LocalDateTime currentDateTime = LocalDateTime.now();
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                    String formattedDateTime = currentDateTime.format(formatter);
+                    irdTable.addCell(InvoiceGenerator.getIRDCell(formattedDateTime + "")); // pass invoice date
 
-            FontSelector fs = new FontSelector();
-            com.itextpdf.text.Font font = FontFactory.getFont(FontFactory.TIMES_ROMAN, 13, com.itextpdf.text.Font.BOLD);
-            fs.addFont(font);
-            Phrase bill = fs.process("Facture à"); // customer information
-            com.itextpdf.text.Paragraph name = new com.itextpdf.text.Paragraph(client.getPrenom()+ " " +client.getNom() );  //cl.getPrenom()+ " " +cl.getNom() 
-            name.setIndentationLeft(20);
-            com.itextpdf.text.Paragraph contact = new com.itextpdf.text.Paragraph("");
-            contact.setIndentationLeft(20);
-            com.itextpdf.text.Paragraph address = new com.itextpdf.text.Paragraph("Adresse: "+client.getAddress());  //+cl.getAddress()
-            address.setIndentationLeft(20);
+                    PdfPTable irhTable = new PdfPTable(3);
+                    irhTable.setWidthPercentage(100);
 
-            PdfPTable billTable = new PdfPTable(6); //one page contains 15 records 
-            billTable.setWidthPercentage(100);
-            billTable.setWidths(new float[]{1, 2, 5, 2, 1, 2});
-            billTable.setSpacingBefore(30.0f);
-            billTable.addCell(InvoiceGenerator.getBillHeaderCell("Ref"));
-            billTable.addCell(InvoiceGenerator.getBillHeaderCell("Article"));
-            billTable.addCell(InvoiceGenerator.getBillHeaderCell("Description"));
-            billTable.addCell(InvoiceGenerator.getBillHeaderCell("Dimension"));
-            billTable.addCell(InvoiceGenerator.getBillHeaderCell("Quant"));
-            billTable.addCell(InvoiceGenerator.getBillHeaderCell("Prix"));
-            
-            int pos =1;
-            for(Article article : panier.getArticles()){
-               
-            billTable.addCell(InvoiceGenerator.getBillRowCell(pos++ +""));
-            billTable.addCell(InvoiceGenerator.getBillRowCell(article.getNom()));
-            billTable.addCell(InvoiceGenerator.getBillRowCell("Piece d'art"));
-            billTable.addCell(InvoiceGenerator.getBillRowCell(article.getDimension()+""));
-            billTable.addCell(InvoiceGenerator.getBillRowCell("x1"));
-            billTable.addCell(InvoiceGenerator.getBillRowCell(article.getPrix()+ " DT"));}
+                    irhTable.addCell(InvoiceGenerator.getIRHCell("", PdfPCell.ALIGN_RIGHT));
+                    irhTable.addCell(InvoiceGenerator.getIRHCell("", PdfPCell.ALIGN_RIGHT));
+                    irhTable.addCell(InvoiceGenerator.getIRHCell("Facture", PdfPCell.ALIGN_RIGHT));
+                    irhTable.addCell(InvoiceGenerator.getIRHCell("", PdfPCell.ALIGN_RIGHT));
+                    irhTable.addCell(InvoiceGenerator.getIRHCell("", PdfPCell.ALIGN_RIGHT));
+                    PdfPCell invoiceTable = new PdfPCell(irdTable);
+                    invoiceTable.setBorder(0);
+                    irhTable.addCell(invoiceTable);
 
-         for(int i=0;i<=4; i++){
-            billTable.addCell(InvoiceGenerator.getBillRowCell(" "));
-            billTable.addCell(InvoiceGenerator.getBillRowCell(""));
-            billTable.addCell(InvoiceGenerator.getBillRowCell(""));
-            billTable.addCell(InvoiceGenerator.getBillRowCell(""));
-            billTable.addCell(InvoiceGenerator.getBillRowCell(""));
-            billTable.addCell(InvoiceGenerator.getBillRowCell(""));
+                    FontSelector fs = new FontSelector();
+                    com.itextpdf.text.Font font = FontFactory.getFont(FontFactory.TIMES_ROMAN, 13,
+                            com.itextpdf.text.Font.BOLD);
+                    fs.addFont(font);
+                    Phrase bill = fs.process("Facture à"); // customer information
+                    com.itextpdf.text.Paragraph name = new com.itextpdf.text.Paragraph(
+                            client.getPrenom() + " " + client.getNom()); // cl.getPrenom()+ " " +cl.getNom()
+                    name.setIndentationLeft(20);
+                    com.itextpdf.text.Paragraph contact = new com.itextpdf.text.Paragraph("");
+                    contact.setIndentationLeft(20);
+                    com.itextpdf.text.Paragraph address = new com.itextpdf.text.Paragraph(
+                            "Adresse: " + client.getAddress()); // +cl.getAddress()
+                    address.setIndentationLeft(20);
+
+                    PdfPTable billTable = new PdfPTable(6); // one page contains 15 records
+                    billTable.setWidthPercentage(100);
+                    billTable.setWidths(new float[] { 1, 2, 5, 2, 1, 2 });
+                    billTable.setSpacingBefore(30.0f);
+                    billTable.addCell(InvoiceGenerator.getBillHeaderCell("Ref"));
+                    billTable.addCell(InvoiceGenerator.getBillHeaderCell("Article"));
+                    billTable.addCell(InvoiceGenerator.getBillHeaderCell("Description"));
+                    billTable.addCell(InvoiceGenerator.getBillHeaderCell("Dimension"));
+                    billTable.addCell(InvoiceGenerator.getBillHeaderCell("Quant"));
+                    billTable.addCell(InvoiceGenerator.getBillHeaderCell("Prix"));
+
+                    int pos = 1;
+                    for (Article article : panier.getArticles()) {
+
+                        billTable.addCell(InvoiceGenerator.getBillRowCell(pos++ + ""));
+                        billTable.addCell(InvoiceGenerator.getBillRowCell(article.getNom()));
+                        billTable.addCell(InvoiceGenerator.getBillRowCell("Piece d'art"));
+                        billTable.addCell(InvoiceGenerator.getBillRowCell(article.getDimension() + ""));
+                        billTable.addCell(InvoiceGenerator.getBillRowCell("x1"));
+                        billTable.addCell(InvoiceGenerator.getBillRowCell(article.getPrix() + " DT"));
+                    }
+
+                    for (int i = 0; i <= 4; i++) {
+                        billTable.addCell(InvoiceGenerator.getBillRowCell(" "));
+                        billTable.addCell(InvoiceGenerator.getBillRowCell(""));
+                        billTable.addCell(InvoiceGenerator.getBillRowCell(""));
+                        billTable.addCell(InvoiceGenerator.getBillRowCell(""));
+                        billTable.addCell(InvoiceGenerator.getBillRowCell(""));
+                        billTable.addCell(InvoiceGenerator.getBillRowCell(""));
+                    }
+
+                    PdfPTable validity = new PdfPTable(1);
+                    validity.setWidthPercentage(100);
+                    validity.addCell(InvoiceGenerator.getValidityCell(" "));
+                    validity.addCell(InvoiceGenerator.getValidityCell("Garantie"));
+                    validity.addCell(InvoiceGenerator.getValidityCell(
+                            " * Les articles achetés sont livrés avec une garantie d'un an \n (si applicable)"));
+                    PdfPCell summaryL = new PdfPCell(validity);
+                    summaryL.setColspan(3);
+                    summaryL.setPadding(1.0f);
+                    billTable.addCell(summaryL);
+
+                    PdfPTable accounts = new PdfPTable(2);
+                    accounts.setWidthPercentage(100);
+                    accounts.addCell(InvoiceGenerator.getAccountsCell("Sous total"));
+                    accounts.addCell(InvoiceGenerator.getAccountsCellR(panier.getTotalCost() + " DT"));
+                    accounts.addCell(InvoiceGenerator.getAccountsCell("Tax (2.5%)"));
+                    accounts.addCell(InvoiceGenerator.getAccountsCellR(panier.getTotalCost() * 0.025 + " DT"));
+                    accounts.addCell(InvoiceGenerator.getAccountsCell("Total"));
+                    accounts.addCell(InvoiceGenerator.getAccountsCellR(panier.getTotalCostTTC() + " DT"));
+                    PdfPCell summaryR = new PdfPCell(accounts);
+                    summaryR.setColspan(3);
+                    billTable.addCell(summaryR);
+
+                    PdfPTable describer = new PdfPTable(1);
+                    describer.setWidthPercentage(100);
+                    describer.addCell(InvoiceGenerator.getdescCell(" "));
+
+                    document.open();// PDF document opened........
+
+                    document.add(image);
+                    document.add(irhTable);
+                    document.add(bill);
+                    document.add(name);
+                    document.add(contact);
+                    document.add(address);
+                    document.add(billTable);
+                    document.add(describer);
+
+                    document.close();
+
+                    file.close();
+                    System.out.println("Pdf created successfully..");
+                } catch (DocumentException | IOException e) {
+                }
+
             }
-         
-            PdfPTable validity = new PdfPTable(1);
-            validity.setWidthPercentage(100);
-            validity.addCell(InvoiceGenerator.getValidityCell(" "));
-            validity.addCell(InvoiceGenerator.getValidityCell("Garantie"));
-            validity.addCell(InvoiceGenerator.getValidityCell(" * Les articles achetés sont livrés avec une garantie d'un an \n (si applicable)"));    
-            PdfPCell summaryL = new PdfPCell(validity);
-            summaryL.setColspan(3);
-            summaryL.setPadding(1.0f);
-            billTable.addCell(summaryL);
-
-            PdfPTable accounts = new PdfPTable(2);
-            accounts.setWidthPercentage(100);
-            accounts.addCell(InvoiceGenerator.getAccountsCell("Sous total"));
-            accounts.addCell(InvoiceGenerator.getAccountsCellR(panier.getTotalCost()+" DT"));
-            accounts.addCell(InvoiceGenerator.getAccountsCell("Tax (2.5%)"));
-            accounts.addCell(InvoiceGenerator.getAccountsCellR(panier.getTotalCost()*0.025+" DT"));
-            accounts.addCell(InvoiceGenerator.getAccountsCell("Total"));
-            accounts.addCell(InvoiceGenerator.getAccountsCellR(panier.getTotalCostTTC()+" DT"));
-            PdfPCell summaryR = new PdfPCell(accounts);
-            summaryR.setColspan(3);
-            billTable.addCell(summaryR);
-
-            PdfPTable describer = new PdfPTable(1);
-            describer.setWidthPercentage(100);
-            describer.addCell(InvoiceGenerator.getdescCell(" "));
-
-            document.open();//PDF document opened........	
-
-            document.add(image);
-            document.add(irhTable);
-            document.add(bill);
-            document.add(name);
-            document.add(contact);
-            document.add(address);
-            document.add(billTable);
-            document.add(describer);
-
-            document.close();
-
-            file.close();
-            System.out.println("Pdf created successfully..");
-        } catch (DocumentException | IOException e) {}
-                  
-                  
-                  
-              }
             alert.show();
-            
+
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Paiement");
@@ -238,8 +244,9 @@ if (userSelection == JFileChooser.APPROVE_OPTION) {
             alert.show();
         }
     }
+
     private boolean isValidVisaCardNo(String text) {
-       // Regex to check valid.
+        // Regex to check valid.
         // Visa Card number
         String regex = "^4[0-9]{12}(?:[0-9]{3})?$";
 
@@ -257,13 +264,16 @@ if (userSelection == JFileChooser.APPROVE_OPTION) {
         // Return if the string
         // matched the ReGex
         return m.matches();
-}
+    }
+
     public static boolean isNum(String str) {
         String expression = "\\d+";
         return str.matches(expression);
     }
+
     public static int floatToInt(float value) {
-    return (int) value;
+        return (int) value;
+    }
+
 }
-    
-}
+
