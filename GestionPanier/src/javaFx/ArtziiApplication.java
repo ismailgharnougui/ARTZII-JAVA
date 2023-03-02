@@ -16,14 +16,14 @@ import javafx.stage.Stage;
  *
  * @author medmo
  */
-public class GuiBasket extends Application {
+public class ArtziiApplication extends Application {
     
     @Override
     public void start(Stage primaryStage) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("GuiHome.fxml")); //GuiBackofficeCommand
                     
-                    Scene scene = new Scene(root, 967, 600);
+                    Scene scene = new Scene(root, 968, 600);
                     
                     primaryStage.setTitle("Artzii");
                     primaryStage.setScene(scene);

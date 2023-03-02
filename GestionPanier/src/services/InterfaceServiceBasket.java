@@ -14,7 +14,7 @@ import models.Basket;
  * @author medmo
  */
 public interface InterfaceServiceBasket {
-    public void ajouter(int idClient, int idArticle);
+    public boolean ajouter(int idClient, int idArticle);
     public void supprimerArticle(int idClient, int idArticle);
     public void vider(int idClient);
     public Basket get(int idClient);

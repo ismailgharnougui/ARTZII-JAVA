@@ -13,7 +13,8 @@ import java.util.List;
  * @author belkn
  */
 public interface InterfaceServiceArticle {
+    
     public Article get(int id);
-    
-    
+    public List<Article> getArticles(int id);
+    public List<Article> afficherArticles();
 }

@@ -15,8 +15,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class ServiceBasket implements InterfaceServiceBasket{
@@ -24,11 +22,13 @@ Statement ste=null;
 Connection conn = MyConnection.getInstance().getConnection();
 
 @Override
-public void ajouter(int idClient, int idArticle) {
+public boolean ajouter(int idClient, int idArticle) {
+    boolean added = false;
     try {
-        String selectQuery = "SELECT id_article FROM basket WHERE id_article=?";
+        String selectQuery = "SELECT * FROM basket WHERE id_client=? and id_article=?";
         PreparedStatement selectPs = conn.prepareStatement(selectQuery);
-        selectPs.setInt(1, idArticle);
+        selectPs.setInt(2, idArticle);
+        selectPs.setInt(1, idClient);
         ResultSet resultSet = selectPs.executeQuery();
         
         if (!resultSet.next()) {
@@ -38,6 +38,7 @@ public void ajouter(int idClient, int idArticle) {
             insertPs.setInt(1, idClient);
             insertPs.setInt(2, idArticle);
             insertPs.executeUpdate();
+            added = true;
         } else {
             // idArticle already exists in the database
             System.out.println("idArticle already exists in the database");
@@ -45,8 +46,9 @@ public void ajouter(int idClient, int idArticle) {
     } catch (SQLException ex) {
         System.out.println(ex.getMessage());
     }
+    return added;
 }
-    
+
      @Override
     public void supprimerArticle(int idClient, int idArticle) {
         try {

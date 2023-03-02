@@ -14,8 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import models.Command;
 
 
 public class ServiceArticle implements InterfaceServiceArticle{
@@ -34,7 +33,7 @@ Connection conn = MyConnection.getInstance().getConnection();
         
         ResultSet result = pste.executeQuery();
        result.next();
-           Article resultArticle = new Article(result.getInt(1),result.getString(2),result.getString(3), result.getFloat(4), result.getString(6));
+           Article resultArticle = new Article(result.getInt(1),result.getInt(2),result.getString(3),result.getString(4), result.getFloat(5), result.getString(7));
         return resultArticle;
       
     } catch (SQLException ex) {
@@ -42,4 +41,50 @@ Connection conn = MyConnection.getInstance().getConnection();
     }
     return null;
     }
+
+    @Override
+    public List<Article> getArticles(int id) {
+  List<Article> articles = new ArrayList<>();
+        try {
+        String req = "SELECT * FROM article where idArtiste = "+id;
+        ste=conn.createStatement();
+        ResultSet result = ste.executeQuery(req);
+        
+        while (result.next()) { 
+            Article resultArticle = new Article(result.getInt(1),result.getInt(2), result.getString(3), result.getString(4), result.getFloat(5),result.getString(7));
+
+            articles.add(resultArticle);
+        }
+        System.out.println(articles);
+      
+    } catch (SQLException ex) {
+         System.out.println(ex);   
+    }
+   return articles;    
+    }
+    
+
+
+    @Override
+    public List<Article> afficherArticles() {
+    List<Article> articles = new ArrayList<>();
+        try {
+        String req = "SELECT * FROM article";
+        ste=conn.createStatement();
+        ResultSet result = ste.executeQuery(req);
+        
+        while (result.next()) { 
+            Article resultArticle = new Article(result.getInt(1),result.getInt(2), result.getString(3), result.getString(4), result.getFloat(5),result.getString(7));
+
+            articles.add(resultArticle);
+        }
+        System.out.println(articles);
+      
+    } catch (SQLException ex) {
+         System.out.println(ex);   
+    }
+   return articles;    
+    }
+    
+    
 }

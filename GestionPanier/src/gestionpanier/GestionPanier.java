@@ -6,9 +6,6 @@
 package gestionpanier;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import models.Article;
-import models.User;
 import models.Command;
 import services.ServiceArticle;
 import services.ServiceBasket;
@@ -31,21 +28,23 @@ public class GestionPanier {
         
         ServiceArticle sa = new ServiceArticle();
         //System.out.println( sa.get(2));
+        //sa.afficherArticles();
+        //sa.getArticles(12);
         
         ServiceUser scl = new ServiceUser();
         //System.out.println(scl.get(4));
         //System.out.println(scl.getByEmail("mokl@gmail.cim"));
         //scl.ajouterUser(new User("moklll", "mplll", "mokh11@gmail.com", "Mokhtar1234", "Client", "Manzel Bourguiba"));
-        System.out.println(scl.login("mokh11@gmail.com", "Mokhtar1234"));//scl.login("mokh11@gmail.com", "Mokhtar1234");
+        //System.out.println(scl.login("mokh11@gmail.com", "Mokhtar1234"));//scl.login("mokh11@gmail.com", "Mokhtar1234");
         
         ServiceBasket sb = new ServiceBasket();
-        //sb.ajouter(4, 7);
+        //sb.ajouter(12, 7);
         //sb.vider(2);
         //sb.supprimerArticle(4,6);
         //System.out.println(sb.get(4));
         
         ServiceCommand sc = new ServiceCommand();
-           // sc.ajouter(c);
+        // sc.ajouter(c);
         //sc.supprimer(3);
         //System.out.println(sc.recupererCommClient(2));      
         //sc.afficherCommands();

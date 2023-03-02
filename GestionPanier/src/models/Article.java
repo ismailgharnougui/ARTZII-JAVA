@@ -11,6 +11,7 @@ package models;
  */
 public class Article {
     private int ref;
+    private int idArtiste;
     private String nom;
     private String dimension;
     private float prix;
@@ -25,8 +26,9 @@ public class Article {
         this.prix = prix;
     }
     
-     public Article(int ref,String nom,String dimension, float prix,String imageUrl) {
+     public Article(int ref,int idArtiste,String nom,String dimension, float prix,String imageUrl) {
          this.ref = ref;
+         this.idArtiste = idArtiste;
         this.nom=nom;
         this.dimension = dimension;
         this.prix = prix;
@@ -36,6 +38,11 @@ public class Article {
     public int getRef() {
         return ref;
     }
+
+    public int getIdArtiste() {
+        return idArtiste;
+    }
+    
 
     public String getNom() {
         return nom;
@@ -75,10 +82,13 @@ public class Article {
         this.imageUrl = imageUrl;
     }
 
+    public void setIdArtiste(int idArtiste) {
+        this.idArtiste = idArtiste;
+    }
+
     @Override
     public String toString() {
-        return "Article{" + "ref=" + ref + ", nom=" + nom + ", dimension=" + dimension + ", prix=" + prix + ", imageUrl=" + imageUrl + '}';
+        return "Article{" + "ref=" + ref + ", idArtiste=" + idArtiste + ", nom=" + nom + ", dimension=" + dimension + ", prix=" + prix + ", imageUrl=" + imageUrl + '}';
     }
-    
     
 }
