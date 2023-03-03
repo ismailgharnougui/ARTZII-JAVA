@@ -5,6 +5,7 @@
  */
 package javaFx;
 
+import javaFx.GuiLoginController;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -17,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
@@ -31,6 +33,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import models.Article;
 import models.User;
 import services.ServiceArticle;
@@ -43,7 +46,8 @@ import services.ServiceUser;
  * @author medmo
  */
 public class GuiArticlesController implements Initializable {
-
+ User connectedUser = GuiLoginController.user;
+          
     @FXML
     private Label nomPrenom3;
     @FXML
@@ -52,7 +56,7 @@ public class GuiArticlesController implements Initializable {
     private VBox vbox1;
 
     ServiceUser sc = new ServiceUser();
-    User artiste;
+    
     ServiceArticle sa = new ServiceArticle();
     @FXML
     private Button btnPanier;
@@ -68,7 +72,6 @@ public class GuiArticlesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        artiste = sc.get(12);
 
         List<Article> articles = sa.afficherArticles();
 
@@ -77,7 +80,6 @@ public class GuiArticlesController implements Initializable {
             articlePane1.setPrefSize(450.0, 395.0);
             articlePane1.setMinHeight(360);
             articlePane1.setMaxWidth(430);
-            // articlePane1.setMaxHeight(360);
             articlePane1.setStyle("-fx-background-color: #f8f5f5; -fx-background-radius: 10; -fx-padding:10px;");
 
             DropShadow shadow = new DropShadow();
@@ -115,25 +117,23 @@ public class GuiArticlesController implements Initializable {
             image.setImage(imageSource);
 
             Label title = new Label();
-            title.setLayoutX(180.0);
-            title.setLayoutY(58.0);
+            title.setLayoutX(150.0);
+            title.setLayoutY(47.0);
             title.setText(article.getNom());
-            Font titleFont = new Font(20.0);
-            title.setFont(titleFont);
-            title.setStyle("-fx-font-weight: bold;");
+            title.setFont(Font.font("titleFont", FontWeight.BOLD, 23));
+            title.setAlignment(Pos.CENTER);
 
             Label price = new Label();
             price.setLayoutX(280.0);
             price.setLayoutY(325.0);
-            price.setStyle("-fx-font-weight: bold;");
             price.setText("PRIX : " + (float) article.getPrix() + " DT");
-            Font priceFont = new Font(20.0);
-            price.setFont(priceFont);
-
+            price.setFont(Font.font("priceFont", FontWeight.BOLD, 20));
+            
             ImageView groupIcon = new ImageView();
             groupIcon.setFitHeight(47.0);
             groupIcon.setFitWidth(43.0);
-            groupIcon.setLayoutX(5.0);
+            groupIcon.setLayoutX(7.0);
+            groupIcon.setLayoutY(7.0);
             groupIcon.setPickOnBounds(true);
             groupIcon.setPreserveRatio(true);
 
@@ -141,8 +141,9 @@ public class GuiArticlesController implements Initializable {
             groupIcon.setImage(groupIconSource);
 
             Label username = new Label();
-            username.setLayoutX(50.0);
-            username.setText(artiste.getNom() + " " + artiste.getPrenom());
+            username.setLayoutX(57.0);
+            username.setLayoutY(8.0);
+            username.setText(connectedUser.getNom() + " " + connectedUser.getPrenom());
             Font usernameFont = new Font(20.0);
             username.setFont(usernameFont);
 
@@ -170,7 +171,7 @@ public class GuiArticlesController implements Initializable {
 
                 ServiceBasket sb = new ServiceBasket();
 
-                if (sb.ajouter(12, article.getRef()) == false) {
+                if (sb.ajouter(connectedUser.getId(), article.getRef()) == false) {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Article exist");
                     alert.setHeaderText("Cette article existe déja dans le panier");
@@ -208,6 +209,7 @@ public class GuiArticlesController implements Initializable {
         }
         // Set margin between labels
         vbox1.setSpacing(20);
+        vbox1.setStyle("-fx-padding: 4px 0;");
 
     }
 

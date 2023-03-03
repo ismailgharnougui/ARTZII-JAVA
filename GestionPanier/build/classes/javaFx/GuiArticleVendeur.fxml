@@ -14,19 +14,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="970.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFx.GuiArticleVendeurController">
+<AnchorPane id="AnchorPane" fx:id="bord" prefHeight="600.0" prefWidth="970.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFx.GuiArticleVendeurController">
     <stylesheets>
         <URL value="@guiarticlevendeur.css" />
     </stylesheets>
    <children>
-      <Pane layoutX="557.0" layoutY="9.0" prefHeight="94.0" prefWidth="412.0" style="-fx-background-radius: 20 20 0 0;" styleClass="linear-grad" stylesheets="@GuiPanier.css">
+      <Pane layoutX="612.0" layoutY="9.0" prefHeight="94.0" prefWidth="347.0" style="-fx-background-radius: 20 20 0 0;" styleClass="linear-grad" stylesheets="@GuiPanier.css">
          <children>
-            <ImageView fitHeight="76.0" fitWidth="58.0" layoutX="334.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="52.0" fitWidth="49.0" layoutX="284.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/ic_usr.png" />
                </image>
             </ImageView>
-            <Label fx:id="nomPrenom3" layoutX="158.0" layoutY="22.0" prefHeight="27.0" prefWidth="172.0" text="Ismael Gharnougi" textFill="WHITE">
+            <Label fx:id="nomPrenom3" layoutX="112.0" layoutY="22.0" prefHeight="27.0" prefWidth="172.0" text="Ismael Gharnougi" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -72,6 +72,18 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
+            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="74.0" styleClass="button3" stylesheets="@GuiPanier.css" text="Réclamer" textFill="#767676">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/flag.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
             
          </children>
       </VBox>
@@ -80,14 +92,14 @@
             <Image url="@../resources/logo.png" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="74.0" layoutY="78.0" prefHeight="544.0" prefWidth="894.0" style="-fx-background-color: white; -fx-background-radius: 10;" stylesheets="@../../../../../Desktop/src/gestionproduits/GuiPanier.css">
+      <AnchorPane layoutX="74.0" layoutY="78.0" prefHeight="544.0" prefWidth="885.0" style="-fx-background-color: white; -fx-background-radius: 10;" stylesheets="@../../../../../Desktop/src/gestionproduits/GuiPanier.css">
          <children>
             <ScrollPane layoutX="16.0" layoutY="56.0" prefHeight="488.0" prefWidth="867.0" style="-fx-background-color: #fff9f5;">
                <content>
                   <VBox fx:id="vbox1" alignment="CENTER" prefHeight="514.0" prefWidth="867.0" style="-fx-background-color: white;" />
                </content>
             </ScrollPane>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="-1.0" prefHeight="43.0" prefWidth="196.0" text="Les articles de">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="230.0" layoutY="7.0" prefHeight="43.0" prefWidth="196.0" text="Les articles de">
                <font>
                   <Font name="System Bold" size="29.0" />
                </font>
@@ -102,11 +114,23 @@
                   </Lighting>
                </effect>
             </Label>
-            <Label layoutX="400.0" layoutY="-1.0" prefHeight="43.0" prefWidth="420.0" text="Ismael Gharnougi" textFill="#c1b263">
+            <Label layoutX="430.0" layoutY="7.0" prefHeight="43.0" prefWidth="420.0" text="Ismael Gharnougi" textFill="#c1b263">
                <font>
                   <Font name="System Bold" size="29.0" />
                </font>
             </Label>
+            <Button fx:id="btnAjout" layoutX="763.0" layoutY="15.0" mnemonicParsing="false" onAction="#goToAjoutArticle" prefHeight="30.0" prefWidth="107.0" style="-fx-background-color: #c1b263; -fx-background-radius: 7;" text="Ajouter" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/addBtn.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>

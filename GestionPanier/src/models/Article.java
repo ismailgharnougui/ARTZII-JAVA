@@ -19,8 +19,15 @@ public class Article {
 
     public Article() {
     }
-    
-    public Article(String nom, String dimension, float prix) {
+            
+    public Article(int idArtiste, String nom, String dimension, float prix, String imageUrl) {
+        this.idArtiste = idArtiste;
+        this.nom = nom;
+        this.dimension = dimension;
+        this.prix = prix;
+        this.imageUrl = imageUrl;
+    }
+     public Article(String nom, String dimension, float prix) {
         this.nom=nom;
         this.dimension = dimension;
         this.prix = prix;

@@ -3,39 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/GuiPanierController.java</file>
             <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/gestionpanier/GestionPanier.java</file>
-            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/guihome.css</file>
-            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/guiarticlevendeur.css</file>
-            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/guibackofficecommand.css</file>
-            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/models/User.java</file>
-            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/GuiPaiementController.java</file>
-            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/services/InterfaceServiceUser.java</file>
-            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/GuiHome.fxml</file>
-            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/guicommand.css</file>
-            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/models/InvoiceGenerator.java</file>
-            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/GuiArticleVendeurController.java</file>
-            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/services/ServiceUser.java</file>
-            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/GuiArticlesController.java</file>
-            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/GuiBasket.java</file>
-            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/GuiCommandController.java</file>
-            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/guipaiement.css</file>
-            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/PaymentApi.java</file>
-            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/GuiPaiement.fxml</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/GuiPanierController.java</file>
             <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/GuiSignupController.java</file>
-            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/models/Chart.java</file>
-            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/GuiSignup.fxml</file>
-            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/guiarticles.css</file>
-            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/GuiLoginController.java</file>
-            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/GuiArticleVendeur.fxml</file>
-            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/GuiPanier.css</file>
-            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/GuiLogin.fxml</file>
-            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/services/ServiceArticle.java</file>
-            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/guisignup.css</file>
-            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/GuiBackofficeCommandController.java</file>
-            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/guilogin.css</file>
-            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/GuiArticles.fxml</file>
-            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/GuiHomeController.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/GuiAjoutArticleController.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/ArtziiApplication.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/GuiArticleVendeurController.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/GuiArticlesController.java</file>
         </group>
     </open-files>
 </project-private>

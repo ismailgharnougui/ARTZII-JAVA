@@ -6,6 +6,7 @@
 package javaFx;
 
 import models.InvoiceGenerator;
+import javaFx.GuiLoginController;
 
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.FontFactory;
@@ -51,6 +52,7 @@ import services.ServiceUser;
 import services.ServiceCommand;
 
 public class GuiCommandController implements Initializable {
+    User connectedUser = GuiLoginController.user;
     @FXML
     private RadioButton livArtziiNow;
     @FXML
@@ -85,7 +87,6 @@ public class GuiCommandController implements Initializable {
     ServiceBasket sb = new ServiceBasket();
     Basket panier;
     ServiceUser sc = new ServiceUser();
-    User client;
     ServiceCommand scom = new ServiceCommand();
     Command command;
 
@@ -104,10 +105,9 @@ public class GuiCommandController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        client = sc.get(4);
 
         pos = 1;
-        List<Article> articles = sb.get(4).getArticles();
+        List<Article> articles = sb.get(connectedUser.getId()).getArticles();
         System.out.println(articles);
         vbox1.setFillWidth(true);
 
@@ -166,17 +166,17 @@ public class GuiCommandController implements Initializable {
         }
         vbox1.setSpacing(0.2);
 
-        sousTotaleContent.setValue(sb.get(4).getTotalCostHT() + "");
+        sousTotaleContent.setValue(sb.get(connectedUser.getId()).getTotalCostHT() + "");
         sousTotale.textProperty().bindBidirectional(sousTotaleContent);
 
-        totalCommandContent.setValue((sb.get(4).getTotalCostHT() + 7) + "");
+        totalCommandContent.setValue((sb.get(connectedUser.getId()).getTotalCostHT() + 7) + "");
         totalCommand.textProperty().bindBidirectional(totalCommandContent);
 
-        nomPrenomContent.setValue(client.getNom() + " " + client.getPrenom());
+        nomPrenomContent.setValue(connectedUser.getNom() + " " + connectedUser.getPrenom());
         nomPrenom.textProperty().bindBidirectional(nomPrenomContent);
         nomPrenom2.textProperty().bindBidirectional(nomPrenomContent);
 
-        addressContent.setValue(client.getAddress());
+        addressContent.setValue(connectedUser.getAddress());
         address1.textProperty().bindBidirectional(addressContent);
     }
 
@@ -211,10 +211,9 @@ public class GuiCommandController implements Initializable {
 
             if (result2.get() == ButtonType.OK) {
                 Command command = new Command();
-                client = sc.get(4);
                 // insertion dans la commande
-                command.setIdClient(4);
-                command.setTotalCost((float) sb.get(4).getTotalCostHT() + 7);
+                command.setIdClient(connectedUser.getId());
+                command.setTotalCost((float) sb.get(connectedUser.getId()).getTotalCostHT() + 7);
                 // checking livraison method
                 if (livArtziiNow.isSelected()) {
                     command.setLivMethod("Artzii now");
@@ -241,7 +240,9 @@ public class GuiCommandController implements Initializable {
                 return;
             }
             
-            panier = sb.get(client.getId());
+            panier = sb.get(connectedUser.getId());
+            System.out.println("User connecté"+connectedUser);
+            System.out.println("le panier"+panier);
             // String pdfFilename = "Facture.pdf" ;
             try {
 
@@ -281,12 +282,12 @@ public class GuiCommandController implements Initializable {
                 fs.addFont(font);
                 Phrase bill = fs.process("Facture à"); // customer information
                 com.itextpdf.text.Paragraph name = new com.itextpdf.text.Paragraph(
-                        client.getPrenom() + " " + client.getNom()); // cl.getPrenom()+ " " +cl.getNom()
+                        connectedUser.getPrenom() + " " + connectedUser.getNom()); // cl.getPrenom()+ " " +cl.getNom()
                 name.setIndentationLeft(20);
                 com.itextpdf.text.Paragraph contact = new com.itextpdf.text.Paragraph("");
                 contact.setIndentationLeft(20);
                 com.itextpdf.text.Paragraph address = new com.itextpdf.text.Paragraph(
-                        "Adresse: " + client.getAddress()); // +cl.getAddress()
+                        "Adresse: " + connectedUser.getAddress()); // +cl.getAddress()
                 address.setIndentationLeft(20);
 
                 PdfPTable billTable = new PdfPTable(6); // one page contains 15 records

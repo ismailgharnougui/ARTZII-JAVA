@@ -5,13 +5,13 @@
  */
 package javaFx;
 
+import javaFx.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import services.*;
 import models.*;
-
 import java.net.URL;
 import java.util.List;
 import java.util.Optional;
@@ -25,6 +25,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.*;
@@ -39,7 +40,7 @@ import javafx.scene.text.Font;
  * @author medmo
  */
 public class GuiPanierController implements Initializable {
-
+  User connectedUser = GuiLoginController.user;
     @FXML
     private Label totalCout;
     @FXML
@@ -55,11 +56,11 @@ public class GuiPanierController implements Initializable {
     @FXML
     private AnchorPane bord;
 
-    private StringProperty totalCoutContent = new SimpleStringProperty();
+    private final StringProperty totalCoutContent = new SimpleStringProperty();
 
-    private StringProperty nomPrenomContent = new SimpleStringProperty();
+    private final StringProperty nomPrenomContent = new SimpleStringProperty();
 
-    private StringProperty addressContent = new SimpleStringProperty();
+    private final StringProperty addressContent = new SimpleStringProperty();
 
     ServiceBasket sb = new ServiceBasket();
     Basket panier;
@@ -69,6 +70,10 @@ public class GuiPanierController implements Initializable {
     private Label nomPrenom;
     @FXML
     private ImageView supprimer;
+    @FXML
+    private Button btnNaviguer;
+    @FXML
+    private Pane panePPPPP;
 
     /**
      * Initializes the controller class.
@@ -76,7 +81,7 @@ public class GuiPanierController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        List<Article> articles = sb.get(4).getArticles();
+        List<Article> articles = sb.get(connectedUser.getId()).getArticles();
         System.out.println(articles);
 
         for (Article article : articles) {
@@ -188,7 +193,7 @@ public class GuiPanierController implements Initializable {
 
                 if (result.get() == ButtonType.OK) {
                     Pane parent = (Pane) pane.getParent();
-                    sb.supprimerArticle(4, article.getRef());
+                    sb.supprimerArticle(connectedUser.getId(), article.getRef());
                     panier.getArticles().remove(article);
                     parent.getChildren().remove(pane);
                 }
@@ -203,20 +208,17 @@ public class GuiPanierController implements Initializable {
         // Set margin between labels
         vbox1.setSpacing(8);
 
-        client = sc.get(4);
-        System.out.println(client);
-
         // A remplacer avec la session
-        panier = sb.get(client.getId());
+        panier = sb.get(connectedUser.getId());
 
         totalCoutContent.setValue(panier.getTotalCostHT() + " DT");
         totalCout.textProperty().bindBidirectional(totalCoutContent);
 
-        nomPrenomContent.setValue(client.getPrenom() + " " + client.getNom());
+        nomPrenomContent.setValue(connectedUser.getPrenom() + " " + connectedUser.getNom());
         nomPrenom2.textProperty().bindBidirectional(nomPrenomContent);
         nomPrenom3.textProperty().bindBidirectional(nomPrenomContent);
 
-        addressContent.setValue(client.getAddress());
+        addressContent.setValue(connectedUser.getAddress());
         address.textProperty().bindBidirectional(addressContent);
 
     }
@@ -232,6 +234,18 @@ public class GuiPanierController implements Initializable {
             System.out.println(ex);
         }
 
+    }
+
+    @FXML
+    private void goToNavigate(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("GuiArticles.fxml"));
+        try {
+            Parent root = loader.load();
+            bord.getChildren().setAll(root);
+
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
     }
 
 }

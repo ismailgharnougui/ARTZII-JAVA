@@ -99,6 +99,14 @@ public class GuiLoginController implements Initializable {
         }
         }
           if("Admin".equals(user.getRole())){
+               FXMLLoader loader = new FXMLLoader(getClass().getResource("GuiAdmin.fxml"));
+        try {
+            Parent root = loader.load();
+            bord.getChildren().setAll(root);
+
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
             
         }
            

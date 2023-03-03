@@ -14,16 +14,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import models.Command;
-
 
 public class ServiceArticle implements InterfaceServiceArticle{
 Statement ste =null;
 
 Connection conn = MyConnection.getInstance().getConnection();
  
-   
-
     @Override
     public Article get(int id) {
           try {
@@ -84,6 +80,38 @@ Connection conn = MyConnection.getInstance().getConnection();
          System.out.println(ex);   
     }
    return articles;    
+    }
+
+    @Override
+    public void supprimerArticle(int idArtiste, int idArticle) {
+        try {
+            String req = "DELETE FROM `article` WHERE idArtiste = ? and refA = ?";
+            PreparedStatement st = conn.prepareStatement(req);
+            st.setInt(1, idArtiste);
+            st.setInt(2, idArticle);
+            st.executeUpdate();
+            System.out.println("Article deleted !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+    }
+
+    @Override
+    public void ajouter(Article article) {
+         try {
+            String req = "INSERT INTO `article` (idArtiste , nomA , dimensionA , prixA , image_url) VALUES (?,?,?,?,?)";
+            PreparedStatement ps = conn.prepareStatement(req);
+            ps.setInt(1, article.getIdArtiste());
+            ps.setString(2, article.getNom());
+            ps.setString(3, article.getDimension());
+            ps.setDouble(4, article.getPrix());
+            ps.setString(5, article.getImageUrl());
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
     }
     
     

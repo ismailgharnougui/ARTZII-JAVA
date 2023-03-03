@@ -6,6 +6,7 @@
 package gestionpanier;
 
 import java.sql.SQLException;
+import models.Article;
 import models.Command;
 import services.ServiceArticle;
 import services.ServiceBasket;
@@ -30,6 +31,8 @@ public class GestionPanier {
         //System.out.println( sa.get(2));
         //sa.afficherArticles();
         //sa.getArticles(12);
+        //sa.ajouter(new Article(12,"Article","50*60",45,"czdzdzdzd"));
+        //sa.supprimerArticle(12, 8);
         
         ServiceUser scl = new ServiceUser();
         //System.out.println(scl.get(4));

@@ -21,7 +21,7 @@ public class ArtziiApplication extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("GuiHome.fxml")); //GuiBackofficeCommand
+            Parent root = FXMLLoader.load(getClass().getResource("GuiLogin.fxml")); //GuiBackofficeCommand
                     
                     Scene scene = new Scene(root, 968, 600);
                     
@@ -34,7 +34,7 @@ public class ArtziiApplication extends Application {
     }
 
     /**
-     * @param args the command line arguments
+     * @param args the command line arguments²
      */
     public static void main(String[] args) {
         launch(args);

@@ -5,27 +5,36 @@
  */
 package javaFx;
 
+import javaFx.GuiLoginController;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Cursor;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import models.Article;
 import models.User;
 import services.ServiceArticle;
@@ -49,7 +58,9 @@ public class GuiArticleVendeurController implements Initializable {
     @FXML
     private VBox vbox1;
     @FXML
-    private Pane articlePane;
+    private Button btnAjout;
+    @FXML
+    private AnchorPane bord;
 
     /**
      * Initializes the controller class.
@@ -57,9 +68,9 @@ public class GuiArticleVendeurController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        artiste = sc.get(12);
+        artiste = GuiLoginController.user;
 
-        List<Article> articles = sa.getArticles(12); // to edit with current connected user
+        List<Article> articles = sa.getArticles(artiste.getId()); // to edit with current connected user
         System.out.println(articles);
         //vbox1.setFillWidth(true);
 
@@ -87,7 +98,7 @@ public class GuiArticleVendeurController implements Initializable {
             image.setPickOnBounds(true);
             image.setPreserveRatio(true);
 
-            Image imageSource = null;// = new Image(getClass().getResource(article.getImage_url()).toExternalForm());
+            Image imageSource = null; // new Image(getClass().getResource(article.getImage_url()).toExternalForm());
 
             File uploadedFile = new File(article.getImageUrl());
 
@@ -106,33 +117,32 @@ public class GuiArticleVendeurController implements Initializable {
             image.setImage(imageSource);
 
             Label title = new Label();
-            title.setLayoutX(180.0);
-            title.setLayoutY(58.0);
+            title.setLayoutX(150.0);
+            title.setLayoutY(47.0);
             title.setText(article.getNom());
-            Font titleFont = new Font(20.0);
-            title.setFont(titleFont);
-            title.setStyle("-fx-font-weight: bold;");
+            title.setFont(Font.font("titleFont", FontWeight.BOLD, 23));
+            title.setAlignment(Pos.CENTER);
 
             Label price = new Label();
             price.setLayoutX(280.0);
             price.setLayoutY(325.0);
-            price.setStyle("-fx-font-weight: bold;");
             price.setText("PRIX : " + (float) article.getPrix() + " DT");
-            Font priceFont = new Font(20.0);
-            price.setFont(priceFont);
+            price.setFont(Font.font("priceFont", FontWeight.BOLD, 20));
 
             ImageView groupIcon = new ImageView();
             groupIcon.setFitHeight(47.0);
             groupIcon.setFitWidth(43.0);
-            groupIcon.setLayoutX(5.0);
+            groupIcon.setLayoutX(7.0);
+            groupIcon.setLayoutY(7.0);
             groupIcon.setPickOnBounds(true);
             groupIcon.setPreserveRatio(true);
-
+            
             Image groupIconSource = new Image(getClass().getResource("../resources/ic_usr.png").toExternalForm());
             groupIcon.setImage(groupIconSource);
 
             Label username = new Label();
-            username.setLayoutX(50.0);
+            username.setLayoutX(57.0);
+            username.setLayoutY(8.0);
             username.setText(artiste.getNom() + " " + artiste.getPrenom());
             Font usernameFont = new Font(20.0);
             username.setFont(usernameFont);
@@ -167,16 +177,16 @@ public class GuiArticleVendeurController implements Initializable {
                 if (result.get() == ButtonType.OK) {
                     Pane parent = (Pane) articlePane1.getParent();
                     System.out.println("here to delete");
-                    // sa.deleteArticle(article.);
+                    sa.supprimerArticle(artiste.getId(), article.getRef());
 
-                    // parent.getChildren().remove(articlePane);
+                    parent.getChildren().remove(articlePane1);
                 }
             });
 
             ImageView modifyImageView = new ImageView();
             modifyImageView.setFitHeight(26);
             modifyImageView.setFitWidth(35);
-            modifyImageView.setLayoutX(340);
+            modifyImageView.setLayoutX(360);
             modifyImageView.setLayoutY(12);
             modifyImageView.setPickOnBounds(true);
             modifyImageView.setPreserveRatio(true);
@@ -221,6 +231,18 @@ public class GuiArticleVendeurController implements Initializable {
         }
          // Set margin between labels
         vbox1.setSpacing(20);
+        vbox1.setStyle("-fx-padding: 4px 0;");
 
+    }
+
+    @FXML
+    private void goToAjoutArticle(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("GuiAjoutArticle.fxml"));
+        try {
+            Parent root = loader.load();
+            bord.getChildren().setAll(root);
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
     }
 }
