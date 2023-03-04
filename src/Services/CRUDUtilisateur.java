@@ -23,7 +23,9 @@ import javafx.collections.ObservableList;
 public class CRUDUtilisateur implements IUtilisateur{
 Statement ste;
 Connection conn = MyConnection.getInstance().getConnection();
- ObservableList<Utilisateur>obList = FXCollections.observableArrayList();       
+ ObservableList<Utilisateur>obList = FXCollections.observableArrayList();
+ ObservableList<Utilisateur>obListCat = FXCollections.observableArrayList();
+
 
     public void ajouterUtilisateur(Utilisateur U) {
     try {
@@ -59,28 +61,31 @@ Connection conn = MyConnection.getInstance().getConnection();
     }
 
     public ObservableList<Utilisateur> afficherUtilisateur() {
-       List<Utilisateur> list = new ArrayList<>();
+       String sql = "SELECT * FROM utilisateur";
+        List<Utilisateur> listeUtilisateur = new ArrayList<>();
+
         try {
-            String req = "Select * from utilisateur";
-            Statement st = conn.createStatement();
-           
-            ResultSet RS= st.executeQuery(req);
-            while(RS.next()){
-             Utilisateur U  = new Utilisateur();
-             U.setidU(RS.getInt(1));
-             U.setnomU(RS.getString(2));
-             U.setprenomU(RS.getString(3));
-             U.setemailU(RS.getString(4));
-             U.setmdpU(RS.getString(5));
-             U.setroleU(RS.getString(6));
-             U.setadresse(RS.getString(7));
-             obList.add(U);
+            Statement statement = conn.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+            while (result.next()) {
+                int idU = result.getInt(1);
+                String nomU = result.getString(2);
+                String prenomU = result.getString(3);
+                String emailU = result.getString(4);
+                String mdpU = result.getString(5);
+                String roleU = result.getString(6);
+                String adresse = result.getString(7);
+
+                Utilisateur U = new Utilisateur(idU, nomU, prenomU, emailU, mdpU, roleU, adresse);
+                obList.add(U);
             }
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println(ex);
         }
-
         return obList;
+        
+        
+        
     }
 
     public void ajouterUtilisateur2(Utilisateur U) {
@@ -99,7 +104,6 @@ Connection conn = MyConnection.getInstance().getConnection();
         }
     }
 
-   
   
 }
  

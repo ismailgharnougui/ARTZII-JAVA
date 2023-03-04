@@ -7,14 +7,20 @@ package gui2;
 
 import Entites.Utilisateur;
 import Services.CRUDUtilisateur;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -37,6 +43,8 @@ public class Ajouter_utilisateurController implements Initializable {
     private TextField fx_role;
     @FXML
     private TextField fx_adresse;
+    @FXML
+    private Button btnAfficher;
 
     /**
      * Initializes the controller class.
@@ -105,6 +113,16 @@ public class Ajouter_utilisateurController implements Initializable {
         alert.setContentText("Utilisateur crée avec succés!");
         alert.show();
     }
+    }
+    
+    @FXML
+    private void gotoAfficher(ActionEvent event) throws IOException {
+        
+        Parent page1 = FXMLLoader.load(getClass().getResource("/gui2/afficher_utilisateur.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
     }
 
     }

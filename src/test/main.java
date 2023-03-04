@@ -28,7 +28,7 @@ public class main {
         System.out.println(crud.afficherUtilisateur());
        // Utilisateur U = new Utilisateur(26,"ma","ftou","ma@email.com","99","client");
        crud.modifierUtilisateur(U);
-        crud.supprimerUtilisateur(23);
+       crud.supprimerUtilisateur(23);
      
      
         

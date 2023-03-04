@@ -5,8 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="gui2.Ajouter_utilisateurController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui2.Ajouter_utilisateurController">
    <children>
       <AnchorPane id="AnchorPane" layoutX="6.0" layoutY="5.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff3e0;">
          <children>
@@ -18,11 +17,12 @@
             <TextField fx:id="fx_prenom" layoutX="270.0" layoutY="117.0" />
             <TextField fx:id="fx_email" layoutX="270.0" layoutY="150.0" />
             <TextField fx:id="fx_mdp" layoutX="270.0" layoutY="187.0" />
-            <Button fx:id="ajouter" layoutX="501.0" layoutY="172.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="26.0" prefWidth="64.0" style="-fx-background-color: #ffab40;" text="ajouter" />
+            <Button fx:id="ajouter" layoutX="313.0" layoutY="341.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="26.0" prefWidth="64.0" style="-fx-background-color: #ffab40;" text="ajouter" />
             <Label layoutX="197.0" layoutY="232.0" text="Role" />
             <TextField fx:id="fx_role" layoutX="270.0" layoutY="230.0" />
             <Label layoutX="189.0" layoutY="273.0" text="Adresse" />
             <TextField fx:id="fx_adresse" layoutX="270.0" layoutY="269.0" />
+            <Button fx:id="btnAfficher" layoutX="244.0" layoutY="341.0" mnemonicParsing="false" onAction="#gotoAfficher" prefHeight="26.0" prefWidth="64.0" style="-fx-background-color: #CE201C;" text="Retour" textFill="WHITE" />
          </children>
       </AnchorPane>
    </children>

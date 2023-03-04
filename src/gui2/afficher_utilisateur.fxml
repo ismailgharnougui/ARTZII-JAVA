@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="gui2.Afficher_utilisateurController">
+<AnchorPane id="AnchorPane" onDragDetected="#Afficher" prefHeight="490.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui2.Afficher_utilisateurController">
    <children>
-      <ListView fx:id="afficherutilisateur" layoutX="13.0" layoutY="14.0" prefHeight="363.0" prefWidth="760.0" />
-      <Button fx:id="supprimer" layoutX="112.0" layoutY="405.0" mnemonicParsing="false" onAction="#supprimer_utilisateur" style="-fx-background-color: #ffab40;" text="supprimer" />
-      <Button fx:id="mod" layoutX="192.0" layoutY="405.0" mnemonicParsing="false" onAction="#mod" style="-fx-background-color: #ffab40;" text="modifier" />
+      <TableView fx:id="tableview" layoutX="10.0" layoutY="60.0" prefHeight="451.0" prefWidth="938.0">
+         <columns>
+            <TableColumn fx:id="ft_nomu" prefWidth="75.0" text="nomU" />
+            <TableColumn fx:id="ft_prenomu" prefWidth="75.0" text="prenomU" />
+            <TableColumn fx:id="ft_emailu" prefWidth="115.20002746582031" text="emailU" />
+            <TableColumn fx:id="ft_mdpu" prefWidth="109.5999755859375" text="mdpU" />
+            <TableColumn fx:id="ft_roleu" prefWidth="116.7999267578125" text="roleU" />
+            <TableColumn fx:id="ft_adresse" prefWidth="116.7999267578125" text="adresse" />
+         </columns>
+      </TableView>
+      <TextField fx:id="search_tv" layoutX="149.0" layoutY="24.0" onAction="#Afficher" onKeyPressed="#searchquery" prefHeight="26.0" prefWidth="659.0" promptText="Chercher un utilisateur" />
+      <Button fx:id="btnAjouter" layoutX="822.0" layoutY="20.0" mnemonicParsing="false" onAction="#gotoAjouter" prefHeight="34.0" prefWidth="112.0" style="-fx-background-color: #CE201C;" text="Ajouter" textFill="WHITE" />
    </children>
 </AnchorPane>

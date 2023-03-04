@@ -7,7 +7,7 @@ package IServices;
 
 import Entites.Utilisateur;
 import java.util.List;
-
+import javafx.collections.ObservableList;
 /**
  *
  * @author belkn
@@ -17,7 +17,7 @@ public interface IUtilisateur {
     public void ajouterUtilisateur2 (Utilisateur U);
     public void modifierUtilisateur(Utilisateur U);
     public void supprimerUtilisateur(int id);
-    public List<Utilisateur > afficherUtilisateur ();
+    public List<Utilisateur> afficherUtilisateur();
     
     
 }
