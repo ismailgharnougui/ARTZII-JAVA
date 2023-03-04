@@ -14,10 +14,13 @@ import java.util.List;
  */
 public interface InterfaceServiceArticle {
     
+    public List<Article> afficherArticles();
     public void ajouter(Article article);
+    public void modifierArticle(Article article);
+    public void supprimerArticle(int idArtiste, int idArticle);
     public Article get(int id);
     public List<Article> getArticles(int id);
-    public List<Article> afficherArticles();
-    public void supprimerArticle(int idArtiste, int idArticle);
+    
+    
     
 }

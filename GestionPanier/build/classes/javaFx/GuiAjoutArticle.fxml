@@ -14,8 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="javaFx.GuiAjoutArticleController">
+<AnchorPane id="AnchorPane" fx:id="bord" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFx.GuiAjoutArticleController">
    <children>
       <Pane layoutX="552.0" layoutY="19.0" prefHeight="94.0" prefWidth="412.0" style="-fx-background-radius: 20 20 0 0;" styleClass="linear-grad" stylesheets="@GuiPanier.css">
          <children>
@@ -130,7 +129,7 @@
             </Button>
             <TextField fx:id="articleName" layoutX="96.0" layoutY="149.0" prefHeight="45.0" prefWidth="229.0" promptText="Nom article" styleClass="text-field">
                <font>
-                  <Font size="14.0" />
+                  <Font size="18.0" />
                </font>
             </TextField>
             <Label layoutX="96.0" layoutY="118.0" text="Nom article">
@@ -140,7 +139,7 @@
             </Label>
             <TextField fx:id="prixTextField" layoutX="96.0" layoutY="337.0" prefHeight="45.0" prefWidth="229.0" promptText="Prix" styleClass="text-field">
                <font>
-                  <Font size="14.0" />
+                  <Font size="18.0" />
                </font>
             </TextField>
             <Label layoutX="97.0" layoutY="308.0" text="Prix">
@@ -155,12 +154,22 @@
             </Label>
             <TextField fx:id="dimensionTextField" layoutX="96.0" layoutY="245.0" prefHeight="45.0" prefWidth="229.0" promptText="Dimension" styleClass="text-field">
                <font>
-                  <Font size="14.0" />
+                  <Font size="18.0" />
                </font>
             </TextField>
-            <Label fx:id="nomLabel" layoutX="336.0" layoutY="163.0" prefHeight="0.0" prefWidth="230.0" style="-fx-background-color: black;" textFill="WHITE" />
-            <Label fx:id="dimensionLabel" layoutX="337.0" layoutY="259.0" prefHeight="0.0" prefWidth="230.0" style="-fx-background-color: black;" textFill="WHITE" />
-            <Label fx:id="prixLabel" layoutX="336.0" layoutY="351.0" prefHeight="0.0" prefWidth="230.0" style="-fx-background-color: black;" textFill="WHITE" />
+            <Label fx:id="nomLabel" layoutX="97.0" layoutY="195.0" prefHeight="0.0" prefWidth="230.0" textFill="RED">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+            <Label fx:id="dimensionLabel" layoutX="95.0" layoutY="291.0" prefHeight="0.0" prefWidth="230.0" textFill="RED">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+            <Label fx:id="prixLabel" layoutX="96.0" layoutY="383.0" prefHeight="0.0" prefWidth="230.0" textFill="RED">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+            <Label fx:id="imageLabel" layoutX="640.0" layoutY="434.0" prefHeight="18.0" prefWidth="245.0" />
          </children>
       </AnchorPane>
    </children>

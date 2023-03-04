@@ -32,6 +32,7 @@ public class Article {
         this.dimension = dimension;
         this.prix = prix;
     }
+     
     
      public Article(int ref,int idArtiste,String nom,String dimension, float prix,String imageUrl) {
          this.ref = ref;

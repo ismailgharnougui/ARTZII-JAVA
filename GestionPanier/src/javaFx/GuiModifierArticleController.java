@@ -5,8 +5,7 @@
  */
 package javaFx;
 
-import services.*;
-import javaFx.GuiLoginController;
+import javaFx.GuiArticleVendeurController;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -14,6 +13,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,24 +24,28 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
-import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import models.Article;
 import models.User;
+import services.ServiceArticle;
 
 /**
  * FXML Controller class
  *
  * @author medmo
  */
-public class GuiAjoutArticleController implements Initializable {
-    private String imageUrl = "";
+public class GuiModifierArticleController implements Initializable {
+     
     User connectedUser = GuiLoginController.user;
+    Article article = GuiArticleVendeurController.x;
+    private String imageUrl =article.getImageUrl() ;
 
+    @FXML
+    private AnchorPane bord;
     @FXML
     private Label nomPrenom3;
     @FXML
@@ -55,6 +59,8 @@ public class GuiAjoutArticleController implements Initializable {
     @FXML
     private TextField articleName;
     @FXML
+    private TextField prixTextField;
+    @FXML
     private TextField dimensionTextField;
     @FXML
     private Label nomLabel;
@@ -63,56 +69,39 @@ public class GuiAjoutArticleController implements Initializable {
     @FXML
     private Label prixLabel;
     @FXML
-    private Button btnAjout;
-    @FXML
-    private TextField prixTextField;
-    @FXML
     private Label imageLabel;
-    @FXML
-    private AnchorPane bord;
-
+    
     /**
      * Initializes the controller class.
+     * @param url
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-    }
-
-    @FXML
-    public void onBrowseButtonClicked() throws IOException {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Select a file");
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"),
-                new FileChooser.ExtensionFilter("All Files", "*.*"));
-        File selectedFile = fileChooser.showOpenDialog(browseButton.getScene().getWindow());
-        if (selectedFile != null) {
-
-            // selectedFileField.setText(selectedFile.getAbsolutePath());
-            // Read the contents of the file into a byte array
-
-            File uploadedFile = new File(selectedFile.getAbsolutePath());
-            String filePath = selectedFile.getAbsolutePath();
-            try {
+        // TODO
+        articleName.setText(article.getNom());
+        dimensionTextField.setText(article.getDimension());
+        prixTextField.setText(article.getPrix()+"");
+        
+          Image imageSource =null;
+                
+                File uploadedFile = new File(article.getImageUrl());
+                
+                String filePath = article.getImageUrl();
+                try {
                 // create a FileInputStream from the File object
                 FileInputStream inputStream = new FileInputStream(uploadedFile);
                 // create an Image object from the FileInputStream
-                Image image = new Image(inputStream);// file.toURI().toString()
-
-                articleImage.setImage(image);
-
-            } catch (FileNotFoundException e) {
-            }
-            // set image path
-            imageUrl = filePath;
-        }
-    }
+                imageSource = new Image(inputStream);//file.toURI().toString()
+                articleImage.setImage(imageSource);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+    }    
 
     @FXML
-    public void ajouterArticle(ActionEvent event) {
-        System.out.println("button clicked");
+    private void modifierArticle(ActionEvent event) {
         
+        System.out.println("button clicked");
         ServiceArticle sa = new ServiceArticle();
 
         // Récupérer les valeurs des champs de texte
@@ -125,8 +114,7 @@ public class GuiAjoutArticleController implements Initializable {
         String dimensionError = "";
         String prixError = "";
 
-        // Vérifier si chaque champ est vide et afficher une erreur correspondante si
-        // c'est le cas
+        // Vérifier si chaque champ est vide et afficher une erreur correspondante si c'est le cas
         if (nom.isEmpty()) {
             nomError = "Le nom est requis";
         }
@@ -139,13 +127,13 @@ public class GuiAjoutArticleController implements Initializable {
         
         // Si aucune erreur n'a été détectée, créer un nouvele nouvelle article et l'ajouter à la base de données
         if (nomError.isEmpty() && dimensionError.isEmpty() && prixError.isEmpty() ) {
-            Article a = new Article(connectedUser.getId(), nom, dimension, Float.parseFloat(prix), imageUrl);
-            sa.ajouter(a);
+            Article a = new Article(article.getRef(),connectedUser.getId(), nom, dimension,Float.parseFloat(prix) , imageUrl);
             System.out.println(a);
+            sa.modifierArticle(a);
 
            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Article ajouté");
-            alert.setHeaderText("L'article que vous a créez a été ajouté par succés");
+            alert.setTitle("Article modifié");
+            alert.setHeaderText("L'article a été modifié");
             Optional<ButtonType> result = alert.showAndWait();
 
             if (result.get() == ButtonType.OK) {
@@ -167,9 +155,35 @@ public class GuiAjoutArticleController implements Initializable {
             dimensionLabel.setText(dimensionError);
             prixLabel.setText(prixError);
         }
+        
     }
 
-    @FXML
-    private void goToPanier(ActionEvent event) {
+     @FXML
+    public void onBrowseButtonClicked() throws IOException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select a file");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"),
+                new FileChooser.ExtensionFilter("All Files", "*.*"));
+        File selectedFile = fileChooser.showOpenDialog(browseButton.getScene().getWindow());
+        if (selectedFile != null) {
+            
+            File uploadedFile = new File(selectedFile.getAbsolutePath());
+            String filePath = selectedFile.getAbsolutePath();
+            try {
+                // create a FileInputStream from the File object
+                FileInputStream inputStream = new FileInputStream(uploadedFile);
+                // create an Image object from the FileInputStream
+                Image image = new Image(inputStream);// file.toURI().toString()
+
+                articleImage.setImage(image);
+
+            } catch (FileNotFoundException e) {
+            }
+            // set image path
+            imageUrl = filePath;
+        }
     }
+
+    
 }

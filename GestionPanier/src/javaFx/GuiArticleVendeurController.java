@@ -50,6 +50,7 @@ public class GuiArticleVendeurController implements Initializable {
     ServiceUser sc = new ServiceUser();
     User artiste;
     ServiceArticle sa = new ServiceArticle();
+    public static Article x=null;
 
     @FXML
     private Label nomPrenom3;
@@ -150,7 +151,7 @@ public class GuiArticleVendeurController implements Initializable {
             Label dateAdded = new Label();
             dateAdded.setLayoutX(56.0);
             dateAdded.setLayoutY(30.0);
-            dateAdded.setText("Today");
+            dateAdded.setText("Aujourd'hui");
             dateAdded.setTextFill(Color.web("#6e6c6c"));
             Font dateFont = new Font(15.0);
             dateAdded.setFont(dateFont);
@@ -195,31 +196,16 @@ public class GuiArticleVendeurController implements Initializable {
             Image modifyImage = new Image(getClass().getResourceAsStream("../resources/edit.png"));
             modifyImageView.setImage(modifyImage);
 
-            /*
-             * modifyImageView.setOnMouseClicked(event -> {
-             * x=article;
-             * try {
-             * Parent root = null;
-             * //FXMLLoader loader = new
-             * FXMLLoader(getClass().getResource("GuiModifyArticle.fxml"));
-             * 
-             * root = FXMLLoader.load(getClass().getResource("GuiModifyArticle.fxml"));
-             * 
-             * Scene scene = new Scene(root);
-             * 
-             * // get the stage from the ImageView
-             * Stage stage = (Stage) addButton.getScene().getWindow();
-             * 
-             * // set the new scene to the stage
-             * stage.setScene(scene);
-             * stage.show();
-             * } catch (IOException e) {
-             * e.printStackTrace();
-             * }
-             * 
-             * 
-             * });
-             */
+            modifyImageView.setOnMouseClicked(event -> {
+            x=article;
+             FXMLLoader loader = new FXMLLoader(getClass().getResource("GuiModifierArticle.fxml"));
+        try {
+            Parent root = loader.load();
+            bord.getChildren().setAll(root);
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+             });
 
             articlePane1.getChildren().addAll(image, title, price, groupIcon, username, dateAdded, supprimerImageView,
                     modifyImageView);

@@ -114,5 +114,25 @@ Connection conn = MyConnection.getInstance().getConnection();
 
     }
     
+     @Override
+     public void modifierArticle(Article article) {
+        try {
+            
+            String req = "UPDATE article  SET nomA = ?, dimensionA = ?, prixA = ?, image_url = ? WHERE refA = ?";
+
+            PreparedStatement ps = conn.prepareStatement(req);
+            ps.setString(1, article.getNom());
+            ps.setString(2, article.getDimension());
+            ps.setFloat(3, (float)article.getPrix());
+            ps.setString(4, article.getImageUrl());
+            ps.setInt(5, article.getRef());
+
+            ps.executeUpdate();
+            System.out.println("Article updated !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }    
+    }
+    
     
 }

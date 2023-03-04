@@ -21,6 +21,7 @@ public class GestionPanier {
 
     /**
      * @param args the command line arguments
+     * @throws java.sql.SQLException
      */
     public static void main(String[] args) throws SQLException {
         // TODO code application logic here
@@ -28,6 +29,8 @@ public class GestionPanier {
         Command c =new Command(4,"Livré");
         
         ServiceArticle sa = new ServiceArticle();
+        Article a = new Article(19,26 , "mod2", "mod2", 12, "url2");
+        //sa.modifierArticle(a);
         //System.out.println( sa.get(2));
         //sa.afficherArticles();
         //sa.getArticles(12);
@@ -51,9 +54,7 @@ public class GestionPanier {
         //sc.supprimer(3);
         //System.out.println(sc.recupererCommClient(2));      
         //sc.afficherCommands();
-        //sc.modifierCommand(c);
-        
-       
+        //sc.modifierCommand(c);   
     }
     
 }
