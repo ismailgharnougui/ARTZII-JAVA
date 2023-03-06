@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="916.0" prefWidth="1832.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.connexion3A18.entities.GUI.EspaceController">
+   <children>
+      <Label layoutX="199.0" layoutY="366.0" text="Date de Début">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="DDDD" layoutX="375.0" layoutY="363.0" prefHeight="31.0" prefWidth="129.0" />
+      <DatePicker fx:id="D5D" layoutX="375.0" layoutY="428.0" prefHeight="31.0" prefWidth="129.0" />
+      <Label layoutX="208.0" layoutY="416.0" text="Date de Fin ">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Label>
+      <TableView fx:id="EventTable" layoutX="739.0" layoutY="100.0" prefHeight="396.0" prefWidth="1098.0">
+         <columns>
+            <TableColumn fx:id="idEvent" prefWidth="93.0" text="Id" />
+            <TableColumn fx:id="NomEvent" minWidth="0.0" prefWidth="132.0" text="Nom" />
+            <TableColumn fx:id="AdresseEvent" prefWidth="89.0" text="Adresse" />
+            <TableColumn fx:id="CapaciteEvent" minWidth="6.0" prefWidth="137.0" text="Capacite" />
+            <TableColumn fx:id="NbrTicketsAcheté" minWidth="0.0" prefWidth="127.0" text=" nbrticketdispo" />
+            <TableColumn fx:id="DateDebutEvent" text="Debut" />
+            <TableColumn fx:id="DateFinEvent" prefWidth="94.0" text="Fin" />
+            <TableColumn fx:id="TypeEvent" minWidth="4.0" prefWidth="153.0" text="description" />
+            <TableColumn fx:id="PrixEntrée" minWidth="0.0" prefWidth="280.0" text="prixticket" />
+         </columns>
+      </TableView>
+      <Label layoutX="216.0" layoutY="130.0" prefHeight="21.0" prefWidth="145.0" text="Nom Evènement">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="203.0" layoutY="182.0" text="Adresse Evènement">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="199.0" layoutY="240.0" text="Capacité Evènement">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="198.0" layoutY="298.0" text="Nbr Tickets Achetés">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="212.0" layoutY="718.0" text="Prix d'entrée">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="EventTick" layoutX="375.0" layoutY="295.0" prefHeight="31.0" prefWidth="304.0" />
+      <TextField fx:id="EventNa" layoutX="378.0" layoutY="127.0" prefHeight="31.0" prefWidth="304.0" />
+      <TextField fx:id="EventAdrr" layoutX="378.0" layoutY="179.0" prefHeight="31.0" prefWidth="304.0" />
+      <TextField fx:id="EventCap" layoutX="378.0" layoutY="237.0" prefHeight="31.0" prefWidth="304.0" />
+      <TextField fx:id="EventPrix" layoutX="389.0" layoutY="715.0" prefHeight="31.0" prefWidth="313.0" />
+      <Label layoutX="199.0" layoutY="629.0" text="Description">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="EventDesc" layoutX="371.0" layoutY="515.0" prefHeight="200.0" prefWidth="330.0" />
+      <Button fx:id="AddEvenement1" layoutX="751.0" layoutY="507.0" mnemonicParsing="false" onAction="#AddEvent" prefHeight="31.0" prefWidth="215.0" style="-fx-background-color: green;" styleClass="rad" text="Ajouter" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman Bold" size="21.0" />
+         </font>
+      </Button>
+      <Button fx:id="ModEvent1" layoutX="1180.0" layoutY="507.0" mnemonicParsing="false" onMouseClicked="#UpdateEvent" prefHeight="31.0" prefWidth="215.0" style="-fx-background-color: blue;" text="Modifier" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman Bold" size="21.0" />
+         </font>
+      </Button>
+      <Button fx:id="SuppEvent1" layoutX="1602.0" layoutY="507.0" mnemonicParsing="false" onAction="#SupprimerEvent" prefHeight="31.0" prefWidth="221.0" style="-fx-background-color: red;" text="Supprimer" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman Bold" size="21.0" />
+         </font>
+      </Button>
+      <AnchorPane prefHeight="96.0" prefWidth="1837.0" style="-fx-background-color: black;">
+         <children>
+            <JFXButton alignment="CENTER" layoutX="14.0" layoutY="9.0" onMouseClicked="#run2" prefHeight="77.0" prefWidth="144.0">
+               <graphic>
+                  <FontAwesomeIconView fx:id="bar1" fill="WHITE" glyphName="BARS" size="50" wrappingWidth="12.285714149475098" />
+               </graphic>
+            </JFXButton>
+            <JFXButton alignment="CENTER" onMouseClicked="#run1" prefHeight="77.0" prefWidth="144.0">
+               <graphic>
+                  <FontAwesomeIconView fx:id="bar11" fill="WHITE" glyphName="CHEVRON_LEFT" size="50" wrappingWidth="12.285714149475098" />
+               </graphic>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="paneslide" layoutY="91.0" prefHeight="827.0" prefWidth="160.0" style="-fx-background-color: black;" />
+   </children>
+</AnchorPane>
