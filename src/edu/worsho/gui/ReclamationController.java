@@ -25,6 +25,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.web.WebView;
 
 /**
@@ -68,9 +70,17 @@ public class ReclamationController implements Initializable {
     @FXML
     private Button btnafficherReponse;
     public static final String ACCOUNT_SID = "AC42e7b8e7f305a86408122fb767b0e3dc";
-    public static final String AUTH_TOKEN = "5c45a6411714c20eedea6cc9ea8c2a4b";
+    public static final String AUTH_TOKEN = "025dca3699a08acb76b6ca4c9551cf3d";
     @FXML
     private TextField numtell;
+    @FXML
+    private VBox vbox2;
+    @FXML
+    private Label nomPrenom;
+    @FXML
+    private Pane erreurPane;
+    @FXML
+    private Label erreurvalue;
 
 
 
@@ -118,19 +128,88 @@ public class ReclamationController implements Initializable {
 
        
     }    
+    private boolean isNumeric(String ch){
+        for(int i=0;i<ch.length();i++)
+        {
+            if(ch.charAt(i)>'9'||ch.charAt(i)<'0'){
+                return false;
+            }
+        }
+        return true;
+        
+    }
+    /*
+    private void verifBadWord(String ch){
+         NeutrinoAPIClient neutrinoAPI = new NeutrinoAPIClient("<your-user-id>", "<your-api-key>");
+        Map<String, String> params = new HashMap<>();
 
+        // The character to use to censor out the bad words found
+        params.put("censor-character", "");
+
+        // Which catalog of bad words to use, we currently maintain two bad word catalogs:
+        // • strict - the largest database of bad words which includes profanity, obscenity, sexual, rude,
+        //   cuss, dirty, swear and objectionable words and phrases. This catalog is suitable for
+        //   environments of all ages including educational or children's content
+        // • obscene - like the strict catalog but does not include any mild profanities, idiomatic
+        //   phrases or words which are considered formal terminology. This catalog is suitable for adult
+        //   environments where certain types of bad words are considered OK
+        params.put("catalog", "strict");
+
+        // The content to scan. This can be either a URL to load from, a file upload (multipart/form-data)
+        // or an HTML content string
+        params.put("content", "https://en.wikipedia.org/wiki/Profanity");
+
+        APIResponse response = neutrinoAPI.badWordFilter(params);
+        if (response.getData().isPresent()) {
+            JsonObject data = response.getData().get();
+            System.out.println("API Response OK: ");
+            
+            // An array of the bad words found
+            System.out.printf("bad-words-list: %s%n", data.get("bad-words-list"));
+            
+            // Total number of bad words detected
+            System.out.printf("bad-words-total: %s%n", data.get("bad-words-total"));
+            
+            // The censored content (only set if censor-character has been set)
+            System.out.printf("censored-content: %s%n", data.get("censored-content"));
+            
+            // Does the text contain bad words
+            System.out.printf("is-bad: %s%n", data.get("is-bad"));
+            
+        } else {
+            // API request failed, you should handle this gracefully!
+            System.err.printf("API Error: %s, Error Code: %d, HTTP Status Code: %d%n", response.getErrorMessage(), response.getErrorCode(), response.getHttpStatusCode());
+            response.getErrorCause().ifPresent(cause -> System.err.printf("Error Caused By: %s%n", cause));
+        }
+    }*/
     @FXML
     private void saveReclamation(ActionEvent event) {
             CRUDReclamation rc  = new CRUDReclamation();
-
-       if(actionForm.compareTo("ajouter")==0){
     String TypeR =tfTypeR.getText();
     String Description =tfDescription.getText();
     String objet =tfObjet.getText();
-    String etat ="nonresolu";
+    String tell=numtell.getText();
+  //  verifBadWord(Description);
+    if(TypeR.length()==0||Description.length()==0||objet.length()==0||tell.length()==0){
+       erreurPane.setVisible(true);
+      erreurvalue.setText("Tous les champs sont obligatoires ");
+    }else if(tell.length()!=8||isNumeric(tell)==false){
+        
+         erreurPane.setVisible(true);
+      erreurvalue.setText("Contact doit etre une chaine numérique de 8 caractères ");
+    }else{
+        
+    erreurvalue.setText("");
+             erreurPane.setVisible(false);
+
     
+       if(actionForm.compareTo("ajouter")==0){
+ 
+    String etat ="nonresolu";
+   
    Reclamation r = new Reclamation(0,TypeR,Description,objet,etat,idUser);
     rc.ajouterReclamation(r);
+    /*
     try{
       Message message = Message.creator(
                 new com.twilio.type.PhoneNumber("+216"+numtell.getText()),
@@ -138,12 +217,13 @@ public class ReclamationController implements Initializable {
                 "Votre réclamation a été ajoutée avec succès. Nous allons l'examiner dès que possible et vous contacterons si nous avons besoin de plus d'informations. Merci de nous avoir contacté.")
             .create();
     }catch(Exception e){
-        System.out.print(e.getMessage());
-    }
+        System.out.print("erreur"+e.getMessage());
+    } 
+*/
         Refresh();
 
        }else{
-                   Reclamation recSelected = (Reclamation) tableReclamation.getSelectionModel().getSelectedItem();
+          Reclamation recSelected = (Reclamation) tableReclamation.getSelectionModel().getSelectedItem();
 
 recSelected.setTypeR(tfTypeR.getText());
 recSelected.setDescription(tfDescription.getText());
@@ -157,7 +237,8 @@ actionForm="ajouter";
        tfTypeR.setText("");
 tfDescription.setText("");
 tfObjet.setText("");
-
+numtell.setText("");
+    }
 
     }
     public void Refresh(){
@@ -198,10 +279,12 @@ tfObjet.setText(recSelected.getObjet());
 
     @FXML
     private void AfficherReponse(ActionEvent event) {
+        System.out.println("enter0");
                 Reclamation recSelected = (Reclamation) tableReclamation.getSelectionModel().getSelectedItem();
                CRUDReponse rp = new CRUDReponse();
               Reponse r= rp.getReponseByIdReclamation(recSelected.getId());
                reponsevalue.setText(r.getContenuRep());
+               System.out.println(r.getContenuRep());
                
     }
     

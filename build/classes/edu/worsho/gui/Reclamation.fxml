@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.web.WebView?>
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="976.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.worsho.gui.ReclamationController">
    <children>
@@ -44,17 +43,14 @@
             <TableColumn fx:id="Objet" prefWidth="75.0" text="Objet" />
         </columns>
       </TableView>
-      <Button fx:id="btnSupprimer" disable="true" layoutX="544.0" layoutY="419.0" mnemonicParsing="false" onAction="#supprimerReclamation" prefHeight="26.0" prefWidth="139.0" style="-fx-background-color: #eab95f; -fx-background-radius: 7;" text="Supprimer" textFill="WHITE">
+      <Button fx:id="btnSupprimer" disable="true" layoutX="458.0" layoutY="421.0" mnemonicParsing="false" onAction="#supprimerReclamation" prefHeight="26.0" prefWidth="139.0" style="-fx-background-color: #eab95f; -fx-background-radius: 7;" text="Supprimer" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font></Button>
-      <Button fx:id="btnmodifier" disable="true" layoutX="719.0" layoutY="419.0" mnemonicParsing="false" onAction="#remplirModifierform" prefHeight="37.0" prefWidth="150.0" style="-fx-background-color: #eab95f; -fx-background-radius: 7;" text="Modifier" textFill="WHITE">
+      <Button fx:id="btnmodifier" disable="true" layoutX="607.0" layoutY="420.0" mnemonicParsing="false" onAction="#remplirModifierform" prefHeight="37.0" prefWidth="150.0" style="-fx-background-color: #eab95f; -fx-background-radius: 7;" text="Modifier" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font></Button>
-      <Label fx:id="reponsevalue" layoutX="401.0" layoutY="280.0" prefHeight="116.0" prefWidth="490.0" />
-      <Button fx:id="btnafficherReponse" layoutX="711.0" layoutY="246.0" mnemonicParsing="false" onAction="#AfficherReponse" prefHeight="26.0" prefWidth="150.0" text="AfficherReponse" visible="false" />
-      <WebView fx:id="captchawebview" layoutX="140.0" layoutY="438.0" prefHeight="50.0" prefWidth="274.0" />
       <Label layoutX="141.0" layoutY="337.0" text="Contact ">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -87,7 +83,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button contentDisplay="TOP" layoutX="10.0" layoutY="76.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="74.0" style="-fx-background-color: #181424;" styleClass="button3" stylesheets="@../../../../../Artzii-Gestion_panier/GestionPanier/src/javaFx/GuiPanier.css" text="Panier" textFill="#767676">
+            <Button contentDisplay="TOP" layoutX="10.0" layoutY="76.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="74.0" style="-fx-background-color: #181424;" styleClass="button3" text="Panier" textFill="#767676">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" styleClass="button3">
                      <image>
@@ -99,7 +95,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button contentDisplay="TOP" layoutX="10.0" layoutY="142.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="74.0" style="-fx-background-color: #181424;" styleClass="button3" stylesheets="@../../../../../Artzii-Gestion_panier/GestionPanier/src/javaFx/GuiPanier.css" text="Réclamer" textFill="#767676">
+            <Button contentDisplay="TOP" layoutX="10.0" layoutY="142.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="74.0" style="-fx-background-color: #181424;" styleClass="button3" stylesheets="" text="Réclamer" textFill="#767676">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -137,5 +133,15 @@
          </children>
       </Pane>
       <AnchorPane layoutX="447.0" layoutY="93.0" prefHeight="39.0" prefWidth="526.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10;" />
+      <Button fx:id="btnafficherReponse" layoutX="766.0" layoutY="420.0" mnemonicParsing="false" onAction="#AfficherReponse" prefHeight="38.0" prefWidth="182.0" style="-fx-background-color: #eab95f; -fx-background-radius: 7;" text="Afficher Reponse" textFill="WHITE" visible="false">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <Label fx:id="reponsevalue" alignment="TOP_LEFT" layoutX="447.0" layoutY="471.0" prefHeight="116.0" prefWidth="490.0" />
+      <Pane fx:id="erreurPane" layoutX="141.0" layoutY="472.0" prefHeight="49.0" prefWidth="298.0" style="-fx-background-color: #eb4034;" visible="false">
+         <children>
+            <Label fx:id="erreurvalue" layoutX="14.0" layoutY="16.0" textFill="WHITE" />
+         </children></Pane>
    </children>
 </AnchorPane>
