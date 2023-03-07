@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/gestionpanier/GestionPanier.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/GuiPanierController.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/StatistiqueController.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/models/User.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/services/InterfacesServices.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/Statistique.fxml</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/services/InterfaceServiceUser.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/models/Livreurs.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/ModifierController.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/models/Evenement.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/Afficher_utilisateurController.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/ReclamationController.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/services/EvenementCRUD.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/Modifier_utilisateurController.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/Ajouter_utilisateurController.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/ArtziiApplication.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/AfficherArticleController.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/Afficher_Livreur.fxml</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/GuiArticleVendeurController.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/GuiModifierArticleController.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/services/ServiceUser.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/services/fichier.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/GuiArticlesController.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/ajouter_utilisateur.fxml</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/GuiAdminController.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/espaceClient.fxml</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/ReponseController.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/models/Ticket.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/ModifierArticleController.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/EspaceClientController.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/models/Chart.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/EspaceController.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/GuiAjoutArticleController.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/services/TicketCRUD.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/GuiLoginController.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/Modifier.fxml</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/models/Commandes.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/models/Users.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/Livraison.fxml</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/modifier_utilisateur.fxml</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/ajouter.fxml</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/espace.fxml</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/AjouterArticleController.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/LivraisonController.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/AjouterController.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/sendSMS.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/Afficher_LivreurController.java</file>
+            <file>file:/C:/Users/medmo/Documents/NetBeansProjects/GestionPanier/src/javaFx/GuiHomeController.java</file>
+        </group>
+    </open-files>
+</project-private>

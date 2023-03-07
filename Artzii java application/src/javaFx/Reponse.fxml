@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="bord" prefHeight="600.0" prefWidth="976.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFx.ReponseController">
+   <children>
+      <Pane layoutX="573.0" layoutY="16.0" prefHeight="94.0" prefWidth="394.0" style="-fx-background-radius: 20 20 0 0;" styleClass="linear-grad" stylesheets="@GuiPanier.css">
+         <children>
+            <ImageView fitHeight="76.0" fitWidth="58.0" layoutX="319.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/ic_usr.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="nomPrenom3" layoutX="176.0" layoutY="27.0" text="Administrateur" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <AnchorPane layoutX="78.0" layoutY="96.0" prefHeight="525.0" prefWidth="890.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10;">
+         <children>
+            <Label layoutX="33.0" layoutY="14.0" text="Gestion des réclamations">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+      <TableView fx:id="tableReclamation" layoutX="474.0" layoutY="193.0" prefHeight="252.0" prefWidth="474.0">
+         <columns>
+            <TableColumn fx:id="id" prefWidth="75.0" text="Id" />
+            <TableColumn fx:id="TypeR" prefWidth="75.0" text="TypeR" />
+            <TableColumn fx:id="dateR" prefWidth="75.0" text="dateR" />
+            <TableColumn fx:id="etat" prefWidth="75.0" text="etat" />
+            <TableColumn fx:id="Description" prefWidth="75.0" text="Description" />
+            <TableColumn fx:id="Objet" prefWidth="75.0" text="Objet" />
+         </columns>
+      </TableView>
+      <Button fx:id="btnsupprimerReclamation" disable="true" layoutX="479.0" layoutY="481.0" mnemonicParsing="false" onAction="#supprimerReclamation" prefHeight="26.0" prefWidth="166.0" style="-fx-background-color: #eab95f;" text="Supprimer" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Button fx:id="btnRepondre" disable="true" layoutX="654.0" layoutY="480.0" mnemonicParsing="false" onAction="#ouvrirRepondreForm" prefHeight="26.0" prefWidth="146.0" style="-fx-background-color: #eab95f;" text="Repondre " textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Pane fx:id="addreponseform" layoutX="111.0" layoutY="133.0" prefHeight="382.0" prefWidth="286.0" visible="false">
+         <children>
+            <Button fx:id="btnvalider" layoutX="32.0" layoutY="330.0" mnemonicParsing="false" onAction="#saveReponse" prefHeight="25.0" prefWidth="222.0" style="-fx-background-color: #eab95f;" text="Valider" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+            <Label layoutX="33.0" layoutY="29.0" text="Reponse :  " />
+            <TextArea fx:id="contenuRep" layoutX="33.0" layoutY="63.0" prefHeight="252.0" prefWidth="222.0" />
+         </children>
+      </Pane>
+      <Button fx:id="btnafficherreponse" disable="true" layoutX="816.0" layoutY="479.0" mnemonicParsing="false" onAction="#afficherReponse" prefHeight="26.0" prefWidth="138.0" style="-fx-background-color: #eab95f;" text="Afficher Reponse " textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+      <Pane fx:id="reponsePane" layoutX="111.0" layoutY="149.0" prefHeight="319.0" prefWidth="280.0" visible="false">
+         <children>
+            <Label fx:id="reponselabel" layoutX="26.0" layoutY="33.0" prefHeight="115.0" prefWidth="206.0" />
+            <Button fx:id="btnsupprimer" layoutX="14.0" layoutY="181.0" mnemonicParsing="false" onAction="#supprimerReponse" prefHeight="25.0" prefWidth="258.0" style="-fx-background-color: #eab95f;" text="Supprimer reponse " textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+         </children>
+      </Pane>
+      <Button fx:id="btnstatreclmation" layoutX="646.0" layoutY="140.0" mnemonicParsing="false" onAction="#gotostat" prefHeight="26.0" prefWidth="304.0" style="-fx-background-color: #eab95f;" text="Statistique Reclmation " textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <VBox fx:id="vbox2" prefHeight="630.0" prefWidth="74.0" style="-fx-background-color: #131022;">
+         <children>
+            <Pane prefHeight="170.0" prefWidth="74.0" style="-fx-background-radius: 15 0 15 15;" />
+            <Button fx:id="btnNaviguer" contentDisplay="TOP" mnemonicParsing="false" onAction="#goToNavigate" prefHeight="66.0" prefWidth="74.0" styleClass="button3" stylesheets="@GuiPanier.css" text="Naviguer" textFill="#767676">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/cat.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <ImageView fitHeight="86.0" fitWidth="154.0" layoutX="84.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/logo.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="bord" prefHeight="600.0" prefWidth="970.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFx.Afficher_utilisateurController">
+   <children>
+      <Pane layoutX="598.0" layoutY="4.0" prefHeight="102.0" prefWidth="367.0" style="-fx-background-radius: 20 20 0 0;" styleClass="linear-grad" stylesheets="@guicommand.css">
+         <children>
+            <ImageView fitHeight="76.0" fitWidth="58.0" layoutX="274.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/ic_usr.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="nomPrenom" layoutX="130.0" layoutY="23.0" text="Administrateur" textFill="#fffefe">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <VBox fx:id="vbox2" layoutY="-1.0" prefHeight="606.0" prefWidth="74.0" style="-fx-background-color: #131022;">
+         <children>
+            <Pane prefHeight="171.0" prefWidth="74.0" />
+            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#goToNavigate" prefHeight="66.0" prefWidth="74.0" styleClass="button3" stylesheets="@GuiPanier.css" text="Naviguer" textFill="#767676">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/cat.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <ImageView fitHeight="86.0" fitWidth="154.0" layoutX="102.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/logo.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="75.0" layoutY="75.0" prefHeight="529.0" prefWidth="891.0" style="-fx-background-color: white; -fx-background-radius: 15;">
+         <children>
+            <Label layoutX="37.0" layoutY="12.0" prefHeight="36.0" prefWidth="331.0" text="Liste des utilisateurs">
+               <font>
+                  <Font name="System Bold" size="31.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnAjouter" layoutX="752.0" layoutY="18.0" mnemonicParsing="false" onAction="#gotoAjouter" prefHeight="34.0" prefWidth="112.0" style="-fx-background-color: #B58D3F;" text="Ajouter" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <TextField fx:id="search_tv" layoutX="446.0" layoutY="22.0" onAction="#Afficher" onKeyPressed="#searchquery" prefHeight="26.0" prefWidth="295.0" promptText="Chercher un utilisateur" />
+            <TableView fx:id="tableview" layoutX="27.0" layoutY="66.0" prefHeight="450.0" prefWidth="851.0" styleClass="tableUsers" stylesheets="@guiadmin.css">
+               <columns>
+                  <TableColumn fx:id="ft_nomu" prefWidth="75.0" text="Nom" />
+                  <TableColumn fx:id="ft_prenomu" prefWidth="75.0" text="Prénom" />
+                  <TableColumn fx:id="ft_emailu" prefWidth="115.20002746582031" text="Email" />
+                  <TableColumn fx:id="ft_mdpu" prefWidth="109.5999755859375" text="mdpU" />
+                  <TableColumn fx:id="ft_roleu" prefWidth="116.7999267578125" text="roleU" />
+                  <TableColumn fx:id="ft_adresse" prefWidth="116.7999267578125" text="adresse" />
+               </columns>
+            </TableView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

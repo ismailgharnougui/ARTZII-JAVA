@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="nh" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="647.0" prefWidth="539.0" style="-fx-background-color: #fff3e0;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFx.AjouterArticleController">
+   <children>
+      <Pane layoutY="75.0" prefHeight="570.0" prefWidth="539.0" style="-fx-background-color: #fff3e0;">
+         <children>
+            <TextField fx:id="libtx" layoutX="173.0" layoutY="96.0" prefHeight="34.0" prefWidth="281.0" styleClass="text-input" />
+            <Label layoutX="56.0" layoutY="103.0" text="Libellé">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="55.0" layoutY="153.0" text="Description">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="51.0" layoutY="278.0" text="Disponibilité">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="53.0" layoutY="325.0" onDragDetected="#ajoutArticleHandle" text="Image">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Separator layoutX="54.0" layoutY="16.0" opacity="0.15" prefHeight="3.0" prefWidth="423.0" />
+            <Button layoutX="324.0" layoutY="493.0" mnemonicParsing="false" onAction="#ajoutArticleHandler" prefHeight="35.0" prefWidth="108.0" style="-fx-background-color: #FCBB31;" text="Annuler" textFill="WHITE" />
+            <Button fx:id="btnAjouter" layoutX="154.0" layoutY="494.0" mnemonicParsing="false" onAction="#ajoutArticleHandle" prefHeight="34.0" prefWidth="112.0" style="-fx-background-color: #CE201C;" text="Ajouter" textFill="WHITE" />
+            <TextField fx:id="prixtv" layoutX="173.0" layoutY="367.0" prefHeight="34.0" prefWidth="281.0" styleClass="text-input" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="56.0" layoutY="374.0" text="Prix">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="60.0" layoutY="34.0" text="Catégorie">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="desctv" layoutX="173.0" layoutY="146.0" prefHeight="98.0" prefWidth="281.0" styleClass="text-input" />
+            <TextField fx:id="dispotv" layoutX="173.0" layoutY="268.0" prefHeight="34.0" prefWidth="281.0" styleClass="text-input" />
+            <ImageView fx:id="imagev" fitHeight="28.0" fitWidth="119.0" layoutX="245.0" layoutY="321.0" onMouseClicked="#uploadimageHandler" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="file_path" layoutX="55.0" layoutY="476.0" prefHeight="17.0" prefWidth="306.0" text="URL Image" />
+            <ComboBox fx:id="cat_cb" layoutX="164.0" layoutY="31.0" prefHeight="25.0" prefWidth="288.0" />
+         </children>
+      </Pane>
+      <Label alignment="CENTER" layoutX="515.0" layoutY="4.0" prefHeight="20.0" prefWidth="21.0" text="X" textFill="#ddd9d9">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Separator layoutX="57.0" layoutY="544.0" opacity="0.15" prefHeight="3.0" prefWidth="423.0" />
+      <Label layoutX="186.0" layoutY="50.0" text="AJOUT ARTICLE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

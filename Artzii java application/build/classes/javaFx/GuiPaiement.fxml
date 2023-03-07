@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFx.GuiPaiementController">
+    <stylesheets>
+        <URL value="@guipaiement.css" />
+    </stylesheets>
+   <children>
+      <Pane layoutX="548.0" prefHeight="101.0" prefWidth="412.0" style="-fx-background-radius: 20 20 0 0;" styleClass="linear-grad" stylesheets="@guicommand.css">
+         <children>
+            <ImageView fitHeight="76.0" fitWidth="58.0" layoutX="334.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/ic_usr.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="nomPrenom" layoutX="265.0" layoutY="28.0" text="Client" textFill="#fffefe">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <VBox fx:id="vbox2" layoutY="-1.0" prefHeight="606.0" prefWidth="74.0" style="-fx-background-color: #131022;">
+         <children>
+            <Pane prefHeight="111.0" prefWidth="74.0" style="-fx-background-radius: 15 0 15 15;" />
+            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="74.0" styleClass="button3" stylesheets="@GuiPanier.css" text="Naviguer" textFill="#767676">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/cat.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="74.0" styleClass="button3" stylesheets="@GuiPanier.css" text="Profile" textFill="#767676">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/time.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button contentDisplay="TOP" layoutX="10.0" layoutY="76.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="74.0" styleClass="button3" stylesheets="@GuiPanier.css" text="Panier" textFill="#767676">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/group.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button contentDisplay="TOP" layoutX="10.0" layoutY="142.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="74.0" styleClass="button3" stylesheets="@GuiPanier.css" text="Réclamer" textFill="#767676">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/flag.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <AnchorPane layoutX="74.0" layoutY="71.0" prefHeight="528.0" prefWidth="889.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10;" stylesheets="@GuiPanier.css">
+         <children>
+            <Line endX="100.0" endY="-36.600006103515625" layoutX="421.0" layoutY="66.0" startX="100.0" startY="424.20001220703125" stroke="#b9b1b1" strokeDashOffset="2.0" />
+            <Label layoutX="94.0" layoutY="100.0" prefHeight="38.0" prefWidth="345.0" text="Paiement en ligne via Stripe" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="571.0" layoutY="138.0" text="Notre paiement !" textAlignment="CENTER" textFill="#eab95f">
+               <font>
+                  <Font name="System Bold Italic" size="32.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="553.0" layoutY="212.0" prefHeight="162.0" prefWidth="308.0" text="Votre sécurité est notre priorité et nous travaillons dur pour protéger vos informations de paiement" textFill="#9a9292" wrapText="true">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <TextField fx:id="carte" layoutX="129.0" layoutY="178.0" prefHeight="34.0" prefWidth="275.0" promptText="Numero de la carte" />
+            <Button fx:id="pay" layoutX="129.0" layoutY="399.0" mnemonicParsing="false" onAction="#Pay" prefHeight="34.0" prefWidth="275.0" style="-fx-background-color: #a48041;" text="Payer" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <TextField fx:id="moisExp" layoutX="129.0" layoutY="230.0" prefHeight="34.0" prefWidth="275.0" promptText="Mois d'expiration" />
+            <TextField fx:id="anneeExp" layoutX="129.0" layoutY="283.0" prefHeight="34.0" prefWidth="275.0" promptText="Année d'expiration" />
+            <TextField fx:id="cvc" layoutX="129.0" layoutY="330.0" prefHeight="34.0" prefWidth="275.0" promptText="CVC" />
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="86.0" fitWidth="154.0" layoutX="82.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/logo.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
