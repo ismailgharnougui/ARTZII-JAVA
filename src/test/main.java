@@ -24,12 +24,12 @@ public class main {
        Utilisateur U = new Utilisateur("ma","ftou","ma@email.com","99","admin","ariana");
             
         CRUDUtilisateur crud = new CRUDUtilisateur();
-       crud.ajouterUtilisateur(U);
-        System.out.println(crud.afficherUtilisateur());
+       //crud.ajouterUtilisateur(U);
+       System.out.println(crud.afficherUtilisateur());
        // Utilisateur U = new Utilisateur(26,"ma","ftou","ma@email.com","99","client");
-       crud.modifierUtilisateur(U);
-       crud.supprimerUtilisateur(23);
-     
+       //crud.modifierUtilisateur(U);
+       //crud.supprimerUtilisateur(23);
+       crud.afficherUtilisateur();
      
         
     }

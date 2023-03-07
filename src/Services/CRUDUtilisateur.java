@@ -18,6 +18,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import controller.QRcodeController;
+import java.io.File;
+import java.io.IOException;
+
+
 
 
 public class CRUDUtilisateur implements IUtilisateur{
@@ -60,7 +69,8 @@ Connection conn = MyConnection.getInstance().getConnection();
         }
     }
 
-    public ObservableList<Utilisateur> afficherUtilisateur() {
+   public ObservableList<Utilisateur> afficherUtilisateur() {
+         
        String sql = "SELECT * FROM utilisateur";
         List<Utilisateur> listeUtilisateur = new ArrayList<>();
 
@@ -72,20 +82,19 @@ Connection conn = MyConnection.getInstance().getConnection();
                 String nomU = result.getString(2);
                 String prenomU = result.getString(3);
                 String emailU = result.getString(4);
-                String mdpU = result.getString(5);
+                String mdpU = result.getString(7);
                 String roleU = result.getString(6);
-                String adresse = result.getString(7);
+                String adresse = result.getString(5);
 
                 Utilisateur U = new Utilisateur(idU, nomU, prenomU, emailU, mdpU, roleU, adresse);
-                obList.add(U);
+                listeUtilisateur.add(U);
+                
             }
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-        return obList;
-        
-        
-        
+         System.out.println(listeUtilisateur);
+        return FXCollections.observableArrayList(listeUtilisateur);
     }
 
     public void ajouterUtilisateur2(Utilisateur U) {
@@ -103,8 +112,8 @@ Connection conn = MyConnection.getInstance().getConnection();
             System.out.println(ex.getMessage());
         }
     }
-
-  
+    
+    
 }
  
 

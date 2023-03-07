@@ -4,11 +4,12 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane id="AnchorPane" onDragDetected="#Afficher" prefHeight="490.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui2.Afficher_utilisateurController">
    <children>
-      <TableView fx:id="tableview" layoutX="10.0" layoutY="60.0" prefHeight="451.0" prefWidth="938.0">
+      <TableView fx:id="tableview" layoutX="4.0" layoutY="119.0" prefHeight="363.0" prefWidth="917.0">
          <columns>
             <TableColumn fx:id="ft_nomu" prefWidth="75.0" text="nomU" />
             <TableColumn fx:id="ft_prenomu" prefWidth="75.0" text="prenomU" />
@@ -20,5 +21,7 @@
       </TableView>
       <TextField fx:id="search_tv" layoutX="149.0" layoutY="24.0" onAction="#Afficher" onKeyPressed="#searchquery" prefHeight="26.0" prefWidth="659.0" promptText="Chercher un utilisateur" />
       <Button fx:id="btnAjouter" layoutX="822.0" layoutY="20.0" mnemonicParsing="false" onAction="#gotoAjouter" prefHeight="34.0" prefWidth="112.0" style="-fx-background-color: #CE201C;" text="Ajouter" textFill="WHITE" />
+      <ImageView fx:id="qr_code" fitHeight="83.0" fitWidth="90.0" layoutX="34.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="fx_button" layoutX="149.0" layoutY="78.0" mnemonicParsing="false" onAction="#QRcode" text="Button" />
    </children>
 </AnchorPane>

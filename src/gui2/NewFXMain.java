@@ -28,7 +28,7 @@ public class NewFXMain extends Application {
        
         Parent root;
         try {
-            root=FXMLLoader.load(getClass().getResource("location_utilisateur.fxml"));
+            root=FXMLLoader.load(getClass().getResource("afficher_utilisateur.fxml"));
              Scene scene = new Scene(root);
         
         primaryStage.setTitle("Artzii");
