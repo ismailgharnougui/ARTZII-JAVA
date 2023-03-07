@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #1e1e2d;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.gui.Afficher_LivreurController">
+   <children>
+      <TableView fx:id="livreursTable" layoutY="62.0" prefHeight="304.0" prefWidth="600.0" style="-fx-background-color: FCE4EC;">
+        <columns>
+          <TableColumn fx:id="fxnum_tel_column" prefWidth="126.0" text="num_tel" />
+            <TableColumn fx:id="fxnom_column" prefWidth="100.0" text="nom" />
+            <TableColumn fx:id="fxprenom_column" prefWidth="111.0" text="prenom" />
+            <TableColumn fx:id="fxregion_livreur_column" minWidth="0.0" prefWidth="134.0" text="region_livreurs" />
+            <TableColumn fx:id="fxactions_column" prefWidth="128.0" text="actions" />
+        </columns>
+      </TableView>
+      <Button fx:id="fxAjouter_Livreur" layoutY="366.0" mnemonicParsing="false" onAction="#AjouterLivreur" prefHeight="24.0" prefWidth="114.0" style="-fx-background-color: #3c94d1;" text="Ajouter " textFill="WHITE" />
+      <Button fx:id="affecterLivreur" layoutX="119.0" layoutY="366.0" mnemonicParsing="false" onAction="#AffecterLivreur" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: #3c94d1;" text="Affecter" textFill="WHITE" />
+      <TextField fx:id="search_barre" layoutX="253.0" layoutY="25.0" />
+      <Button layoutX="221.0" layoutY="366.0" mnemonicParsing="false" onAction="#Statistique" prefHeight="25.0" prefWidth="96.0" style="-fx-background-color: #3c94d1;" text="Statistique" textFill="WHITE" />
+   </children>
+</AnchorPane>

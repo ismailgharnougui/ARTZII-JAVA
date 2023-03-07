@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/pidev/src/pidev/entities/Users.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/pidev/src/pidev/gui/StatistiqueController.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/pidev/src/pidev/DAO/CRUDCommande.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/pidev/src/pidev/gui/ModifierController.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/pidev/src/pidev/gui/Afficher_LivreurController.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/pidev/src/pidev/entities/Livreurs.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/pidev/src/pidev/gui/Statistique.fxml</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/pidev/src/pidev/DAO/CRUDLivreurs.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/pidev/src/pidev/entities/Commandes.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/pidev/src/pidev/gui/PIDevSoloInit.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/pidev/src/pidev/Pidev.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/pidev/src/pidev/gui/AjouterController.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/pidev/src/pidev/gui/CommandeController.java</file>
+        </group>
+    </open-files>
+</project-private>

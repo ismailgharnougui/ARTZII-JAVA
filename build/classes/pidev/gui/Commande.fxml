@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #1e1e2d;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.gui.CommandeController">
+   <children>
+      <TableView fx:id="Commande_table" layoutY="66.0" prefHeight="293.0" prefWidth="610.0">
+         <columns>
+            <TableColumn fx:id="adresseCom1" prefWidth="149.0" text="adresse" />
+            <TableColumn fx:id="regionCom1" prefWidth="149.0" text="region" />
+            <TableColumn fx:id="useridCom1" prefWidth="143.0" text="user_id " />
+            <TableColumn fx:id="affectationCom1" prefWidth="167.0" text="affectation" />
+         </columns>
+      </TableView>
+      <Button layoutX="14.0" layoutY="367.0" mnemonicParsing="false" onAction="#Retour" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: #3c94d1;" text="Retour" textFill="WHITE" />
+   </children>
+</AnchorPane>
