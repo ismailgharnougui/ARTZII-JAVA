@@ -1,2 +1,9 @@
 Project Java Esprit 2022 - 2023
-Création d'une application desktop  utilisant JavaFX  dédié à la vente d'œuvres d'art.
+Creation of a desktop application using JavaFX dedicated to the sale of artworks.
+
+
+
+
+
+
+
